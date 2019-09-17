@@ -8,12 +8,19 @@ import copy
 import json
 import argparse
 
+def find_nth(haystack, needle, n):
+    start = haystack.find(needle)
+    while start >= 0 and n > 1:
+        start = haystack.find(needle, start+len(needle))
+        n -= 1
+    return start
 
 def main():
    parser = argparse.ArgumentParser(description="descrizione da mettere")
    parser.add_argument("-f", "--file", help="file da parsare", type=str, required=True)
-   parser.add_argument("-s", "--start", help="ciclo da cui iniziare", type=int, default=0, required=False)
-   parser.add_argument("-e", "--end", help="ciclo con cui terminare", type=int, default=None, required=False)
+   parser.add_argument("-fs", "--functionstart", help="funzione da cui iniziare", type=str, default="", required=False)
+   parser.add_argument("-cs", "--ciclestart", help="ciclo da cui iniziare", type=int, default=0, required=False)
+   parser.add_argument("-ce", "--cicleend", help="ciclo con cui terminare", type=int, default=None, required=False)
    parser.add_argument("-i", "--int", help="valore dei registri intero", action='store_true', required=False)
    argms = parser.parse_args()
 
@@ -93,8 +100,9 @@ def main():
 
    lasttime = -1
    stagedump={}
-
-   code_inst = {"-":"-", "":""}
+   functionstartcicle = None
+   functionstartinst = None
+   code_inst = {"-":"-", "":"", "R":"-"}
    code_pc = {"-":"-", "":""}
    code_trace = {}
 
@@ -110,6 +118,45 @@ def main():
       else: 
          return cc
       return cc
+
+   def appendtupinlist(tup,lista):
+      for t in tup:
+         lista.append(t)
+   
+   def codetupler(lin):
+      tup = []
+      dp = lin.rfind('),(')
+      lsp = lin.rfind('),-')
+      rsp = lin.find('-,(')
+      np = lin.find('-,-')
+      if dp != -1: 
+         ftup = lin.split('),(')
+         for ft in reversed(ftup):
+            subtup = ft.replace("(","").replace(")","").split(',')
+            for st in subtup:
+               tup.append(st)
+
+      if lsp != -1:
+         tup.append("-")
+         tup.append("-")
+         ftup = lin.split('),-')
+         for ft in reversed(ftup):
+            subtup = ft.replace("(","").replace(")","").split(',')
+            for st in subtup:
+               tup.append(st)
+         
+      if rsp != -1: 
+         ftup = lin.split('),-')
+         for ft in reversed(ftup):
+            subtup = ft.replace("(","").replace(")","").split(',')
+            for st in subtup:
+               tup.append(st)
+         tup.append("-")
+         tup.append("-")
+
+      if np != -1: tup = ['-','-','-','-']
+      return tup
+      
 
    scoreboardtrace = {}
 
@@ -131,6 +178,11 @@ def main():
          lasttime=time
          stagedump[time] = copy.deepcopy(Emptystagedump)
 
+      if (argms.functionstart != "") and (line.find("system.cpu ") != -1) and (line.find(argms.functionstart) != -1):
+         if functionstartcicle is None:
+            functionstartcicle = time
+            functionstartinst = line[find_nth(line,':',3)+1:find_nth(line,':',4)].strip()
+
       if (line.find("system.cpu.icache: access for ReadReq") != -1):
          mess = line[line.find('ReadReq')+7:]
 
@@ -142,10 +194,9 @@ def main():
          stagedump[time]['icache'].append(mess)
 
       if (line.find("system.cpu.fetch1.transfers: MinorTrace:") != -1):
-         tup = ( line[line.find("lines=")+6:] ).split(',')
-         
-         for t in reversed(tup):
-            stagedump[time]['fetch1.transfers'].append(t)
+         #tup = ( line[line.find("lines=")+6:] ).split(',')
+         tup = codetupler(line[line.find("lines=")+6:])
+         appendtupinlist(tup,stagedump[time]['fetch1.transfers'])
 
       if (line.find("system.cpu.fetch1: MinorLine") != -1):
          code = line[line.rfind("id=")+3:line.rfind("size")].replace(" ","")
@@ -161,29 +212,28 @@ def main():
          stagedump[time]['fetch1'].append(code)
 
       if (line.find("system.cpu.f1ToF2: MinorTrace:") != -1):
-         tup = ( line[line.find("lines=")+6:] ).split(',')
-         
-         for t in reversed(tup):
-            stagedump[time]['f1ToF2'].append(t)
+         #tup = ( line[line.find("lines=")+6:] ).split(',')
+         tup = codetupler(line[line.find("lines=")+6:])
+         appendtupinlist(tup,stagedump[time]['f1ToF2'])
 
       if (line.find("system.cpu.f2ToF1: MinorTrace:") != -1):
-         tup = ( line[line.find("prediction=")+11:] ).split(',')
-         
-         for t in reversed(tup):
-            stagedump[time]['f2ToF1'].append(t)
+         #tup = ( line[line.find("prediction=")+11:] ).split(',')
+         tup = codetupler(line[line.find("prediction=")+11:])
+         appendtupinlist(tup,stagedump[time]['f2ToF1'])
 
       if (line.find("system.cpu.fetch2: decoder inst") != -1):
          code = line[line.find("inst")+4:line.find("pc")].replace(" ","")
          pc = line[line.find("pc:")+3:line.rfind("(")].replace(" ","")
+         inst=line[line.find("(")+1:line.find(")")].strip()
+         code_inst[code]=inst
          code_pc[code] = pc
 
          stagedump[time]['fetch2'].append(code)
 
       if (line.find("system.cpu.f2ToD: MinorTrace:") != -1):
-         tup = ( line[line.find("insts=")+6:].replace("(","").replace(")","") ).split(',') 
-
-         for t in reversed(tup):
-            stagedump[time]['f2ToD'].append(t)
+         #tup = ( line[line.find("insts=")+6:] ).split('),(') 
+         tup = codetupler(line[line.find("insts=")+6:])
+         appendtupinlist(tup,stagedump[time]['f2ToD'])
 
       if (line.find("system.cpu.decode: Passing on inst:") != -1):
          code = line[line.find("inst:")+5:line.find("pc")].replace(" ","")
@@ -192,21 +242,19 @@ def main():
          stagedump[time]['decode'].append(code)
 
       if (line.find("system.cpu.dToE: MinorTrace: insts") != -1):
-         tup = ( line[line.find("insts=")+6:].replace("(","").replace(")","") ).split(',') 
-
-         for t in reversed(tup):
-            stagedump[time]['dToE'].append(t)
+         #tup = ( line[line.find("insts=")+6:].replace("(","").replace(")","") ).split(',') 
+         tup = codetupler(line[line.find("insts=")+6:])
+         appendtupinlist(tup,stagedump[time]['dToE'])
 
       if (line.find("system.cpu.execute.inputBuffer0: MinorTrace: insts=") != -1):
          tup = ( line[line.find("insts=")+6:].replace("(","").replace(")","") ).split(',')
          
-         for t in reversed(tup):
-            stagedump[time]['execute.inputBuffer0'].append(t)
+         appendtupinlist(tup,stagedump[time]['execute.inputBuffer0'])
 
       if (line.find('system.cpu.execute.lsq.transfers: MinorTrace:') != -1):
          tup = ( line[line.find("addr=")+5:] ).split(',')
          
-         for t in reversed(tup):
+         for t in tup:
             tt = t.split(';')
             try: stagedump[time]['execute.lsq.transfers'].append(tt[1])
             except: pass
@@ -214,7 +262,7 @@ def main():
       if (line.find("system.cpu.execute.lsq.storeBuffer: MinorTrace:") != -1):
          tup = ( line[line.find("addr=")+5:line.find("num_")-1] ).split(',')
          
-         for t in reversed(tup):
+         for t in tup:
             tt = t.split(';')
             try: stagedump[time]['execute.lsq.storeBuffer'].append(tt[1])
             except: pass
@@ -240,13 +288,12 @@ def main():
          for j in range(0,len(tup)):
             code = tup[j]
 
-            stagedump[time]['execute.fu.'+str(core)].append(code)
+            stagedump[time]['execute.fu.'+str(core)].insert(0,code)
 
       if (line.find("system.cpu.eToF1: MinorTrace:") != -1):
-         tup = ( line[line.find("branch=")+7:] ).split(',')
-         
-         for t in reversed(tup):
-            stagedump[time]['eToF1'].append(t)
+         #tup = ( line[line.find("branch=")+7:] ).split(',')
+         tup = codetupler(line[line.find("branch=")+7:])
+         appendtupinlist(tup,stagedump[time]['eToF1'])
 
       if (line.find("system.cpu.execute: Completed inst:") != -1):
          code = line[line.find("inst:")+5:line.find("pc")].replace(" ","")
@@ -273,8 +320,7 @@ def main():
       if (line.find("system.cpu.execute.inFUMemInsts0: MinorTrace:") != -1):
          tup = ( line[line.find("insts=")+6:] ).split(',')
          
-         for t in tup:
-            stagedump[time]['execute.inFUMemInsts0'].append(t)
+         appendtupinlist(tup,stagedump[time]['execute.inFUMemInsts0'])
 
       if (line.find(": Setting int reg ") != -1):
          reg = int ( line[line.find('(')+1:line.find(')')] )
@@ -310,10 +356,24 @@ def main():
    timelist = list(stagedump.keys())
    timelist.sort()
 
-   start = argms.start
+   if not (functionstartcicle is None):
+      codeselected=''
+      for t in stagedump[functionstartcicle]['completed']:
+         if codeToInst(t) == functionstartinst:
+            codeselected=t[:t.rfind('.')]
+            break
+      for i in range(min(timelist), functionstartcicle):
+         if i in stagedump.keys():
+            try:
+               if codeselected in stagedump[i]['fetch2']:
+                  argms.ciclestart = i - 2
+            except:
+               pass
+
+   start = argms.ciclestart
    end = max(timelist) + 1
-   if not (argms.end is None):
-      end = argms.end + 1
+   if not (argms.cicleend is None):
+      end = argms.cicleend + 1
 
    def condprint(s):
       if i>= start and i <= end:
@@ -344,7 +404,7 @@ def main():
                            #condprint(e)
                            pass
                   else:
-                     for r in stagedump[i][k]:
+                     for r in reversed(stagedump[i][k]):
                         if len(codeToInst(r)) > 0:
                            array.append( codeToInst(r) )
                      
