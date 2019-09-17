@@ -1,0 +1,31 @@
+../gem5/gem5/build/ARM/gem5.opt configs/example/se.py -c hello.o
+
+./build/ARM/gem5.opt \
+    --debug-flags=O3PipeView \
+    --debug-start=<first tick of interest> \
+    --debug-file=trace.out \
+    configs/example/se.py \
+    --cpu-type=detailed \
+    --caches -c <path to binary> \
+    -m <last cycle of interest>
+
+gem5/gem5/build/ARM/gem5.opt --debug-flags=O3PipeView --debug-start=0 --debug-file=trace.out gem5/gem5/configs/example/se.py --cpu-type=DerivO3CPU --caches -c test.o -m 4000000000
+gem5/gem5/util/o3-pipeview.py -c 500 -o pipeview.out --color m5out/trace.out
+less -r pipeview.out
+
+./build/ARM/gem5.opt configs/example/arm/starter_se.py --cpu="minor" --num-cores=1 "tests/test-progs/hello/bin/arm/linux/hello"
+
+./build/ARM/gem5.opt --debug-flags=O3PipeView --debug-start=0 --debug-file=trace.out configs/example/arm/starter_se.py --cpu="minor" --num-cores=1 "tests/test-progs/hello/bin/arm/linux/hello"
+
+build/ARM/gem5.opt -d bzip_10Minsts configs/example/se.py --cpu-type=arm_detailed --caches --cmd=$M5_PATH/binaries/arm_arm/linux/bzip2 --options=$M5_PATH/data/bzip2/lgred/input/input.source -I 10000000 --elastic-trace-en --data-trace-file=deptrace.proto.gz --inst-trace-file=fetchtrace.proto.gz --mem-type=SimpleMemory
+
+
+./build/ARM/gem5.opt --debug-file=trace.out --debug-start=0 configs/example/se.py --cpu-type=AtomicSimpleCPU --caches -c tests/test-progs/hello/bin/arm/linux/hello 
+./build/ARM/gem5.opt --debug-file=trace.out --debug-start=0 configs/example/se.py --cpu-type=MinorCPU --caches -c tests/test-progs/hello/bin/arm/linux/hello 
+
+
+sudo apt install libgconf2-4 libgtk-3-0 libxss1 libgconf2-4 libnss3 libasound2 libX11-xcb1 libcanberra-gtk3-module
+
+
+arm-linux-gnueabihf-gcc -nostdlib --static -o
+gem5/gem5/build/ARM/gem5.opt --debug-flags=All --debug-file=trace.out --debug-start=0 gem5/gem5/configs/example/se.py --maxinst=100 --cpu-type=MinorCPU --caches -c Programmi/littletest.o

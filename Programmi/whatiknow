@@ -1,0 +1,15 @@
+ogni linea di istruction cache contiene 16 istruzioni (64 byte)
+per ogni fault di linea sulla icache ci vogliono 100 cicli per caricarla (idem per la dcache)
+da cache al pipeline ci impiega 1 ciclo
+
+
+le istruzioni sono a 32bit
+vengono fetchate/decodificate 2 istruzioni alla volta
+
+la branch prediction è basata dell'utimo branch (se sono saltato prima salto anche ora e viceversa)
+
+core 0: operazioni su interi (3 cicli)
+core 1: operazioni su interi (3 cicli)
+
+
+core 6: LDR / STR (1 ciclo)
