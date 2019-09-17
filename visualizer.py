@@ -5,6 +5,7 @@ import os
 import re
 import sys
 import copy
+import json
 import argparse
 
 
@@ -24,6 +25,9 @@ def main():
    f = open(path, "r")
    tracefile = f.read()
    tracelist = tracefile.split("\n")
+   
+   with open('config.json', 'r') as f:
+      lablemap = json.load(f)
 
    stagelist=[
       'icache',
@@ -37,6 +41,7 @@ def main():
       'dToE',
       'execute.inputBuffer0',
       'stall',
+      'scoreboard',
       'execute',
       'eToF1',
       'execute.fu.0',
@@ -67,6 +72,7 @@ def main():
       'dToE'    : [],
       'execute.inputBuffer0' : [],
       'stall'   : [],
+      'scoreboard' : [],
       'execute' : [],
       'eToF1'   : [],
       'execute.fu.0' : [],
@@ -285,9 +291,8 @@ def main():
                      continue
             if argms.int == False: registers_trace[time][reg] = val 
             else: registers_trace[time][reg] = int(val,16)
-      """
+      
       if (line.find(": system.cpu.execute.scoreboard0: MinorTrace: busy=(") != -1):
-         minortime[time] = True
          obj = line[line.find('('):]
          sbi = obj.split('),(')
          scoreboarditem = []
@@ -299,9 +304,7 @@ def main():
             aux2 = aux2[1].split('/')
             end = aux2[2]
             inst = aux2[3]
-            scoreboarditem.append((reg,end,inst))
-         scoreboardtrace[time] = scoreboarditem
-      """
+            stagedump[time]['scoreboard'].append((reg,end,inst))
 
 
    timelist = list(stagedump.keys())
@@ -325,14 +328,30 @@ def main():
          
          try:
             for k in stagelist:
-               lable = k.ljust(lung, " ")+": "
-               array = []
-               for r in stagedump[i][k]:
-                  if len(codeToInst(r)) > 0:
-                     array.append( codeToInst(r) )
-               
-               condprint(lable + str(array))
-         except: pass
+               if (k in lablemap) and (lablemap[k] != ""):
+                  lable = lablemap[k].ljust(lung, " ")+": "
+                  array = []
+                  
+                  if k == "scoreboard":
+                     for r in stagedump[i][k]:
+                        try:
+                           for rr in stagedump[i]['execute.inFlightInsts0']:
+                              execnumber = rr[rr.rfind('.')+1:]
+                              if (execnumber == r[2]):
+                                 if len(codeToInst(rr)) > 0:
+                                    array.append( ('R'+r[0] , 'StableClock: '+r[1], 'Dependency: '+codeToInst(rr)) )
+                        except Exception as e:
+                           #condprint(e)
+                           pass
+                  else:
+                     for r in stagedump[i][k]:
+                        if len(codeToInst(r)) > 0:
+                           array.append( codeToInst(r) )
+                     
+                  condprint(lable + str(array))
+         except Exception as e: 
+            #condprint(e)
+            pass
 
          #stampa del dump dei registri
          arraryreg = []

@@ -11,5 +11,6 @@ la branch prediction è basata dell'utimo branch (se sono saltato prima salto an
 core 0: operazioni su interi (3 cicli)
 core 1: operazioni su interi (3 cicli)
 
+core 3: divisione (se divido per 0 il risultato è 0)
 
 core 6: LDR / STR (1 ciclo)
