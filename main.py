@@ -30,7 +30,7 @@ def main():
         print("Inizio Installazione")
         subprocess.run(["sudo", "apt-get", "update"])
         subprocess.run(["sudo", "apt-get", "upgrade"])
-        subprocess.run(["sudo", "apt-get", "install", "mercurial", "scons", "swig", "gcc", "m4", "python", "python-dev", "libgoogle-perftools-dev", "g++", "python3", "python3-pip", "libc6-armel-cross", "libc6-dev-armel-cross", "binutils-arm-linux-gnueabi", "libncurses5-dev", "gcc-arm-linux-gnueabihf", "g++-arm-linux-gnueabihf", "git-core", "scons"])
+        subprocess.run(["sudo", "apt-get", "install", "mercurial", "scons", "swig", "gcc", "m4", "python", "python-dev", "libgoogle-perftools-dev", "g++", "python3", "python3-pip", "libc6-armel-cross", "libc6-dev-armel-cross", "binutils-arm-linux-gnueabi", "libncurses5-dev", "gcc-arm-linux-gnueabihf", "g++-arm-linux-gnueabihf", "git-core", "scons", "zlib1g-dev"])
         subprocess.run(["pip3", "install", "argparse", "six"])
         subprocess.run(["pip", "install", "six"])
         subprocess.run(["git", "clone", "https://github.com/gem5/gem5.git"])
