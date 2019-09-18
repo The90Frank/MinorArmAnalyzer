@@ -29,6 +29,7 @@ def main():
     if (argms.install):
         print("Requires: python3, pip3")
         subprocess.run(["pip", "install", "argparse"])
+        #TO DO
 
     elif not(argms.file is None):
 
