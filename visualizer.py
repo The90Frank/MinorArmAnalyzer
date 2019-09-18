@@ -25,6 +25,7 @@ def main():
    argms = parser.parse_args()
 
    if not (os.path.isfile(argms.file)):
+      print(sys.argv)
       parser.print_help()
       sys.exit()
 
@@ -33,7 +34,8 @@ def main():
    tracefile = f.read()
    tracelist = tracefile.split("\n")
    
-   with open('config.json', 'r') as f:
+   dirpath = os.getcwd()
+   with open(dirpath+'/config.json', 'r') as f:
       lablemap = json.load(f)
 
    stagelist=[
@@ -101,7 +103,8 @@ def main():
    lasttime = -1
    stagedump={}
    functionstartcicle = None
-   functionstartinst = None
+   functionstartpc = None
+   functionstartdelta = None
    code_inst = {"-":"-", "":"", "R":"-"}
    code_pc = {"-":"-", "":""}
    code_trace = {}
@@ -187,15 +190,14 @@ def main():
 
       if lasttime != time:
          try: 
-            if(stagedump[lasttime] == Emptystagedump): stagedump[lasttime]={}
+            if(stagedump[lasttime] == Emptystagedump): stagedump.pop(lasttime)
          except: pass
          lasttime=time
          stagedump[time] = copy.deepcopy(Emptystagedump)
 
-      if (argms.functionstart != "") and (line.find("system.cpu ") != -1) and (line.find(argms.functionstart) != -1):
-         if functionstartcicle is None:
-            functionstartcicle = time
-            functionstartinst = line[find_nth(line,':',3)+1:find_nth(line,':',4)].strip()
+      if (argms.functionstart != "") and (line.find("global: Symbol:") != -1) and (line.find(" "+argms.functionstart+" ") != -1):
+         if functionstartpc is None:
+            functionstartpc = line[line.find("value ")+6:]
 
       if (line.find("system.cpu.icache: access for ReadReq") != -1):
          mess = line[line.find('ReadReq')+7:]
@@ -235,6 +237,11 @@ def main():
       if (line.find("system.cpu.fetch2: decoder inst") != -1):
          code = line[line.find("inst")+4:line.find("pc")].replace(" ","")
          pc = line[line.find("pc:")+3:line.rfind("(")].replace(" ","")
+         if not (functionstartpc is None):
+            dd = abs( int(functionstartpc,16) - int(pc,16) )
+            if (functionstartdelta is None) or (dd < functionstartdelta):
+               functionstartcicle = time
+               functionstartdelta = dd
          inst=line[line.find("(")+1:line.find(")")].strip()
          code_inst[code]=inst
          if argms.int: pc=str( int(pc,16) )
@@ -358,19 +365,7 @@ def main():
    timelist = list(stagedump.keys())
    timelist.sort()
 
-   if not (functionstartcicle is None):
-      codeselected=''
-      for t in stagedump[functionstartcicle]['completed']:
-         if codeToInst(t) == functionstartinst:
-            codeselected=t[:t.rfind('.')]
-            break
-      for i in range(min(timelist), functionstartcicle):
-         if i in stagedump.keys():
-            try:
-               if codeselected in stagedump[i]['fetch2']:
-                  argms.ciclestart = i
-            except:
-               pass
+   if not (functionstartcicle is None): argms.ciclestart = functionstartcicle
 
    start = argms.ciclestart
    end = max(timelist) + 1
@@ -405,6 +400,10 @@ def main():
                         except Exception as e:
                            #condprint(e)
                            pass
+                  elif k == "icache" or k == "fetch1":
+                     for r in reversed(stagedump[i][k]):
+                        if len(codeToInst(r)) > 0:
+                           array.append( codeToInst(r) )
                   else:
                      for r in reversed(stagedump[i][k]):
                         if len(codeToInst(r)) > 0:

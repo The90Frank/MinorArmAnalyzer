@@ -6,23 +6,23 @@
       0: global: BTB: Creating BTB object.
       0: system.cpu_clk_domain: Setting clock period to 500 ticks for source clock system.cpu_clk_domain
       0: system.cpu.interrupts: Interrupts all cleared
-text: 0x10000 164
+text: 0x10000 176
 data: 0x0 0
 bss: 0x0 0
       0: global: Found Symbol Table, 14 symbols present
-      0: global: Symbol: _bss_end__                               value 0x200a4
-      0: global: Symbol: __bss_start__                            value 0x200a4
-      0: global: Symbol: __bss_end__                              value 0x200a4
+      0: global: Symbol: _bss_end__                               value 0x200b0
+      0: global: Symbol: __bss_start__                            value 0x200b0
+      0: global: Symbol: __bss_end__                              value 0x200b0
       0: global: Symbol: _start                                   value 0x10098
-      0: global: Symbol: __bss_start                              value 0x200a4
-      0: global: Symbol: __end__                                  value 0x200a4
-      0: global: Symbol: _edata                                   value 0x200a4
-      0: global: Symbol: _end                                     value 0x200a4
+      0: global: Symbol: __bss_start                              value 0x200b0
+      0: global: Symbol: __end__                                  value 0x200b0
+      0: global: Symbol: _edata                                   value 0x200b0
+      0: global: Symbol: _end                                     value 0x200b0
       0: global: Found Symbol Table, 14 symbols present
-      0: global: Symbol: /tmp/ccGXmnWE.o                          value 0
+      0: global: Symbol: /tmp/cceMhQ7x.o                          value 0
       0: global: Found Symbol Table, 14 symbols present
       0: system.cpu: Constructing CPU with id 0, socket id 0
-      0: Event_54: simulation loop exit event scheduled @ 100
+      0: Event_54: simulation loop exit event scheduled @ 1000
       0: system.cpu.execute.fu.0: Adding extra timing decode pattern 0 to FU mask: 0000000000000000 match: 0000000000000000 srcRegLatencies: 2
       0: system.cpu.execute.fu.1: Adding extra timing decode pattern 0 to FU mask: 0000000000000000 match: 0000000000000000 srcRegLatencies: 2
       0: system.cpu.execute.fu.2: Adding extra timing decode pattern 0 to FU mask: 0000000000000000 match: 0000000000000000 srcRegLatencies: 0
@@ -74,238 +74,423 @@ Probes: Call to addPoint "Refills" to system.cpu.itb.
       0: global: Write from .functional of size 64 on address 0 C
       0: global: 00000000  7f 45 4c 46 01 01 01 00  00 00 00 00 00 00 00 00    ELF            
       0: global: 00000010  02 00 28 00 01 00 00 00  98 00 01 00 34 00 00 00     (         4   
-      0: global: 00000020  38 02 00 00 00 02 00 05  34 00 20 00 02 00 28 00   8       4     ( 
+      0: global: 00000020  44 02 00 00 00 02 00 05  34 00 20 00 02 00 28 00   D       4     ( 
       0: global: 00000030  07 00 06 00 01 00 00 00  00 00 00 00 00 00 01 00                   
       0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [40:7f]
       0: system.cpu.icache: functionalAccess: WriteReq [40:7f] 
       0: system.cpu.dcache: functionalAccess: WriteReq [40:7f] 
       0: global: Write from .functional of size 64 on address 0x40 C
-      0: global: 00000000  00 00 01 00 a4 00 00 00  a4 00 00 00 05 00 00 00       $   $       
+      0: global: 00000000  00 00 01 00 b0 00 00 00  b0 00 00 00 05 00 00 00       0   0       
       0: global: 00000010  00 00 01 00 04 00 00 00  74 00 00 00 74 00 01 00           t   t   
       0: global: 00000020  74 00 01 00 24 00 00 00  24 00 00 00 04 00 00 00   t   $   $       
       0: global: 00000030  04 00 00 00 04 00 00 00  14 00 00 00 03 00 00 00                   
-      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [80:a3]
-      0: system.cpu.icache: functionalAccess: WriteReq [80:a3] 
-      0: system.cpu.dcache: functionalAccess: WriteReq [80:a3] 
-      0: global: Write from .functional of size 36 on address 0x80 C
-      0: global: 00000000  47 4e 55 00 44 9d 54 d4  84 ba 87 b0 8d 01 6e 76   GNU D TT : 0  nv
-      0: global: 00000010  a2 4d ec cf bb c1 30 7f  54 50 a0 e3 2a 60 a0 e3   "MlO;A0 TP c*` c
-      0: global: 00000020  ff 3f 00 ea                                        ? j
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [80:af]
+      0: system.cpu.icache: functionalAccess: WriteReq [80:af] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [80:af] 
+      0: global: Write from .functional of size 48 on address 0x80 C
+      0: global: 00000000  47 4e 55 00 bd 9d 54 d6  18 58 29 b0 fa 42 3c 31   GNU = TV X)0zB<1
+      0: global: 00000010  ee be 90 41 09 0c bd 41  54 50 a0 e3 2a 60 a0 e3   n> A  =ATP c*` c
+      0: global: 00000020  00 f0 20 e3 00 f0 20 e3  01 70 a0 e3 00 00 00 ef    p c p c p c   o
       0: system.cpu.workload: Allocating Page: 0xbefff000-0xbf000000
       0: system.cpu.workload: The addresses of items on the initial stack:
-      0: system.cpu.workload: 0xbeffffe5 - aux data
-      0: system.cpu.workload: 0xbeffffe5 - env data
-      0: system.cpu.workload: 0xbeffffce - arg data
-      0: system.cpu.workload: 0xbeffffba - random data
-      0: system.cpu.workload: 0xbeffffca - platform base
-      0: system.cpu.workload: 0xbeffff50 - auxv array
-      0: system.cpu.workload: 0xbeffff4c - envp array
-      0: system.cpu.workload: 0xbeffff44 - argv array
-      0: system.cpu.workload: 0xbeffff40 - argc 
-      0: system.cpu.workload: 0xbeffff40 - stack min
+      0: system.cpu.workload: 0xbeffffc0 - aux data
+      0: system.cpu.workload: 0xbeffffc0 - env data
+      0: system.cpu.workload: 0xbeffff84 - arg data
+      0: system.cpu.workload: 0xbeffff70 - random data
+      0: system.cpu.workload: 0xbeffff80 - platform base
+      0: system.cpu.workload: 0xbeffff10 - auxv array
+      0: system.cpu.workload: 0xbeffff0c - envp array
+      0: system.cpu.workload: 0xbeffff04 - argv array
+      0: system.cpu.workload: 0xbeffff00 - argc 
+      0: system.cpu.workload: 0xbeffff00 - stack min
       0: system.cpu.workload: Translating: 0xbefffffc->0x1ffc
       0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1ffc:1fff]
       0: system.cpu.icache: functionalAccess: WriteReq [1ffc:1fff] 
       0: system.cpu.dcache: functionalAccess: WriteReq [1ffc:1fff] 
       0: global: Write from .functional of size 4 on address 0x1ffc data 0 C
+      0: system.cpu.workload: Translating: 0xbeffff10->0x1f10
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1f10:1f17]
+      0: system.cpu.icache: functionalAccess: WriteReq [1f10:1f17] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1f10:1f17] 
+      0: global: Write from .functional of size 8 on address 0x1f10 data 0x100000000006 C
+      0: system.cpu.workload: Translating: 0xbeffff18->0x1f18
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1f18:1f1f]
+      0: system.cpu.icache: functionalAccess: WriteReq [1f18:1f1f] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1f18:1f1f] 
+      0: global: Write from .functional of size 8 on address 0x1f18 data 0x1003400000003 C
+      0: system.cpu.workload: Translating: 0xbeffff20->0x1f20
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1f20:1f27]
+      0: system.cpu.icache: functionalAccess: WriteReq [1f20:1f27] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1f20:1f27] 
+      0: global: Write from .functional of size 8 on address 0x1f20 data 0x2000000004 C
+      0: system.cpu.workload: Translating: 0xbeffff28->0x1f28
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1f28:1f2f]
+      0: system.cpu.icache: functionalAccess: WriteReq [1f28:1f2f] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1f28:1f2f] 
+      0: global: Write from .functional of size 8 on address 0x1f28 data 0x200000005 C
+      0: system.cpu.workload: Translating: 0xbeffff30->0x1f30
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1f30:1f37]
+      0: system.cpu.icache: functionalAccess: WriteReq [1f30:1f37] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1f30:1f37] 
+      0: global: Write from .functional of size 8 on address 0x1f30 data 0x7 C
+      0: system.cpu.workload: Translating: 0xbeffff38->0x1f38
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1f38:1f3f]
+      0: system.cpu.icache: functionalAccess: WriteReq [1f38:1f3f] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1f38:1f3f] 
+      0: global: Write from .functional of size 8 on address 0x1f38 data 0x8 C
+      0: system.cpu.workload: Translating: 0xbeffff40->0x1f40
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1f40:1f47]
+      0: system.cpu.icache: functionalAccess: WriteReq [1f40:1f47] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1f40:1f47] 
+      0: global: Write from .functional of size 8 on address 0x1f40 data 0x1009800000009 C
+      0: system.cpu.workload: Translating: 0xbeffff48->0x1f48
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1f48:1f4f]
+      0: system.cpu.icache: functionalAccess: WriteReq [1f48:1f4f] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1f48:1f4f] 
+      0: global: Write from .functional of size 8 on address 0x1f48 data 0x640000000b C
       0: system.cpu.workload: Translating: 0xbeffff50->0x1f50
       0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1f50:1f57]
       0: system.cpu.icache: functionalAccess: WriteReq [1f50:1f57] 
       0: system.cpu.dcache: functionalAccess: WriteReq [1f50:1f57] 
-      0: global: Write from .functional of size 8 on address 0x1f50 data 0x100000000006 C
+      0: global: Write from .functional of size 8 on address 0x1f50 data 0x640000000c C
       0: system.cpu.workload: Translating: 0xbeffff58->0x1f58
       0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1f58:1f5f]
       0: system.cpu.icache: functionalAccess: WriteReq [1f58:1f5f] 
       0: system.cpu.dcache: functionalAccess: WriteReq [1f58:1f5f] 
-      0: global: Write from .functional of size 8 on address 0x1f58 data 0x1003400000003 C
+      0: global: Write from .functional of size 8 on address 0x1f58 data 0x640000000d C
       0: system.cpu.workload: Translating: 0xbeffff60->0x1f60
       0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1f60:1f67]
       0: system.cpu.icache: functionalAccess: WriteReq [1f60:1f67] 
       0: system.cpu.dcache: functionalAccess: WriteReq [1f60:1f67] 
-      0: global: Write from .functional of size 8 on address 0x1f60 data 0x2000000004 C
+      0: global: Write from .functional of size 8 on address 0x1f60 data 0x640000000e C
       0: system.cpu.workload: Translating: 0xbeffff68->0x1f68
       0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1f68:1f6f]
       0: system.cpu.icache: functionalAccess: WriteReq [1f68:1f6f] 
       0: system.cpu.dcache: functionalAccess: WriteReq [1f68:1f6f] 
-      0: global: Write from .functional of size 8 on address 0x1f68 data 0x200000005 C
-      0: system.cpu.workload: Translating: 0xbeffff70->0x1f70
-      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1f70:1f77]
-      0: system.cpu.icache: functionalAccess: WriteReq [1f70:1f77] 
-      0: system.cpu.dcache: functionalAccess: WriteReq [1f70:1f77] 
-      0: global: Write from .functional of size 8 on address 0x1f70 data 0x7 C
-      0: system.cpu.workload: Translating: 0xbeffff78->0x1f78
-      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1f78:1f7f]
-      0: system.cpu.icache: functionalAccess: WriteReq [1f78:1f7f] 
-      0: system.cpu.dcache: functionalAccess: WriteReq [1f78:1f7f] 
-      0: global: Write from .functional of size 8 on address 0x1f78 data 0x8 C
-      0: system.cpu.workload: Translating: 0xbeffff80->0x1f80
-      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1f80:1f87]
-      0: system.cpu.icache: functionalAccess: WriteReq [1f80:1f87] 
-      0: system.cpu.dcache: functionalAccess: WriteReq [1f80:1f87] 
-      0: global: Write from .functional of size 8 on address 0x1f80 data 0x1009800000009 C
+      0: global: Write from .functional of size 8 on address 0x1f68 data 0 C
+      0: system.cpu.workload: Translating: 0xbeffff0c->0x1f0c
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1f0c:1f0f]
+      0: system.cpu.icache: functionalAccess: WriteReq [1f0c:1f0f] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1f0c:1f0f] 
+      0: global: Write from .functional of size 4 on address 0x1f0c data 0 C
+      0: system.cpu.workload: Translating: 0xbeffff04->0x1f04
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1f04:1f07]
+      0: system.cpu.icache: functionalAccess: WriteReq [1f04:1f07] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1f04:1f07] 
+      0: global: Write from .functional of size 4 on address 0x1f04 data 0xbeffff84 C
+      0: system.cpu.workload: Translating: 0xbeffff84->0x1f84
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1f84:1f84]
+      0: system.cpu.icache: functionalAccess: WriteReq [1f84:1f84] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1f84:1f84] 
+      0: global: Write from .functional of size 1 on address 0x1f84 data 0x2f C
+      0: system.cpu.workload: Translating: 0xbeffff85->0x1f85
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1f85:1f85]
+      0: system.cpu.icache: functionalAccess: WriteReq [1f85:1f85] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1f85:1f85] 
+      0: global: Write from .functional of size 1 on address 0x1f85 data 0x68 C
+      0: system.cpu.workload: Translating: 0xbeffff86->0x1f86
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1f86:1f86]
+      0: system.cpu.icache: functionalAccess: WriteReq [1f86:1f86] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1f86:1f86] 
+      0: global: Write from .functional of size 1 on address 0x1f86 data 0x64 C
+      0: system.cpu.workload: Translating: 0xbeffff87->0x1f87
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1f87:1f87]
+      0: system.cpu.icache: functionalAccess: WriteReq [1f87:1f87] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1f87:1f87] 
+      0: global: Write from .functional of size 1 on address 0x1f87 data 0x64 C
       0: system.cpu.workload: Translating: 0xbeffff88->0x1f88
-      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1f88:1f8f]
-      0: system.cpu.icache: functionalAccess: WriteReq [1f88:1f8f] 
-      0: system.cpu.dcache: functionalAccess: WriteReq [1f88:1f8f] 
-      0: global: Write from .functional of size 8 on address 0x1f88 data 0x640000000b C
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1f88:1f88]
+      0: system.cpu.icache: functionalAccess: WriteReq [1f88:1f88] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1f88:1f88] 
+      0: global: Write from .functional of size 1 on address 0x1f88 data 0x2f C
+      0: system.cpu.workload: Translating: 0xbeffff89->0x1f89
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1f89:1f89]
+      0: system.cpu.icache: functionalAccess: WriteReq [1f89:1f89] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1f89:1f89] 
+      0: global: Write from .functional of size 1 on address 0x1f89 data 0x44 C
+      0: system.cpu.workload: Translating: 0xbeffff8a->0x1f8a
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1f8a:1f8a]
+      0: system.cpu.icache: functionalAccess: WriteReq [1f8a:1f8a] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1f8a:1f8a] 
+      0: global: Write from .functional of size 1 on address 0x1f8a data 0x6f C
+      0: system.cpu.workload: Translating: 0xbeffff8b->0x1f8b
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1f8b:1f8b]
+      0: system.cpu.icache: functionalAccess: WriteReq [1f8b:1f8b] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1f8b:1f8b] 
+      0: global: Write from .functional of size 1 on address 0x1f8b data 0x63 C
+      0: system.cpu.workload: Translating: 0xbeffff8c->0x1f8c
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1f8c:1f8c]
+      0: system.cpu.icache: functionalAccess: WriteReq [1f8c:1f8c] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1f8c:1f8c] 
+      0: global: Write from .functional of size 1 on address 0x1f8c data 0x75 C
+      0: system.cpu.workload: Translating: 0xbeffff8d->0x1f8d
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1f8d:1f8d]
+      0: system.cpu.icache: functionalAccess: WriteReq [1f8d:1f8d] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1f8d:1f8d] 
+      0: global: Write from .functional of size 1 on address 0x1f8d data 0x6d C
+      0: system.cpu.workload: Translating: 0xbeffff8e->0x1f8e
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1f8e:1f8e]
+      0: system.cpu.icache: functionalAccess: WriteReq [1f8e:1f8e] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1f8e:1f8e] 
+      0: global: Write from .functional of size 1 on address 0x1f8e data 0x65 C
+      0: system.cpu.workload: Translating: 0xbeffff8f->0x1f8f
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1f8f:1f8f]
+      0: system.cpu.icache: functionalAccess: WriteReq [1f8f:1f8f] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1f8f:1f8f] 
+      0: global: Write from .functional of size 1 on address 0x1f8f data 0x6e C
       0: system.cpu.workload: Translating: 0xbeffff90->0x1f90
-      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1f90:1f97]
-      0: system.cpu.icache: functionalAccess: WriteReq [1f90:1f97] 
-      0: system.cpu.dcache: functionalAccess: WriteReq [1f90:1f97] 
-      0: global: Write from .functional of size 8 on address 0x1f90 data 0x640000000c C
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1f90:1f90]
+      0: system.cpu.icache: functionalAccess: WriteReq [1f90:1f90] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1f90:1f90] 
+      0: global: Write from .functional of size 1 on address 0x1f90 data 0x74 C
+      0: system.cpu.workload: Translating: 0xbeffff91->0x1f91
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1f91:1f91]
+      0: system.cpu.icache: functionalAccess: WriteReq [1f91:1f91] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1f91:1f91] 
+      0: global: Write from .functional of size 1 on address 0x1f91 data 0x69 C
+      0: system.cpu.workload: Translating: 0xbeffff92->0x1f92
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1f92:1f92]
+      0: system.cpu.icache: functionalAccess: WriteReq [1f92:1f92] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1f92:1f92] 
+      0: global: Write from .functional of size 1 on address 0x1f92 data 0x2f C
+      0: system.cpu.workload: Translating: 0xbeffff93->0x1f93
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1f93:1f93]
+      0: system.cpu.icache: functionalAccess: WriteReq [1f93:1f93] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1f93:1f93] 
+      0: global: Write from .functional of size 1 on address 0x1f93 data 0x54 C
+      0: system.cpu.workload: Translating: 0xbeffff94->0x1f94
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1f94:1f94]
+      0: system.cpu.icache: functionalAccess: WriteReq [1f94:1f94] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1f94:1f94] 
+      0: global: Write from .functional of size 1 on address 0x1f94 data 0x69 C
+      0: system.cpu.workload: Translating: 0xbeffff95->0x1f95
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1f95:1f95]
+      0: system.cpu.icache: functionalAccess: WriteReq [1f95:1f95] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1f95:1f95] 
+      0: global: Write from .functional of size 1 on address 0x1f95 data 0x72 C
+      0: system.cpu.workload: Translating: 0xbeffff96->0x1f96
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1f96:1f96]
+      0: system.cpu.icache: functionalAccess: WriteReq [1f96:1f96] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1f96:1f96] 
+      0: global: Write from .functional of size 1 on address 0x1f96 data 0x6f C
+      0: system.cpu.workload: Translating: 0xbeffff97->0x1f97
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1f97:1f97]
+      0: system.cpu.icache: functionalAccess: WriteReq [1f97:1f97] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1f97:1f97] 
+      0: global: Write from .functional of size 1 on address 0x1f97 data 0x63 C
       0: system.cpu.workload: Translating: 0xbeffff98->0x1f98
-      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1f98:1f9f]
-      0: system.cpu.icache: functionalAccess: WriteReq [1f98:1f9f] 
-      0: system.cpu.dcache: functionalAccess: WriteReq [1f98:1f9f] 
-      0: global: Write from .functional of size 8 on address 0x1f98 data 0x640000000d C
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1f98:1f98]
+      0: system.cpu.icache: functionalAccess: WriteReq [1f98:1f98] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1f98:1f98] 
+      0: global: Write from .functional of size 1 on address 0x1f98 data 0x69 C
+      0: system.cpu.workload: Translating: 0xbeffff99->0x1f99
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1f99:1f99]
+      0: system.cpu.icache: functionalAccess: WriteReq [1f99:1f99] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1f99:1f99] 
+      0: global: Write from .functional of size 1 on address 0x1f99 data 0x6e C
+      0: system.cpu.workload: Translating: 0xbeffff9a->0x1f9a
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1f9a:1f9a]
+      0: system.cpu.icache: functionalAccess: WriteReq [1f9a:1f9a] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1f9a:1f9a] 
+      0: global: Write from .functional of size 1 on address 0x1f9a data 0x69 C
+      0: system.cpu.workload: Translating: 0xbeffff9b->0x1f9b
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1f9b:1f9b]
+      0: system.cpu.icache: functionalAccess: WriteReq [1f9b:1f9b] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1f9b:1f9b] 
+      0: global: Write from .functional of size 1 on address 0x1f9b data 0x6f C
+      0: system.cpu.workload: Translating: 0xbeffff9c->0x1f9c
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1f9c:1f9c]
+      0: system.cpu.icache: functionalAccess: WriteReq [1f9c:1f9c] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1f9c:1f9c] 
+      0: global: Write from .functional of size 1 on address 0x1f9c data 0x2f C
+      0: system.cpu.workload: Translating: 0xbeffff9d->0x1f9d
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1f9d:1f9d]
+      0: system.cpu.icache: functionalAccess: WriteReq [1f9d:1f9d] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1f9d:1f9d] 
+      0: global: Write from .functional of size 1 on address 0x1f9d data 0x54 C
+      0: system.cpu.workload: Translating: 0xbeffff9e->0x1f9e
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1f9e:1f9e]
+      0: system.cpu.icache: functionalAccess: WriteReq [1f9e:1f9e] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1f9e:1f9e] 
+      0: global: Write from .functional of size 1 on address 0x1f9e data 0x69 C
+      0: system.cpu.workload: Translating: 0xbeffff9f->0x1f9f
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1f9f:1f9f]
+      0: system.cpu.icache: functionalAccess: WriteReq [1f9f:1f9f] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1f9f:1f9f] 
+      0: global: Write from .functional of size 1 on address 0x1f9f data 0x72 C
       0: system.cpu.workload: Translating: 0xbeffffa0->0x1fa0
-      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1fa0:1fa7]
-      0: system.cpu.icache: functionalAccess: WriteReq [1fa0:1fa7] 
-      0: system.cpu.dcache: functionalAccess: WriteReq [1fa0:1fa7] 
-      0: global: Write from .functional of size 8 on address 0x1fa0 data 0x640000000e C
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1fa0:1fa0]
+      0: system.cpu.icache: functionalAccess: WriteReq [1fa0:1fa0] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1fa0:1fa0] 
+      0: global: Write from .functional of size 1 on address 0x1fa0 data 0x6f C
+      0: system.cpu.workload: Translating: 0xbeffffa1->0x1fa1
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1fa1:1fa1]
+      0: system.cpu.icache: functionalAccess: WriteReq [1fa1:1fa1] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1fa1:1fa1] 
+      0: global: Write from .functional of size 1 on address 0x1fa1 data 0x63 C
+      0: system.cpu.workload: Translating: 0xbeffffa2->0x1fa2
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1fa2:1fa2]
+      0: system.cpu.icache: functionalAccess: WriteReq [1fa2:1fa2] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1fa2:1fa2] 
+      0: global: Write from .functional of size 1 on address 0x1fa2 data 0x69 C
+      0: system.cpu.workload: Translating: 0xbeffffa3->0x1fa3
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1fa3:1fa3]
+      0: system.cpu.icache: functionalAccess: WriteReq [1fa3:1fa3] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1fa3:1fa3] 
+      0: global: Write from .functional of size 1 on address 0x1fa3 data 0x6e C
+      0: system.cpu.workload: Translating: 0xbeffffa4->0x1fa4
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1fa4:1fa4]
+      0: system.cpu.icache: functionalAccess: WriteReq [1fa4:1fa4] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1fa4:1fa4] 
+      0: global: Write from .functional of size 1 on address 0x1fa4 data 0x69 C
+      0: system.cpu.workload: Translating: 0xbeffffa5->0x1fa5
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1fa5:1fa5]
+      0: system.cpu.icache: functionalAccess: WriteReq [1fa5:1fa5] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1fa5:1fa5] 
+      0: global: Write from .functional of size 1 on address 0x1fa5 data 0x6f C
+      0: system.cpu.workload: Translating: 0xbeffffa6->0x1fa6
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1fa6:1fa6]
+      0: system.cpu.icache: functionalAccess: WriteReq [1fa6:1fa6] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1fa6:1fa6] 
+      0: global: Write from .functional of size 1 on address 0x1fa6 data 0x2f C
+      0: system.cpu.workload: Translating: 0xbeffffa7->0x1fa7
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1fa7:1fa7]
+      0: system.cpu.icache: functionalAccess: WriteReq [1fa7:1fa7] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1fa7:1fa7] 
+      0: global: Write from .functional of size 1 on address 0x1fa7 data 0x50 C
       0: system.cpu.workload: Translating: 0xbeffffa8->0x1fa8
-      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1fa8:1faf]
-      0: system.cpu.icache: functionalAccess: WriteReq [1fa8:1faf] 
-      0: system.cpu.dcache: functionalAccess: WriteReq [1fa8:1faf] 
-      0: global: Write from .functional of size 8 on address 0x1fa8 data 0 C
-      0: system.cpu.workload: Translating: 0xbeffff4c->0x1f4c
-      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1f4c:1f4f]
-      0: system.cpu.icache: functionalAccess: WriteReq [1f4c:1f4f] 
-      0: system.cpu.dcache: functionalAccess: WriteReq [1f4c:1f4f] 
-      0: global: Write from .functional of size 4 on address 0x1f4c data 0 C
-      0: system.cpu.workload: Translating: 0xbeffff44->0x1f44
-      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1f44:1f47]
-      0: system.cpu.icache: functionalAccess: WriteReq [1f44:1f47] 
-      0: system.cpu.dcache: functionalAccess: WriteReq [1f44:1f47] 
-      0: global: Write from .functional of size 4 on address 0x1f44 data 0xbeffffce C
-      0: system.cpu.workload: Translating: 0xbeffffce->0x1fce
-      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1fce:1fce]
-      0: system.cpu.icache: functionalAccess: WriteReq [1fce:1fce] 
-      0: system.cpu.dcache: functionalAccess: WriteReq [1fce:1fce] 
-      0: global: Write from .functional of size 1 on address 0x1fce data 0x50 C
-      0: system.cpu.workload: Translating: 0xbeffffcf->0x1fcf
-      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1fcf:1fcf]
-      0: system.cpu.icache: functionalAccess: WriteReq [1fcf:1fcf] 
-      0: system.cpu.dcache: functionalAccess: WriteReq [1fcf:1fcf] 
-      0: global: Write from .functional of size 1 on address 0x1fcf data 0x72 C
-      0: system.cpu.workload: Translating: 0xbeffffd0->0x1fd0
-      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1fd0:1fd0]
-      0: system.cpu.icache: functionalAccess: WriteReq [1fd0:1fd0] 
-      0: system.cpu.dcache: functionalAccess: WriteReq [1fd0:1fd0] 
-      0: global: Write from .functional of size 1 on address 0x1fd0 data 0x6f C
-      0: system.cpu.workload: Translating: 0xbeffffd1->0x1fd1
-      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1fd1:1fd1]
-      0: system.cpu.icache: functionalAccess: WriteReq [1fd1:1fd1] 
-      0: system.cpu.dcache: functionalAccess: WriteReq [1fd1:1fd1] 
-      0: global: Write from .functional of size 1 on address 0x1fd1 data 0x67 C
-      0: system.cpu.workload: Translating: 0xbeffffd2->0x1fd2
-      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1fd2:1fd2]
-      0: system.cpu.icache: functionalAccess: WriteReq [1fd2:1fd2] 
-      0: system.cpu.dcache: functionalAccess: WriteReq [1fd2:1fd2] 
-      0: global: Write from .functional of size 1 on address 0x1fd2 data 0x72 C
-      0: system.cpu.workload: Translating: 0xbeffffd3->0x1fd3
-      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1fd3:1fd3]
-      0: system.cpu.icache: functionalAccess: WriteReq [1fd3:1fd3] 
-      0: system.cpu.dcache: functionalAccess: WriteReq [1fd3:1fd3] 
-      0: global: Write from .functional of size 1 on address 0x1fd3 data 0x61 C
-      0: system.cpu.workload: Translating: 0xbeffffd4->0x1fd4
-      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1fd4:1fd4]
-      0: system.cpu.icache: functionalAccess: WriteReq [1fd4:1fd4] 
-      0: system.cpu.dcache: functionalAccess: WriteReq [1fd4:1fd4] 
-      0: global: Write from .functional of size 1 on address 0x1fd4 data 0x6d C
-      0: system.cpu.workload: Translating: 0xbeffffd5->0x1fd5
-      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1fd5:1fd5]
-      0: system.cpu.icache: functionalAccess: WriteReq [1fd5:1fd5] 
-      0: system.cpu.dcache: functionalAccess: WriteReq [1fd5:1fd5] 
-      0: global: Write from .functional of size 1 on address 0x1fd5 data 0x6d C
-      0: system.cpu.workload: Translating: 0xbeffffd6->0x1fd6
-      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1fd6:1fd6]
-      0: system.cpu.icache: functionalAccess: WriteReq [1fd6:1fd6] 
-      0: system.cpu.dcache: functionalAccess: WriteReq [1fd6:1fd6] 
-      0: global: Write from .functional of size 1 on address 0x1fd6 data 0x69 C
-      0: system.cpu.workload: Translating: 0xbeffffd7->0x1fd7
-      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1fd7:1fd7]
-      0: system.cpu.icache: functionalAccess: WriteReq [1fd7:1fd7] 
-      0: system.cpu.dcache: functionalAccess: WriteReq [1fd7:1fd7] 
-      0: global: Write from .functional of size 1 on address 0x1fd7 data 0x2f C
-      0: system.cpu.workload: Translating: 0xbeffffd8->0x1fd8
-      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1fd8:1fd8]
-      0: system.cpu.icache: functionalAccess: WriteReq [1fd8:1fd8] 
-      0: system.cpu.dcache: functionalAccess: WriteReq [1fd8:1fd8] 
-      0: global: Write from .functional of size 1 on address 0x1fd8 data 0x6c C
-      0: system.cpu.workload: Translating: 0xbeffffd9->0x1fd9
-      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1fd9:1fd9]
-      0: system.cpu.icache: functionalAccess: WriteReq [1fd9:1fd9] 
-      0: system.cpu.dcache: functionalAccess: WriteReq [1fd9:1fd9] 
-      0: global: Write from .functional of size 1 on address 0x1fd9 data 0x69 C
-      0: system.cpu.workload: Translating: 0xbeffffda->0x1fda
-      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1fda:1fda]
-      0: system.cpu.icache: functionalAccess: WriteReq [1fda:1fda] 
-      0: system.cpu.dcache: functionalAccess: WriteReq [1fda:1fda] 
-      0: global: Write from .functional of size 1 on address 0x1fda data 0x74 C
-      0: system.cpu.workload: Translating: 0xbeffffdb->0x1fdb
-      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1fdb:1fdb]
-      0: system.cpu.icache: functionalAccess: WriteReq [1fdb:1fdb] 
-      0: system.cpu.dcache: functionalAccess: WriteReq [1fdb:1fdb] 
-      0: global: Write from .functional of size 1 on address 0x1fdb data 0x74 C
-      0: system.cpu.workload: Translating: 0xbeffffdc->0x1fdc
-      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1fdc:1fdc]
-      0: system.cpu.icache: functionalAccess: WriteReq [1fdc:1fdc] 
-      0: system.cpu.dcache: functionalAccess: WriteReq [1fdc:1fdc] 
-      0: global: Write from .functional of size 1 on address 0x1fdc data 0x6c C
-      0: system.cpu.workload: Translating: 0xbeffffdd->0x1fdd
-      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1fdd:1fdd]
-      0: system.cpu.icache: functionalAccess: WriteReq [1fdd:1fdd] 
-      0: system.cpu.dcache: functionalAccess: WriteReq [1fdd:1fdd] 
-      0: global: Write from .functional of size 1 on address 0x1fdd data 0x65 C
-      0: system.cpu.workload: Translating: 0xbeffffde->0x1fde
-      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1fde:1fde]
-      0: system.cpu.icache: functionalAccess: WriteReq [1fde:1fde] 
-      0: system.cpu.dcache: functionalAccess: WriteReq [1fde:1fde] 
-      0: global: Write from .functional of size 1 on address 0x1fde data 0x74 C
-      0: system.cpu.workload: Translating: 0xbeffffdf->0x1fdf
-      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1fdf:1fdf]
-      0: system.cpu.icache: functionalAccess: WriteReq [1fdf:1fdf] 
-      0: system.cpu.dcache: functionalAccess: WriteReq [1fdf:1fdf] 
-      0: global: Write from .functional of size 1 on address 0x1fdf data 0x65 C
-      0: system.cpu.workload: Translating: 0xbeffffe0->0x1fe0
-      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1fe0:1fe0]
-      0: system.cpu.icache: functionalAccess: WriteReq [1fe0:1fe0] 
-      0: system.cpu.dcache: functionalAccess: WriteReq [1fe0:1fe0] 
-      0: global: Write from .functional of size 1 on address 0x1fe0 data 0x73 C
-      0: system.cpu.workload: Translating: 0xbeffffe1->0x1fe1
-      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1fe1:1fe1]
-      0: system.cpu.icache: functionalAccess: WriteReq [1fe1:1fe1] 
-      0: system.cpu.dcache: functionalAccess: WriteReq [1fe1:1fe1] 
-      0: global: Write from .functional of size 1 on address 0x1fe1 data 0x74 C
-      0: system.cpu.workload: Translating: 0xbeffffe2->0x1fe2
-      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1fe2:1fe2]
-      0: system.cpu.icache: functionalAccess: WriteReq [1fe2:1fe2] 
-      0: system.cpu.dcache: functionalAccess: WriteReq [1fe2:1fe2] 
-      0: global: Write from .functional of size 1 on address 0x1fe2 data 0x2e C
-      0: system.cpu.workload: Translating: 0xbeffffe3->0x1fe3
-      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1fe3:1fe3]
-      0: system.cpu.icache: functionalAccess: WriteReq [1fe3:1fe3] 
-      0: system.cpu.dcache: functionalAccess: WriteReq [1fe3:1fe3] 
-      0: global: Write from .functional of size 1 on address 0x1fe3 data 0x6f C
-      0: system.cpu.workload: Translating: 0xbeffffe4->0x1fe4
-      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1fe4:1fe4]
-      0: system.cpu.icache: functionalAccess: WriteReq [1fe4:1fe4] 
-      0: system.cpu.dcache: functionalAccess: WriteReq [1fe4:1fe4] 
-      0: global: Write from .functional of size 1 on address 0x1fe4 data 0 C
-      0: system.cpu.workload: Translating: 0xbeffff48->0x1f48
-      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1f48:1f4b]
-      0: system.cpu.icache: functionalAccess: WriteReq [1f48:1f4b] 
-      0: system.cpu.dcache: functionalAccess: WriteReq [1f48:1f4b] 
-      0: global: Write from .functional of size 4 on address 0x1f48 data 0 C
-      0: system.cpu.workload: Translating: 0xbeffff40->0x1f40
-      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1f40:1f43]
-      0: system.cpu.icache: functionalAccess: WriteReq [1f40:1f43] 
-      0: system.cpu.dcache: functionalAccess: WriteReq [1f40:1f43] 
-      0: global: Write from .functional of size 4 on address 0x1f40 data 0x1 C
-      0: system.cpu.[tid:0]: Setting int reg 13 (13) to 0xbeffff40.
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1fa8:1fa8]
+      0: system.cpu.icache: functionalAccess: WriteReq [1fa8:1fa8] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1fa8:1fa8] 
+      0: global: Write from .functional of size 1 on address 0x1fa8 data 0x72 C
+      0: system.cpu.workload: Translating: 0xbeffffa9->0x1fa9
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1fa9:1fa9]
+      0: system.cpu.icache: functionalAccess: WriteReq [1fa9:1fa9] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1fa9:1fa9] 
+      0: global: Write from .functional of size 1 on address 0x1fa9 data 0x6f C
+      0: system.cpu.workload: Translating: 0xbeffffaa->0x1faa
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1faa:1faa]
+      0: system.cpu.icache: functionalAccess: WriteReq [1faa:1faa] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1faa:1faa] 
+      0: global: Write from .functional of size 1 on address 0x1faa data 0x67 C
+      0: system.cpu.workload: Translating: 0xbeffffab->0x1fab
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1fab:1fab]
+      0: system.cpu.icache: functionalAccess: WriteReq [1fab:1fab] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1fab:1fab] 
+      0: global: Write from .functional of size 1 on address 0x1fab data 0x72 C
+      0: system.cpu.workload: Translating: 0xbeffffac->0x1fac
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1fac:1fac]
+      0: system.cpu.icache: functionalAccess: WriteReq [1fac:1fac] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1fac:1fac] 
+      0: global: Write from .functional of size 1 on address 0x1fac data 0x61 C
+      0: system.cpu.workload: Translating: 0xbeffffad->0x1fad
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1fad:1fad]
+      0: system.cpu.icache: functionalAccess: WriteReq [1fad:1fad] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1fad:1fad] 
+      0: global: Write from .functional of size 1 on address 0x1fad data 0x6d C
+      0: system.cpu.workload: Translating: 0xbeffffae->0x1fae
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1fae:1fae]
+      0: system.cpu.icache: functionalAccess: WriteReq [1fae:1fae] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1fae:1fae] 
+      0: global: Write from .functional of size 1 on address 0x1fae data 0x6d C
+      0: system.cpu.workload: Translating: 0xbeffffaf->0x1faf
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1faf:1faf]
+      0: system.cpu.icache: functionalAccess: WriteReq [1faf:1faf] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1faf:1faf] 
+      0: global: Write from .functional of size 1 on address 0x1faf data 0x69 C
+      0: system.cpu.workload: Translating: 0xbeffffb0->0x1fb0
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1fb0:1fb0]
+      0: system.cpu.icache: functionalAccess: WriteReq [1fb0:1fb0] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1fb0:1fb0] 
+      0: global: Write from .functional of size 1 on address 0x1fb0 data 0x2f C
+      0: system.cpu.workload: Translating: 0xbeffffb1->0x1fb1
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1fb1:1fb1]
+      0: system.cpu.icache: functionalAccess: WriteReq [1fb1:1fb1] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1fb1:1fb1] 
+      0: global: Write from .functional of size 1 on address 0x1fb1 data 0x6c C
+      0: system.cpu.workload: Translating: 0xbeffffb2->0x1fb2
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1fb2:1fb2]
+      0: system.cpu.icache: functionalAccess: WriteReq [1fb2:1fb2] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1fb2:1fb2] 
+      0: global: Write from .functional of size 1 on address 0x1fb2 data 0x69 C
+      0: system.cpu.workload: Translating: 0xbeffffb3->0x1fb3
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1fb3:1fb3]
+      0: system.cpu.icache: functionalAccess: WriteReq [1fb3:1fb3] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1fb3:1fb3] 
+      0: global: Write from .functional of size 1 on address 0x1fb3 data 0x74 C
+      0: system.cpu.workload: Translating: 0xbeffffb4->0x1fb4
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1fb4:1fb4]
+      0: system.cpu.icache: functionalAccess: WriteReq [1fb4:1fb4] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1fb4:1fb4] 
+      0: global: Write from .functional of size 1 on address 0x1fb4 data 0x74 C
+      0: system.cpu.workload: Translating: 0xbeffffb5->0x1fb5
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1fb5:1fb5]
+      0: system.cpu.icache: functionalAccess: WriteReq [1fb5:1fb5] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1fb5:1fb5] 
+      0: global: Write from .functional of size 1 on address 0x1fb5 data 0x6c C
+      0: system.cpu.workload: Translating: 0xbeffffb6->0x1fb6
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1fb6:1fb6]
+      0: system.cpu.icache: functionalAccess: WriteReq [1fb6:1fb6] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1fb6:1fb6] 
+      0: global: Write from .functional of size 1 on address 0x1fb6 data 0x65 C
+      0: system.cpu.workload: Translating: 0xbeffffb7->0x1fb7
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1fb7:1fb7]
+      0: system.cpu.icache: functionalAccess: WriteReq [1fb7:1fb7] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1fb7:1fb7] 
+      0: global: Write from .functional of size 1 on address 0x1fb7 data 0x74 C
+      0: system.cpu.workload: Translating: 0xbeffffb8->0x1fb8
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1fb8:1fb8]
+      0: system.cpu.icache: functionalAccess: WriteReq [1fb8:1fb8] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1fb8:1fb8] 
+      0: global: Write from .functional of size 1 on address 0x1fb8 data 0x65 C
+      0: system.cpu.workload: Translating: 0xbeffffb9->0x1fb9
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1fb9:1fb9]
+      0: system.cpu.icache: functionalAccess: WriteReq [1fb9:1fb9] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1fb9:1fb9] 
+      0: global: Write from .functional of size 1 on address 0x1fb9 data 0x73 C
+      0: system.cpu.workload: Translating: 0xbeffffba->0x1fba
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1fba:1fba]
+      0: system.cpu.icache: functionalAccess: WriteReq [1fba:1fba] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1fba:1fba] 
+      0: global: Write from .functional of size 1 on address 0x1fba data 0x74 C
+      0: system.cpu.workload: Translating: 0xbeffffbb->0x1fbb
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1fbb:1fbb]
+      0: system.cpu.icache: functionalAccess: WriteReq [1fbb:1fbb] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1fbb:1fbb] 
+      0: global: Write from .functional of size 1 on address 0x1fbb data 0x2e C
+      0: system.cpu.workload: Translating: 0xbeffffbc->0x1fbc
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1fbc:1fbc]
+      0: system.cpu.icache: functionalAccess: WriteReq [1fbc:1fbc] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1fbc:1fbc] 
+      0: global: Write from .functional of size 1 on address 0x1fbc data 0x73 C
+      0: system.cpu.workload: Translating: 0xbeffffbd->0x1fbd
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1fbd:1fbd]
+      0: system.cpu.icache: functionalAccess: WriteReq [1fbd:1fbd] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1fbd:1fbd] 
+      0: global: Write from .functional of size 1 on address 0x1fbd data 0x2e C
+      0: system.cpu.workload: Translating: 0xbeffffbe->0x1fbe
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1fbe:1fbe]
+      0: system.cpu.icache: functionalAccess: WriteReq [1fbe:1fbe] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1fbe:1fbe] 
+      0: global: Write from .functional of size 1 on address 0x1fbe data 0x6f C
+      0: system.cpu.workload: Translating: 0xbeffffbf->0x1fbf
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1fbf:1fbf]
+      0: system.cpu.icache: functionalAccess: WriteReq [1fbf:1fbf] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1fbf:1fbf] 
+      0: global: Write from .functional of size 1 on address 0x1fbf data 0 C
+      0: system.cpu.workload: Translating: 0xbeffff08->0x1f08
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1f08:1f0b]
+      0: system.cpu.icache: functionalAccess: WriteReq [1f08:1f0b] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1f08:1f0b] 
+      0: global: Write from .functional of size 4 on address 0x1f08 data 0 C
+      0: system.cpu.workload: Translating: 0xbeffff00->0x1f00
+      0: system.membus: recvFunctional: src system.membus.slave[0] packet WriteReq [1f00:1f03]
+      0: system.cpu.icache: functionalAccess: WriteReq [1f00:1f03] 
+      0: system.cpu.dcache: functionalAccess: WriteReq [1f00:1f03] 
+      0: global: Write from .functional of size 4 on address 0x1f00 data 0x1 C
+      0: system.cpu.[tid:0]: Setting int reg 13 (13) to 0xbeffff00.
       0: system.cpu.[tid:0]: Setting int reg 0 (0) to 0.
-      0: system.cpu.[tid:0]: Setting int reg 1 (1) to 0xbeffffce.
+      0: system.cpu.[tid:0]: Setting int reg 1 (1) to 0xbeffff84.
       0: system.cpu.[tid:0]: Setting int reg 2 (2) to 0.
       0: system.cpu.isa: Reading misc reg cpacr: 0
       0: system.cpu.isa: Writing misc reg cpacr: 0xf00000
@@ -5603,9 +5788,9 @@ no valid tags
   46250: system.mem_ctrls: processRespondEvent(): Some req has reached its readyTime
   46250: system.mem_ctrls: number of read entries for rank 0 is 0
   46250: system.mem_ctrls: Responding to Address 128..   46250: global: IFetch from .cpu.inst of size 64 on address 0x80 C
-  46250: global: 00000000  47 4e 55 00 44 9d 54 d4  84 ba 87 b0 8d 01 6e 76   GNU D TT : 0  nv
-  46250: global: 00000010  a2 4d ec cf bb c1 30 7f  54 50 a0 e3 2a 60 a0 e3   "MlO;A0 TP c*` c
-  46250: global: 00000020  ff 3f 00 ea 00 00 00 00  00 00 00 00 00 00 00 00    ? j            
+  46250: global: 00000000  47 4e 55 00 bd 9d 54 d6  18 58 29 b0 fa 42 3c 31   GNU = TV X)0zB<1
+  46250: global: 00000010  ee be 90 41 09 0c bd 41  54 50 a0 e3 2a 60 a0 e3   n> A  =ATP c*` c
+  46250: global: 00000020  00 f0 20 e3 00 f0 20 e3  01 70 a0 e3 00 00 00 ef    p c p c p c   o
   46250: global: 00000030  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00                   
   46250: system.mem_ctrls.port-RespPacketQueue: schedSendTiming for ReadResp address 80 size 64 when 74750 ord: 1
   46250: system.mem_ctrls.port-RespPacketQueue.wrapped_function_event: EventFunctionWrapped event scheduled @ 74750
@@ -5757,22 +5942,17 @@ no valid tags
   79500: system.cpu.decode: Wrapping
   79500: system.cpu.activity: Activity: 2
   79500: system.cpu.fetch2: Scheduled Thread: 0
-  79500: global: Arm inst: 0x2ea003fff.
+  79500: global: Arm inst: 0x1e320f000.
   79500: system.cpu.fetch2: Offering MachInst to decoder addr: 0x100a0
-  79500: system.cpu.fetch2: decoder inst 0/1.1/1/3 pc: 0x100a0 (b)
-  79500: system.cpu.fetch2: Instruction extracted from line 0/1.1/1 lineWidth: 64 output_index: 0 inputIndex: 32 pc: (0x100a0=>0x100a4).(0=>1) inst: 0/1.1/1/3 pc: 0x100a0 (b)
-  79500: system.cpu.fetch2: Trying to predict for inst: 0/1.1/1/3 pc: 0x100a0 (b)
-  79500: system.cpu.branchPred: [tid:0] [sn:3] Unconditional control
-  79500: system.cpu.branchPred: [tid:0] [sn:3] Creating prediction history for PC (0x100a0=>0x100a4).(0=>1)
-  79500: system.cpu.branchPred: [tid:0] [sn:3] BTB doesn't have a valid entry
-  79500: system.cpu.branchPred: [tid:0] [sn:3] btbUpdate called for (0x100a0=>0x100a4).(0=>1)
-  79500: system.cpu.branchPred: [tid:0] [sn:3] History entry added. predHist.size(): 1
+  79500: system.cpu.fetch2: decoder inst 0/1.1/1/3 pc: 0x100a0 (nop)
+  79500: system.cpu.fetch2: Instruction extracted from line 0/1.1/1 lineWidth: 64 output_index: 0 inputIndex: 32 pc: (0x100a0=>0x100a4).(0=>1) inst: 0/1.1/1/3 pc: 0x100a0 (nop)
+  79500: system.cpu.fetch2: Not attempting prediction for inst: 0/1.1/1/3 pc: 0x100a0 (nop)
   79500: system.cpu.fetch2: Updated inputIndex value PC: (0x10098=>0x1009c).(0=>1) inputIndex: 0x24 lineBaseAddr: 0x10080 lineWidth: 0x40
-  79500: global: Arm inst: 0.
+  79500: global: Arm inst: 0x1e320f000.
   79500: system.cpu.fetch2: Offering MachInst to decoder addr: 0x100a4
-  79500: system.cpu.fetch2: decoder inst 0/1.1/1/4 pc: 0x100a4 (and)
-  79500: system.cpu.fetch2: Instruction extracted from line 0/1.1/1 lineWidth: 64 output_index: 1 inputIndex: 36 pc: (0x100a4=>0x100a8).(0=>1) inst: 0/1.1/1/4 pc: 0x100a4 (and)
-  79500: system.cpu.fetch2: Not attempting prediction for inst: 0/1.1/1/4 pc: 0x100a4 (and)
+  79500: system.cpu.fetch2: decoder inst 0/1.1/1/4 pc: 0x100a4 (nop)
+  79500: system.cpu.fetch2: Instruction extracted from line 0/1.1/1 lineWidth: 64 output_index: 1 inputIndex: 36 pc: (0x100a4=>0x100a8).(0=>1) inst: 0/1.1/1/4 pc: 0x100a4 (nop)
+  79500: system.cpu.fetch2: Not attempting prediction for inst: 0/1.1/1/4 pc: 0x100a4 (nop)
   79500: system.cpu.fetch2: Updated inputIndex value PC: (0x10098=>0x1009c).(0=>1) inputIndex: 0x28 lineBaseAddr: 0x10080 lineWidth: 0x40
   79500: system.cpu.activity: Activity: 3
   79500: system.cpu.fetch1: MinorTrace: state=FetchRunning icacheState=IcacheRunning in_tlb_mem=0/1 streamSeqNum=1 lines=B
@@ -5870,21 +6050,24 @@ no valid tags
   80000: system.cpu.execute: Need to tick num issued insts:  (issued some insts)(not becoming stalled)
   80000: system.cpu: Event wakeup from stage 4
   80000: system.cpu.activity: Activity: 3
-  80000: system.cpu.decode: Passing on inst: 0/1.1/1/3 pc: 0x100a0 (b) inputIndex: 0 output_index: 0
-  80000: system.cpu.decode: Passing on inst: 0/1.1/1/4 pc: 0x100a4 (and) inputIndex: 1 output_index: 1
+  80000: system.cpu.decode: Passing on inst: 0/1.1/1/3 pc: 0x100a0 (nop) inputIndex: 0 output_index: 0
+  80000: system.cpu.decode: Passing on inst: 0/1.1/1/4 pc: 0x100a4 (nop) inputIndex: 1 output_index: 1
   80000: system.cpu.decode: Wrapping
   80000: system.cpu.fetch2: Scheduled Thread: 0
-  80000: global: Arm inst: 0.
+  80000: global: Arm inst: 0xe3a07001.
   80000: system.cpu.fetch2: Offering MachInst to decoder addr: 0x100a8
-  80000: system.cpu.fetch2: decoder inst 0/1.1/1/5 pc: 0x100a8 (and)
-  80000: system.cpu.fetch2: Instruction extracted from line 0/1.1/1 lineWidth: 64 output_index: 0 inputIndex: 40 pc: (0x100a8=>0x100ac).(0=>1) inst: 0/1.1/1/5 pc: 0x100a8 (and)
-  80000: system.cpu.fetch2: Not attempting prediction for inst: 0/1.1/1/5 pc: 0x100a8 (and)
+  80000: system.cpu.fetch2: decoder inst 0/1.1/1/5 pc: 0x100a8 (mov)
+  80000: system.cpu.fetch2: Instruction extracted from line 0/1.1/1 lineWidth: 64 output_index: 0 inputIndex: 40 pc: (0x100a8=>0x100ac).(0=>1) inst: 0/1.1/1/5 pc: 0x100a8 (mov)
+  80000: system.cpu.fetch2: Not attempting prediction for inst: 0/1.1/1/5 pc: 0x100a8 (mov)
   80000: system.cpu.fetch2: Updated inputIndex value PC: (0x10098=>0x1009c).(0=>1) inputIndex: 0x2c lineBaseAddr: 0x10080 lineWidth: 0x40
-  80000: global: Arm inst: 0.
+  80000: global: Arm inst: 0x1ef000000.
   80000: system.cpu.fetch2: Offering MachInst to decoder addr: 0x100ac
-  80000: system.cpu.fetch2: decoder inst 0/1.1/1/6 pc: 0x100ac (and)
-  80000: system.cpu.fetch2: Instruction extracted from line 0/1.1/1 lineWidth: 64 output_index: 1 inputIndex: 44 pc: (0x100ac=>0x100b0).(0=>1) inst: 0/1.1/1/6 pc: 0x100ac (and)
-  80000: system.cpu.fetch2: Not attempting prediction for inst: 0/1.1/1/6 pc: 0x100ac (and)
+  80000: system.cpu.fetch2: decoder inst 0/1.1/1/6 pc: 0x100ac (svc)
+  80000: system.cpu.fetch2: Instruction extracted from line 0/1.1/1 lineWidth: 64 output_index: 1 inputIndex: 44 pc: (0x100ac=>0x100b0).(0=>1) inst: 0/1.1/1/6 pc: 0x100ac (svc)
+  80000: system.cpu.fetch2: Trying to predict for inst: 0/1.1/1/6 pc: 0x100ac (svc)
+  80000: system.cpu.branchPred: [tid:0] [sn:6] Branch predictor predicted 0 for PC (0x100ac=>0x100b0).(0=>1)
+  80000: system.cpu.branchPred: [tid:0] [sn:6] Creating prediction history for PC (0x100ac=>0x100b0).(0=>1)
+  80000: system.cpu.branchPred: [tid:0] [sn:6] History entry added. predHist.size(): 1
   80000: system.cpu.fetch2: Updated inputIndex value PC: (0x10098=>0x1009c).(0=>1) inputIndex: 0x30 lineBaseAddr: 0x10080 lineWidth: 0x40
   80000: system.cpu.activity: Activity: 4
   80000: system.cpu.fetch1: MinorTrace: state=FetchRunning icacheState=IcacheRunning in_tlb_mem=0/1 streamSeqNum=1 lines=B
@@ -5928,21 +6111,18 @@ no valid tags
   80500: system.cpu.execute: No interrupt controller
   80500: system.cpu.execute: [tid:0] thread_interrupted?=0 isInbetweenInsts?=1
   80500: system.cpu.execute: Attempting to issue [tid:0]
-  80500: system.cpu.execute: Trying to issue inst: 0/1.1/1/3.3 pc: 0x100a0 (b) to FU: 0
-  80500: system.cpu.execute.fu.0: Found extra timing match (pattern 0 'Int')   b   0xfffc        2ea003fff (type 14RefCountingPtrI10StaticInstE)
-  80500: system.cpu.execute.scoreboard0: Warning, inst:   b   0xfffc timing extra decode has more src. regs: 3 than relative latencies: 1
-  80500: system.cpu.execute: Issuing inst: 0/1.1/1/3.3 pc: 0x100a0 (b) into FU 0
+  80500: system.cpu.execute: Trying to issue inst: 0/1.1/1/3.3 pc: 0x100a0 (nop) to FU: 0
+  80500: system.cpu.execute.fu.0: Found extra timing match (pattern 0 'Int')   nop           1e320f000 (type 14RefCountingPtrI10StaticInstE)
+  80500: system.cpu.execute: Issuing inst: 0/1.1/1/3.3 pc: 0x100a0 (nop) into FU 0
   80500: system.cpu.activity: Activity: 2
-  80500: system.cpu.execute: MinorInst: id=0/1.1/1/3.3 addr=0x100a0 inst="  b   0xfffc" class=IntAlu flags="IsControl IsDirectControl IsUncondControl" srcRegs=c5,c5,c5 destRegs= extMachInst=00000002ea003fff
+  80500: system.cpu.execute: MinorInst: id=0/1.1/1/3.3 addr=0x100a0 inst="  nop   " class=IntAlu flags="IsNop" srcRegs= destRegs= extMachInst=00000001e320f000
   80500: system.cpu.execute: Stepping to next inst inputIndex: 1
-  80500: system.cpu.execute: Trying to issue inst: 0/1.1/1/4.4 pc: 0x100a4 (and) to FU: 0
+  80500: system.cpu.execute: Trying to issue inst: 0/1.1/1/4.4 pc: 0x100a4 (nop) to FU: 0
   80500: system.cpu.execute: Can't issue as FU: 0 is already busy
-  80500: system.cpu.execute: Trying to issue inst: 0/1.1/1/4.4 pc: 0x100a4 (and) to FU: 1
-  80500: system.cpu.execute.fu.1: Found extra timing match (pattern 0 'Int')   andeq   r0, r0, r0                0 (type 14RefCountingPtrI10StaticInstE)
-  80500: system.cpu.execute.scoreboard0: Warning, inst:   andeq   r0, r0, r0 timing extra decode has more src. regs: 6 than relative latencies: 1
-  80500: system.cpu.execute: Issuing inst: 0/1.1/1/4.4 pc: 0x100a4 (and) into FU 1
-  80500: system.cpu.execute.scoreboard0: Marking up inst: 0/1.1/1/4.4 pc: 0x100a4 (and) regIndex: 0 final numResults: 1 returnCycle: 164
-  80500: system.cpu.execute: MinorInst: id=0/1.1/1/4.4 addr=0x100a4 inst="  andeq   r0, r0, r0" class=IntAlu flags="IsInteger" srcRegs=c0,c1,c5,r0,r0,r0 destRegs=r0 extMachInst=0000000000000000
+  80500: system.cpu.execute: Trying to issue inst: 0/1.1/1/4.4 pc: 0x100a4 (nop) to FU: 1
+  80500: system.cpu.execute.fu.1: Found extra timing match (pattern 0 'Int')   nop           1e320f000 (type 14RefCountingPtrI10StaticInstE)
+  80500: system.cpu.execute: Issuing inst: 0/1.1/1/4.4 pc: 0x100a4 (nop) into FU 1
+  80500: system.cpu.execute: MinorInst: id=0/1.1/1/4.4 addr=0x100a4 inst="  nop   " class=IntAlu flags="IsNop" srcRegs= destRegs= extMachInst=00000001e320f000
   80500: system.cpu.execute: Reached inst issue limit
   80500: system.cpu.execute: Stepping to next inst inputIndex: 2
   80500: system.cpu.execute: Wrapping
@@ -5950,8 +6130,8 @@ no valid tags
   80500: system.cpu.execute: Need to tick num issued insts:  (issued some insts)(not becoming stalled)
   80500: system.cpu: Event wakeup from stage 4
   80500: system.cpu.activity: Activity: 3
-  80500: system.cpu.decode: Passing on inst: 0/1.1/1/5 pc: 0x100a8 (and) inputIndex: 0 output_index: 0
-  80500: system.cpu.decode: Passing on inst: 0/1.1/1/6 pc: 0x100ac (and) inputIndex: 1 output_index: 1
+  80500: system.cpu.decode: Passing on inst: 0/1.1/1/5 pc: 0x100a8 (mov) inputIndex: 0 output_index: 0
+  80500: system.cpu.decode: Passing on inst: 0/1.1/1/6 pc: 0x100ac (svc) inputIndex: 1 output_index: 1
   80500: system.cpu.decode: Wrapping
   80500: system.cpu.fetch2: Scheduled Thread: 0
   80500: global: Arm inst: 0.
@@ -5983,7 +6163,7 @@ no valid tags
   80500: system.cpu.execute.lsq.transfers: MinorTrace: addr=,
   80500: system.cpu.execute.lsq.storeBuffer: MinorTrace: addr=-,-,-,-,- num_unissued_stores=0
   80500: system.cpu.execute.inputBuffer0: MinorTrace: insts=R,,,,,,
-  80500: system.cpu.execute.scoreboard0: MinorTrace: busy=(0,1/0/164/4),(5,1/0/163/1),(6,1/0/163/2)
+  80500: system.cpu.execute.scoreboard0: MinorTrace: busy=(5,1/0/163/1),(6,1/0/163/2)
   80500: system.cpu.execute: MinorTrace: insts=- inputIndex=0 streamSeqNum=1 stalled=E,E,E,E,E,E,E,E drainState=NotDraining isInbetweenInsts=1
   80500: system.cpu.execute.fu.0: MinorTrace: insts=0/1.1/1/3.3,0/1.1/1/1.1,-
   80500: system.cpu.execute.fu.1: MinorTrace: insts=0/1.1/1/4.4,0/1.1/1/2.2,-
@@ -6008,32 +6188,25 @@ no valid tags
   81000: system.cpu.execute: No interrupt controller
   81000: system.cpu.execute: [tid:0] thread_interrupted?=0 isInbetweenInsts?=1
   81000: system.cpu.execute: Attempting to issue [tid:0]
-  81000: system.cpu.execute: Trying to issue inst: 0/1.1/1/5.5 pc: 0x100a8 (and) to FU: 0
-  81000: system.cpu.execute.fu.0: Found extra timing match (pattern 0 'Int')   andeq   r0, r0, r0                0 (type 14RefCountingPtrI10StaticInstE)
-  81000: system.cpu.execute.scoreboard0: Warning, inst:   andeq   r0, r0, r0 timing extra decode has more src. regs: 6 than relative latencies: 1
-  81000: system.cpu.execute: Issuing inst: 0/1.1/1/5.5 pc: 0x100a8 (and) into FU 0
+  81000: system.cpu.execute: Trying to issue inst: 0/1.1/1/5.5 pc: 0x100a8 (mov) to FU: 0
+  81000: system.cpu.execute.fu.0: Found extra timing match (pattern 0 'Int')   mov   r7, #1         e3a07001 (type 14RefCountingPtrI10StaticInstE)
+  81000: system.cpu.execute.scoreboard0: Warning, inst:   mov   r7, #1 timing extra decode has more src. regs: 3 than relative latencies: 1
+  81000: system.cpu.execute: Issuing inst: 0/1.1/1/5.5 pc: 0x100a8 (mov) into FU 0
   81000: system.cpu.activity: Activity: 2
-  81000: system.cpu.execute.scoreboard0: Marking up inst: 0/1.1/1/5.5 pc: 0x100a8 (and) regIndex: 0 final numResults: 2 returnCycle: 165
-  81000: system.cpu.execute: MinorInst: id=0/1.1/1/5.5 addr=0x100a8 inst="  andeq   r0, r0, r0" class=IntAlu flags="IsInteger" srcRegs=c0,c1,c5,r0,r0,r0 destRegs=r0 extMachInst=0000000000000000
+  81000: system.cpu.execute.scoreboard0: Marking up inst: 0/1.1/1/5.5 pc: 0x100a8 (mov) regIndex: 7 final numResults: 1 returnCycle: 165
+  81000: system.cpu.execute: MinorInst: id=0/1.1/1/5.5 addr=0x100a8 inst="  mov   r7, #1" class=IntAlu flags="IsInteger" srcRegs=c5,c5,c5 destRegs=r7 extMachInst=00000000e3a07001
   81000: system.cpu.execute: Stepping to next inst inputIndex: 1
-  81000: system.cpu.execute: Trying to issue inst: 0/1.1/1/6.6 pc: 0x100ac (and) to FU: 0
+  81000: system.cpu.execute: Trying to issue inst: 0/1.1/1/6.6 pc: 0x100ac (svc) to FU: 0
   81000: system.cpu.execute: Can't issue as FU: 0 is already busy
-  81000: system.cpu.execute: Trying to issue inst: 0/1.1/1/6.6 pc: 0x100ac (and) to FU: 1
-  81000: system.cpu.execute.fu.1: Found extra timing match (pattern 0 'Int')   andeq   r0, r0, r0                0 (type 14RefCountingPtrI10StaticInstE)
-  81000: system.cpu.execute: Can't issue inst: 0/1.1/1/6.6 pc: 0x100ac (and) yet
-  81000: system.cpu.execute: Trying to issue inst: 0/1.1/1/6.6 pc: 0x100ac (and) to FU: 2
-  81000: system.cpu.execute: Can't issue as FU: 2 isn't capable
-  81000: system.cpu.execute: Trying to issue inst: 0/1.1/1/6.6 pc: 0x100ac (and) to FU: 3
-  81000: system.cpu.execute: Can't issue as FU: 3 isn't capable
-  81000: system.cpu.execute: Trying to issue inst: 0/1.1/1/6.6 pc: 0x100ac (and) to FU: 4
-  81000: system.cpu.execute: Can't issue as FU: 4 isn't capable
-  81000: system.cpu.execute: Trying to issue inst: 0/1.1/1/6.6 pc: 0x100ac (and) to FU: 5
-  81000: system.cpu.execute: Can't issue as FU: 5 isn't capable
-  81000: system.cpu.execute: Trying to issue inst: 0/1.1/1/6.6 pc: 0x100ac (and) to FU: 6
-  81000: system.cpu.execute: Can't issue as FU: 6 isn't capable
-  81000: system.cpu.execute: Trying to issue inst: 0/1.1/1/6.6 pc: 0x100ac (and) to FU: 7
-  81000: system.cpu.execute: Can't issue as FU: 7 isn't capable
-  81000: system.cpu.execute: Didn't issue inst: 0/1.1/1/6.6 pc: 0x100ac (and)
+  81000: system.cpu.execute: Trying to issue inst: 0/1.1/1/6.6 pc: 0x100ac (svc) to FU: 1
+  81000: system.cpu.execute.fu.1: Found extra timing match (pattern 0 'Int')   svc   #0        1ef000000 (type 14RefCountingPtrI10StaticInstE)
+  81000: system.cpu.execute.scoreboard0: Warning, inst:   svc   #0 timing extra decode has more src. regs: 5 than relative latencies: 1
+  81000: system.cpu.execute: Issuing inst: 0/1.1/1/6.6 pc: 0x100ac (svc) into FU 1
+  81000: system.cpu.execute.scoreboard0: Marking up inst: 0/1.1/1/6.6 pc: 0x100ac (svc) regIndex: 0 final numResults: 1 returnCycle: 165
+  81000: system.cpu.execute: MinorInst: id=0/1.1/1/6.6 addr=0x100ac inst="  svc   #0" class=IntAlu flags="IsInteger IsSerializeAfter IsNonSpeculative IsSyscall" srcRegs=c5,c5,c5,r0,r1 destRegs=r0 extMachInst=00000001ef000000
+  81000: system.cpu.execute: Reached inst issue limit
+  81000: system.cpu.execute: Stepping to next inst inputIndex: 2
+  81000: system.cpu.execute: Wrapping
   81000: system.cpu.execute: Need to tick num issued insts:  (issued some insts)(becoming stalled)(head inst might commit)
   81000: system.cpu: Event wakeup from stage 4
   81000: system.cpu.activity: Activity: 3
@@ -6069,18 +6242,18 @@ no valid tags
   81000: system.cpu.execute.lsq.requests: MinorTrace: addr=
   81000: system.cpu.execute.lsq.transfers: MinorTrace: addr=,
   81000: system.cpu.execute.lsq.storeBuffer: MinorTrace: addr=-,-,-,-,- num_unissued_stores=0
-  81000: system.cpu.execute.inputBuffer0: MinorTrace: insts=(0/1.1/1/5.5,0/1.1/1/6.6),R,,,,,
-  81000: system.cpu.execute.scoreboard0: MinorTrace: busy=(0,2/0/165/5),(5,1/0/163/1),(6,1/0/163/2)
-  81000: system.cpu.execute: MinorTrace: insts=- inputIndex=1 streamSeqNum=1 stalled=1,1,E,E,E,E,E,E drainState=NotDraining isInbetweenInsts=1
+  81000: system.cpu.execute.inputBuffer0: MinorTrace: insts=R,,,,,,
+  81000: system.cpu.execute.scoreboard0: MinorTrace: busy=(0,1/0/165/6),(5,1/0/163/1),(6,1/0/163/2),(7,1/0/165/5)
+  81000: system.cpu.execute: MinorTrace: insts=- inputIndex=0 streamSeqNum=1 stalled=1,1,E,E,E,E,E,E drainState=NotDraining isInbetweenInsts=1
   81000: system.cpu.execute.fu.0: MinorTrace: insts=0/1.1/1/5.5,0/1.1/1/3.3,0/1.1/1/1.1
-  81000: system.cpu.execute.fu.1: MinorTrace: insts=-,0/1.1/1/4.4,0/1.1/1/2.2
+  81000: system.cpu.execute.fu.1: MinorTrace: insts=0/1.1/1/6.6,0/1.1/1/4.4,0/1.1/1/2.2
   81000: system.cpu.execute.fu.2: MinorTrace: insts=-,-,-
   81000: system.cpu.execute.fu.3: MinorTrace: insts=-,-,-,-,-,-,-,-,-
   81000: system.cpu.execute.fu.4: MinorTrace: insts=-,-,-,-,-,-
   81000: system.cpu.execute.fu.5: MinorTrace: insts=-,-,-
   81000: system.cpu.execute.fu.6: MinorTrace: insts=-
   81000: system.cpu.execute.fu.7: MinorTrace: insts=-
-  81000: system.cpu.execute.inFlightInsts0: MinorTrace: insts=0/1.1/1/1.1,0/1.1/1/2.2,0/1.1/1/3.3,0/1.1/1/4.4,0/1.1/1/5.5,,,,,,,,,,,,,,,,,,,,,,,,
+  81000: system.cpu.execute.inFlightInsts0: MinorTrace: insts=0/1.1/1/1.1,0/1.1/1/2.2,0/1.1/1/3.3,0/1.1/1/4.4,0/1.1/1/5.5,0/1.1/1/6.6,,,,,,,,,,,,,,,,,,,,,,,
   81000: system.cpu.execute.inFUMemInsts0: MinorTrace: insts=,,,,,,,,,,,,,,,,,,,,,,,,,,,,
   81000: system.cpu.eToF1: MinorTrace: branch=-,-
   81000: system.cpu.activity: MinorTrace: activity=3 stages=E,E,E,E,1
@@ -6128,33 +6301,32 @@ no valid tags
   81500: system.cpu.execute: Reached inst commit limit
   81500: system.cpu A0 T0 : @_start+4    :   mov   r6, #42            : IntAlu :  D=0x000000000000002a  FetchSeq=2  CPSeq=2  flags=(IsInteger)
   81500: system.cpu.execute: Attempting to issue [tid:0]
-  81500: system.cpu.execute: Trying to issue inst: 0/1.1/1/6.6 pc: 0x100ac (and) to FU: 0
+  81500: system.cpu.execute: Trying to issue inst: 0/1.1/1/7.7 pc: 0x100b0 (and) to FU: 0
   81500: system.cpu.execute.fu.0: Found extra timing match (pattern 0 'Int')   andeq   r0, r0, r0                0 (type 14RefCountingPtrI10StaticInstE)
   81500: system.cpu.execute.scoreboard0: Warning, inst:   andeq   r0, r0, r0 timing extra decode has more src. regs: 6 than relative latencies: 1
-  81500: system.cpu.execute: Issuing inst: 0/1.1/1/6.6 pc: 0x100ac (and) into FU 0
+  81500: system.cpu.execute: Issuing inst: 0/1.1/1/7.7 pc: 0x100b0 (and) into FU 0
   81500: system.cpu.activity: Activity: 2
-  81500: system.cpu.execute.scoreboard0: Marking up inst: 0/1.1/1/6.6 pc: 0x100ac (and) regIndex: 0 final numResults: 3 returnCycle: 166
-  81500: system.cpu.execute: MinorInst: id=0/1.1/1/6.6 addr=0x100ac inst="  andeq   r0, r0, r0" class=IntAlu flags="IsInteger" srcRegs=c0,c1,c5,r0,r0,r0 destRegs=r0 extMachInst=0000000000000000
-  81500: system.cpu.execute: Stepping to next inst inputIndex: 2
-  81500: system.cpu.execute: Wrapping
-  81500: system.cpu.execute: Trying to issue inst: 0/1.1/1/7.7 pc: 0x100b0 (and) to FU: 0
+  81500: system.cpu.execute.scoreboard0: Marking up inst: 0/1.1/1/7.7 pc: 0x100b0 (and) regIndex: 0 final numResults: 2 returnCycle: 166
+  81500: system.cpu.execute: MinorInst: id=0/1.1/1/7.7 addr=0x100b0 inst="  andeq   r0, r0, r0" class=IntAlu flags="IsInteger" srcRegs=c0,c1,c5,r0,r0,r0 destRegs=r0 extMachInst=0000000000000000
+  81500: system.cpu.execute: Stepping to next inst inputIndex: 1
+  81500: system.cpu.execute: Trying to issue inst: 0/1.1/1/8.8 pc: 0x100b4 (and) to FU: 0
   81500: system.cpu.execute: Can't issue as FU: 0 is already busy
-  81500: system.cpu.execute: Trying to issue inst: 0/1.1/1/7.7 pc: 0x100b0 (and) to FU: 1
+  81500: system.cpu.execute: Trying to issue inst: 0/1.1/1/8.8 pc: 0x100b4 (and) to FU: 1
   81500: system.cpu.execute.fu.1: Found extra timing match (pattern 0 'Int')   andeq   r0, r0, r0                0 (type 14RefCountingPtrI10StaticInstE)
-  81500: system.cpu.execute: Can't issue inst: 0/1.1/1/7.7 pc: 0x100b0 (and) yet
-  81500: system.cpu.execute: Trying to issue inst: 0/1.1/1/7.7 pc: 0x100b0 (and) to FU: 2
+  81500: system.cpu.execute: Can't issue inst: 0/1.1/1/8.8 pc: 0x100b4 (and) yet
+  81500: system.cpu.execute: Trying to issue inst: 0/1.1/1/8.8 pc: 0x100b4 (and) to FU: 2
   81500: system.cpu.execute: Can't issue as FU: 2 isn't capable
-  81500: system.cpu.execute: Trying to issue inst: 0/1.1/1/7.7 pc: 0x100b0 (and) to FU: 3
+  81500: system.cpu.execute: Trying to issue inst: 0/1.1/1/8.8 pc: 0x100b4 (and) to FU: 3
   81500: system.cpu.execute: Can't issue as FU: 3 isn't capable
-  81500: system.cpu.execute: Trying to issue inst: 0/1.1/1/7.7 pc: 0x100b0 (and) to FU: 4
+  81500: system.cpu.execute: Trying to issue inst: 0/1.1/1/8.8 pc: 0x100b4 (and) to FU: 4
   81500: system.cpu.execute: Can't issue as FU: 4 isn't capable
-  81500: system.cpu.execute: Trying to issue inst: 0/1.1/1/7.7 pc: 0x100b0 (and) to FU: 5
+  81500: system.cpu.execute: Trying to issue inst: 0/1.1/1/8.8 pc: 0x100b4 (and) to FU: 5
   81500: system.cpu.execute: Can't issue as FU: 5 isn't capable
-  81500: system.cpu.execute: Trying to issue inst: 0/1.1/1/7.7 pc: 0x100b0 (and) to FU: 6
+  81500: system.cpu.execute: Trying to issue inst: 0/1.1/1/8.8 pc: 0x100b4 (and) to FU: 6
   81500: system.cpu.execute: Can't issue as FU: 6 isn't capable
-  81500: system.cpu.execute: Trying to issue inst: 0/1.1/1/7.7 pc: 0x100b0 (and) to FU: 7
+  81500: system.cpu.execute: Trying to issue inst: 0/1.1/1/8.8 pc: 0x100b4 (and) to FU: 7
   81500: system.cpu.execute: Can't issue as FU: 7 isn't capable
-  81500: system.cpu.execute: Didn't issue inst: 0/1.1/1/7.7 pc: 0x100b0 (and)
+  81500: system.cpu.execute: Didn't issue inst: 0/1.1/1/8.8 pc: 0x100b4 (and)
   81500: system.cpu.execute: Need to tick num issued insts:  (issued some insts)(becoming stalled)(head inst might commit)
   81500: system.cpu: Event wakeup from stage 4
   81500: system.cpu.activity: Activity: 3
@@ -6178,17 +6350,17 @@ no valid tags
   81500: system.cpu.execute.lsq.transfers: MinorTrace: addr=,
   81500: system.cpu.execute.lsq.storeBuffer: MinorTrace: addr=-,-,-,-,- num_unissued_stores=0
   81500: system.cpu.execute.inputBuffer0: MinorTrace: insts=(0/1.1/1/7.7,0/1.1/1/8.8),R,,,,,
-  81500: system.cpu.execute.scoreboard0: MinorTrace: busy=(0,3/0/166/6)
-  81500: system.cpu.execute: MinorTrace: insts=(0/1.1/1/1.1,0/1.1/1/2.2) inputIndex=0 streamSeqNum=1 stalled=1,1,E,E,E,E,E,E drainState=NotDraining isInbetweenInsts=1
-  81500: system.cpu.execute.fu.0: MinorTrace: insts=0/1.1/1/6.6,0/1.1/1/5.5,0/1.1/1/3.3
-  81500: system.cpu.execute.fu.1: MinorTrace: insts=-,-,0/1.1/1/4.4
+  81500: system.cpu.execute.scoreboard0: MinorTrace: busy=(0,2/0/166/7),(7,1/0/165/5)
+  81500: system.cpu.execute: MinorTrace: insts=(0/1.1/1/1.1,0/1.1/1/2.2) inputIndex=1 streamSeqNum=1 stalled=1,1,E,E,E,E,E,E drainState=NotDraining isInbetweenInsts=1
+  81500: system.cpu.execute.fu.0: MinorTrace: insts=0/1.1/1/7.7,0/1.1/1/5.5,0/1.1/1/3.3
+  81500: system.cpu.execute.fu.1: MinorTrace: insts=-,0/1.1/1/6.6,0/1.1/1/4.4
   81500: system.cpu.execute.fu.2: MinorTrace: insts=-,-,-
   81500: system.cpu.execute.fu.3: MinorTrace: insts=-,-,-,-,-,-,-,-,-
   81500: system.cpu.execute.fu.4: MinorTrace: insts=-,-,-,-,-,-
   81500: system.cpu.execute.fu.5: MinorTrace: insts=-,-,-
   81500: system.cpu.execute.fu.6: MinorTrace: insts=-
   81500: system.cpu.execute.fu.7: MinorTrace: insts=-
-  81500: system.cpu.execute.inFlightInsts0: MinorTrace: insts=0/1.1/1/3.3,0/1.1/1/4.4,0/1.1/1/5.5,0/1.1/1/6.6,,,,,,,,,,,,,,,,,,,,,,,,,
+  81500: system.cpu.execute.inFlightInsts0: MinorTrace: insts=0/1.1/1/3.3,0/1.1/1/4.4,0/1.1/1/5.5,0/1.1/1/6.6,0/1.1/1/7.7,,,,,,,,,,,,,,,,,,,,,,,,
   81500: system.cpu.execute.inFUMemInsts0: MinorTrace: insts=,,,,,,,,,,,,,,,,,,,,,,,,,,,,
   81500: system.cpu.eToF1: MinorTrace: branch=-,-
   81500: system.cpu.activity: MinorTrace: activity=3 stages=E,E,E,E,1
@@ -6208,35 +6380,53 @@ no valid tags
   82000: system.cpu.execute: Trying to commit from FUs
   82000: global: ExecContext setting PC: (0x100a0=>0x100a4).(0=>1)
   82000: system.cpu.[tid:0]: Setting int reg 34 (34) to 0.
-  82000: system.cpu.execute: Committing inst: 0/1.1/1/3.3 pc: 0x100a0 (b)
-  82000: system.cpu.[tid:0]: Reading CC reg 5 (5) as 0.
-  82000: system.cpu.[tid:0]: Reading CC reg 5 (5) as 0.
-  82000: system.cpu.[tid:0]: Reading CC reg 5 (5) as 0.
-  82000: system.cpu.execute: tryToBranch before: (0x100a0=>0x100a4).(0=>1) after: (0x100a0=>0x200a4).(0=>1)
-  82000: system.cpu.execute: Advancing current PC from: (0x100a0=>0x100a4).(0=>1) to: (0x200a4=>0x200a8).(0=>1)
-  82000: system.cpu.execute: Unpredicted branch from 0x100a0 to 0x200a4 inst: 0/1.1/1/3.3 pc: 0x100a0 (b)
-  82000: system.cpu.execute: Branch data signalled: UnpredictedBranch target: 0x200a4 0/1.1/1/3.3 pc: 0x100a0 (b) 2(stream).1(pred)
+  82000: system.cpu.execute: Committing inst: 0/1.1/1/3.3 pc: 0x100a0 (nop)
+  82000: system.cpu.execute: tryToBranch before: (0x100a0=>0x100a4).(0=>1) after: (0x100a0=>0x100a4).(0=>1)
+  82000: system.cpu.execute: Advancing current PC from: (0x100a0=>0x100a4).(0=>1) to: (0x100a4=>0x100a8).(0=>1)
   82000: system.cpu.execute: Unstalling 0 for inst 0/1.1/1/3.3
-  82000: system.cpu.execute: Completed inst: 0/1.1/1/3.3 pc: 0x100a0 (b)
-  82000: system.cpu A0 T0 : @_start+8    :   b   0xfffc               : IntAlu :   FetchSeq=3  CPSeq=3  flags=(IsControl|IsDirectControl|IsUncondControl)
+  82000: system.cpu.execute: Completed inst: 0/1.1/1/3.3 pc: 0x100a0 (nop)
+  82000: system.cpu A0 T0 : @_start+8    :   nop                      : IntAlu :   FetchSeq=3  CPSeq=3  flags=(IsNop)
+  82000: system.cpu.execute: Trying to commit canCommitInsts: 1
+  82000: system.cpu.execute: Trying to commit from FUs
+  82000: global: ExecContext setting PC: (0x100a4=>0x100a8).(0=>1)
+  82000: system.cpu.[tid:0]: Setting int reg 34 (34) to 0.
+  82000: system.cpu.execute: Committing inst: 0/1.1/1/4.4 pc: 0x100a4 (nop)
+  82000: system.cpu.execute: tryToBranch before: (0x100a4=>0x100a8).(0=>1) after: (0x100a4=>0x100a8).(0=>1)
+  82000: system.cpu.execute: Advancing current PC from: (0x100a4=>0x100a8).(0=>1) to: (0x100a8=>0x100ac).(0=>1)
+  82000: system.cpu.execute: Unstalling 1 for inst 0/1.1/1/4.4
+  82000: system.cpu.execute: Completed inst: 0/1.1/1/4.4 pc: 0x100a4 (nop)
+  82000: system.cpu.execute: Reached inst commit limit
+  82000: system.cpu A0 T0 : @_start+12    :   nop                      : IntAlu :   FetchSeq=4  CPSeq=4  flags=(IsNop)
   82000: system.cpu.execute: Attempting to issue [tid:0]
-  82000: system.cpu.execute: Discarding inst: 0/1.1/1/7.7 pc: 0x100b0 (and) as its stream state was unexpected, expected: 2
-  82000: system.cpu.execute: MinorInst: id=0/1.1/1/7.7 addr=0x100b0 inst="  andeq   r0, r0, r0" class=IntAlu flags="IsInteger" srcRegs=c0,c1,c5,r0,r0,r0 destRegs=r0 extMachInst=0000000000000000
-  82000: system.cpu.execute: Stepping to next inst inputIndex: 1
-  82000: system.cpu.execute: Discarding inst: 0/1.1/1/8.8 pc: 0x100b4 (and) as its stream state was unexpected, expected: 2
+  82000: system.cpu.execute: Trying to issue inst: 0/1.1/1/8.8 pc: 0x100b4 (and) to FU: 0
+  82000: system.cpu.execute.fu.0: Found extra timing match (pattern 0 'Int')   andeq   r0, r0, r0                0 (type 14RefCountingPtrI10StaticInstE)
+  82000: system.cpu.execute.scoreboard0: Warning, inst:   andeq   r0, r0, r0 timing extra decode has more src. regs: 6 than relative latencies: 1
+  82000: system.cpu.execute: Issuing inst: 0/1.1/1/8.8 pc: 0x100b4 (and) into FU 0
+  82000: system.cpu.activity: Activity: 2
+  82000: system.cpu.execute.scoreboard0: Marking up inst: 0/1.1/1/8.8 pc: 0x100b4 (and) regIndex: 0 final numResults: 3 returnCycle: 167
   82000: system.cpu.execute: MinorInst: id=0/1.1/1/8.8 addr=0x100b4 inst="  andeq   r0, r0, r0" class=IntAlu flags="IsInteger" srcRegs=c0,c1,c5,r0,r0,r0 destRegs=r0 extMachInst=0000000000000000
   82000: system.cpu.execute: Stepping to next inst inputIndex: 2
   82000: system.cpu.execute: Wrapping
-  82000: system.cpu.execute: Discarding inst: 0/1.1/1/9.9 pc: 0x100b8 (and) as its stream state was unexpected, expected: 2
-  82000: system.cpu.execute: MinorInst: id=0/1.1/1/9.9 addr=0x100b8 inst="  andeq   r0, r0, r0" class=IntAlu flags="IsInteger" srcRegs=c0,c1,c5,r0,r0,r0 destRegs=r0 extMachInst=0000000000000000
-  82000: system.cpu.execute: Stepping to next inst inputIndex: 1
-  82000: system.cpu.execute: Discarding inst: 0/1.1/1/10.10 pc: 0x100bc (and) as its stream state was unexpected, expected: 2
-  82000: system.cpu.execute: MinorInst: id=0/1.1/1/10.10 addr=0x100bc inst="  andeq   r0, r0, r0" class=IntAlu flags="IsInteger" srcRegs=c0,c1,c5,r0,r0,r0 destRegs=r0 extMachInst=0000000000000000
-  82000: system.cpu.execute: Stepping to next inst inputIndex: 2
-  82000: system.cpu.execute: Wrapping
-  82000: system.cpu.execute: Need to tick num issued insts: (becoming stalled)(head inst might commit)
+  82000: system.cpu.execute: Trying to issue inst: 0/1.1/1/9.9 pc: 0x100b8 (and) to FU: 0
+  82000: system.cpu.execute: Can't issue as FU: 0 is already busy
+  82000: system.cpu.execute: Trying to issue inst: 0/1.1/1/9.9 pc: 0x100b8 (and) to FU: 1
+  82000: system.cpu.execute.fu.1: Found extra timing match (pattern 0 'Int')   andeq   r0, r0, r0                0 (type 14RefCountingPtrI10StaticInstE)
+  82000: system.cpu.execute: Can't issue inst: 0/1.1/1/9.9 pc: 0x100b8 (and) yet
+  82000: system.cpu.execute: Trying to issue inst: 0/1.1/1/9.9 pc: 0x100b8 (and) to FU: 2
+  82000: system.cpu.execute: Can't issue as FU: 2 isn't capable
+  82000: system.cpu.execute: Trying to issue inst: 0/1.1/1/9.9 pc: 0x100b8 (and) to FU: 3
+  82000: system.cpu.execute: Can't issue as FU: 3 isn't capable
+  82000: system.cpu.execute: Trying to issue inst: 0/1.1/1/9.9 pc: 0x100b8 (and) to FU: 4
+  82000: system.cpu.execute: Can't issue as FU: 4 isn't capable
+  82000: system.cpu.execute: Trying to issue inst: 0/1.1/1/9.9 pc: 0x100b8 (and) to FU: 5
+  82000: system.cpu.execute: Can't issue as FU: 5 isn't capable
+  82000: system.cpu.execute: Trying to issue inst: 0/1.1/1/9.9 pc: 0x100b8 (and) to FU: 6
+  82000: system.cpu.execute: Can't issue as FU: 6 isn't capable
+  82000: system.cpu.execute: Trying to issue inst: 0/1.1/1/9.9 pc: 0x100b8 (and) to FU: 7
+  82000: system.cpu.execute: Can't issue as FU: 7 isn't capable
+  82000: system.cpu.execute: Didn't issue inst: 0/1.1/1/9.9 pc: 0x100b8 (and)
+  82000: system.cpu.execute: Need to tick num issued insts:  (issued some insts)(becoming stalled)(head inst might commit)
   82000: system.cpu: Event wakeup from stage 4
-  82000: system.cpu.activity: Activity: 2
   82000: system.cpu.activity: Activity: 3
   82000: system.cpu.fetch2: Scheduled Thread: -1
   82000: system.cpu.fetch1: MinorTrace: state=FetchRunning icacheState=IcacheRunning in_tlb_mem=0/1 streamSeqNum=1 lines=-
@@ -6254,20 +6444,20 @@ no valid tags
   82000: system.cpu.execute.lsq.requests: MinorTrace: addr=
   82000: system.cpu.execute.lsq.transfers: MinorTrace: addr=,
   82000: system.cpu.execute.lsq.storeBuffer: MinorTrace: addr=-,-,-,-,- num_unissued_stores=0
-  82000: system.cpu.execute.inputBuffer0: MinorTrace: insts=,,,,,,
-  82000: system.cpu.execute.scoreboard0: MinorTrace: busy=(0,3/0/166/6)
-  82000: system.cpu.execute: MinorTrace: insts=(0/1.1/1/3.3,0/1.1/1/2.2) inputIndex=0 streamSeqNum=2 stalled=1,1,E,E,E,E,E,E drainState=NotDraining isInbetweenInsts=1
-  82000: system.cpu.execute.fu.0: MinorTrace: insts=-,0/1.1/1/6.6,0/1.1/1/5.5
-  82000: system.cpu.execute.fu.1: MinorTrace: insts=-,-,0/1.1/1/4.4
+  82000: system.cpu.execute.inputBuffer0: MinorTrace: insts=(0/1.1/1/9.9,0/1.1/1/10.10),,,,,,
+  82000: system.cpu.execute.scoreboard0: MinorTrace: busy=(0,3/0/167/8),(7,1/0/165/5)
+  82000: system.cpu.execute: MinorTrace: insts=(0/1.1/1/3.3,0/1.1/1/4.4) inputIndex=0 streamSeqNum=1 stalled=1,1,E,E,E,E,E,E drainState=NotDraining isInbetweenInsts=1
+  82000: system.cpu.execute.fu.0: MinorTrace: insts=0/1.1/1/8.8,0/1.1/1/7.7,0/1.1/1/5.5
+  82000: system.cpu.execute.fu.1: MinorTrace: insts=-,-,0/1.1/1/6.6
   82000: system.cpu.execute.fu.2: MinorTrace: insts=-,-,-
   82000: system.cpu.execute.fu.3: MinorTrace: insts=-,-,-,-,-,-,-,-,-
   82000: system.cpu.execute.fu.4: MinorTrace: insts=-,-,-,-,-,-
   82000: system.cpu.execute.fu.5: MinorTrace: insts=-,-,-
   82000: system.cpu.execute.fu.6: MinorTrace: insts=-
   82000: system.cpu.execute.fu.7: MinorTrace: insts=-
-  82000: system.cpu.execute.inFlightInsts0: MinorTrace: insts=0/1.1/1/4.4,0/1.1/1/5.5,0/1.1/1/6.6,,,,,,,,,,,,,,,,,,,,,,,,,,
+  82000: system.cpu.execute.inFlightInsts0: MinorTrace: insts=0/1.1/1/5.5,0/1.1/1/6.6,0/1.1/1/7.7,0/1.1/1/8.8,,,,,,,,,,,,,,,,,,,,,,,,,
   82000: system.cpu.execute.inFUMemInsts0: MinorTrace: insts=,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-  82000: system.cpu.eToF1: MinorTrace: branch=UnpredictedBranch;2.1;0x200a4;0/1.1/1/3.3,-
+  82000: system.cpu.eToF1: MinorTrace: branch=-,-
   82000: system.cpu.activity: MinorTrace: activity=3 stages=E,E,E,E,1
   82000: system.cpu.activity: Activity: 2
   82000: system.cpu.activity: Stage 0 already inactive.
@@ -6283,38 +6473,70 @@ no valid tags
   82500: system.cpu.execute: Committing micro-ops for interrupt[tid:0]
   82500: system.cpu.execute: Trying to commit canCommitInsts: 1
   82500: system.cpu.execute: Trying to commit from FUs
-  82500: system.cpu.execute: Unstalling 1 for inst 0/1.1/1/4.4
-  82500: system.cpu.execute: Discarding inst: 0/1.1/1/4.4 pc: 0x100a4 (and) as its stream state was unexpected, expected: 2
-  82500: system.cpu.execute: Completed inst: 0/1.1/1/4.4 pc: 0x100a4 (and)
-  82500: system.cpu.execute.scoreboard0: Clearing inst: 0/1.1/1/4.4 pc: 0x100a4 (and) regIndex: 0 final numResults: 2
-  82500: system.cpu.execute: Trying to commit canCommitInsts: 1
-  82500: system.cpu.execute: Trying to commit from FUs
+  82500: global: ExecContext setting PC: (0x100a8=>0x100ac).(0=>1)
+  82500: system.cpu.[tid:0]: Setting int reg 34 (34) to 0.
+  82500: system.cpu.execute: Committing inst: 0/1.1/1/5.5 pc: 0x100a8 (mov)
+  82500: system.cpu.[tid:0]: Reading CC reg 5 (5) as 0.
+  82500: system.cpu.[tid:0]: Reading CC reg 5 (5) as 0.
+  82500: system.cpu.[tid:0]: Reading CC reg 5 (5) as 0.
+  82500: system.cpu.[tid:0]: Setting int reg 7 (7) to 0x1.
+  82500: system.cpu.execute: tryToBranch before: (0x100a8=>0x100ac).(0=>1) after: (0x100a8=>0x100ac).(0=>1)
+  82500: system.cpu.execute: Advancing current PC from: (0x100a8=>0x100ac).(0=>1) to: (0x100ac=>0x100b0).(0=>1)
   82500: system.cpu.execute: Unstalling 0 for inst 0/1.1/1/5.5
-  82500: system.cpu.execute: Discarding inst: 0/1.1/1/5.5 pc: 0x100a8 (and) as its stream state was unexpected, expected: 2
-  82500: system.cpu.execute: Completed inst: 0/1.1/1/5.5 pc: 0x100a8 (and)
-  82500: system.cpu.execute.scoreboard0: Clearing inst: 0/1.1/1/5.5 pc: 0x100a8 (and) regIndex: 0 final numResults: 1
+  82500: system.cpu.execute: Completed inst: 0/1.1/1/5.5 pc: 0x100a8 (mov)
+  82500: system.cpu.execute.scoreboard0: Clearing inst: 0/1.1/1/5.5 pc: 0x100a8 (mov) regIndex: 7 final numResults: 0
+  82500: system.cpu A0 T0 : @_start+16    :   mov   r7, #1             : IntAlu :  D=0x0000000000000001  FetchSeq=5  CPSeq=5  flags=(IsInteger)
   82500: system.cpu.execute: Trying to commit canCommitInsts: 1
   82500: system.cpu.execute: Trying to commit from FUs
+  82500: global: ExecContext setting PC: (0x100ac=>0x100b0).(0=>1)
+  82500: system.cpu.[tid:0]: Setting int reg 34 (34) to 0.
+  82500: system.cpu.execute: Committing inst: 0/1.1/1/6.6 pc: 0x100ac (svc)
+  82500: system.cpu.[tid:0]: Reading CC reg 5 (5) as 0.
+  82500: system.cpu.[tid:0]: Reading CC reg 5 (5) as 0.
+  82500: system.cpu.[tid:0]: Reading CC reg 5 (5) as 0.
+  82500: system.cpu.[tid:0]: Reading int reg 0 (0) as 0.
+  82500: system.cpu.[tid:0]: Reading int reg 1 (1) as 0xbeffff84.
+  82500: system.cpu.execute: Fault in execute of inst: 0/1.1/1/6.6 pc: 0x100ac (svc) fault: Supervisor Call
+  82500: system.cpu.[tid:0]: Reading int reg 7 (7) as 0x1.
+  82500: system.cpu.[tid:0]: Reading int reg 0 (0) as 0.
+  82500: system.cpu.[tid:0]: Reading int reg 1 (1) as 0xbeffff84.
+  82500: system.cpu.[tid:0]: Reading int reg 2 (2) as 0.
+  82500: system.cpu.[tid:0]: Reading int reg 3 (3) as 0.
+  82500: system.cpu.[tid:0]: Reading int reg 4 (4) as 0.
+  82500: system.cpu.[tid:0]: Reading int reg 5 (5) as 0x54.
+  82500: system.cpu: T0 : syscall exit called w/arguments 0, 3204448132, 0, 0, 0, 84
+  82500: system.cpu.[tid:0]: Reading int reg 0 (0) as 0.
+  82500: global: DistIface::readyToExit() called, delay:0
+  82500: Event_82: generic event scheduled @ 82500
+  82500: system.cpu: T0 : syscall exit returns 0
+  82500: system.cpu.[tid:0]: Setting int reg 0 (0) to 0.
+  82500: system.cpu.execute: tryToBranch before: (0x100ac=>0x100b0).(0=>1) after: (0x100b0=>0x100b4).(0=>1) (forcing)
+  82500: system.cpu.execute: Unpredicted branch from 0x100ac to 0x100b0 inst: 0/1.1/1/6.6 pc: 0x100ac (svc)
+  82500: system.cpu.execute: Branch data signalled: UnpredictedBranch target: 0x100b0 0/1.1/1/6.6 pc: 0x100ac (svc) 2(stream).1(pred)
+  82500: system.cpu.execute: Unstalling 1 for inst 0/1.1/1/6.6
+  82500: system.cpu.execute: Completed inst: 0/1.1/1/6.6 pc: 0x100ac (svc)
+  82500: system.cpu.execute.scoreboard0: Clearing inst: 0/1.1/1/6.6 pc: 0x100ac (svc) regIndex: 0 final numResults: 2
+  82500: system.cpu.execute: Reached inst commit limit
+  82500: system.cpu A0 T0 : @_start+20    :   svc   #0                 : IntAlu :   FetchSeq=6  CPSeq=6  flags=(IsInteger|IsSerializeAfter|IsNonSpeculative|IsSyscall)
+  82500: system.cpu.execute: Attempting to issue [tid:0]
+  82500: system.cpu.execute: Discarding inst: 0/1.1/1/9.9 pc: 0x100b8 (and) as its stream state was unexpected, expected: 2
+  82500: system.cpu.execute: MinorInst: id=0/1.1/1/9.9 addr=0x100b8 inst="  andeq   r0, r0, r0" class=IntAlu flags="IsInteger" srcRegs=c0,c1,c5,r0,r0,r0 destRegs=r0 extMachInst=0000000000000000
+  82500: system.cpu.execute: Stepping to next inst inputIndex: 1
+  82500: system.cpu.execute: Discarding inst: 0/1.1/1/10.10 pc: 0x100bc (and) as its stream state was unexpected, expected: 2
+  82500: system.cpu.execute: MinorInst: id=0/1.1/1/10.10 addr=0x100bc inst="  andeq   r0, r0, r0" class=IntAlu flags="IsInteger" srcRegs=c0,c1,c5,r0,r0,r0 destRegs=r0 extMachInst=0000000000000000
+  82500: system.cpu.execute: Stepping to next inst inputIndex: 2
+  82500: system.cpu.execute: Wrapping
   82500: system.cpu.execute: Need to tick num issued insts: (becoming stalled)(head inst might commit)
   82500: system.cpu: Event wakeup from stage 4
   82500: system.cpu.activity: Activity: 2
-  82500: system.cpu.fetch2: Unpredicted branch seen inst: 0/1.1/1/3.3 pc: 0x100a0 (b)
-  82500: system.cpu.branchPred: [tid:0] Squashing from sequence number 3, setting target to (0x200a4=>0x200a8).(0=>1)
-  82500: system.cpu.branchPred.indirectBranchPred: Squashing seq:3
-  82500: system.cpu.branchPred: [tid:0] [squash sn:3] BTB Update called for [sn:3] PC 0x100a0
-  82500: system.cpu.branchPred: [tid:0] Committing branches until sn:3]
-  82500: system.cpu.branchPred.indirectBranchPred: Committing seq:3
-  82500: system.cpu.fetch2: Dumping all input as a stream changing branch has arrived
-  82500: system.cpu.fetch2: Dumping whole input buffer
+  82500: system.cpu.activity: Activity: 3
   82500: system.cpu.fetch2: Scheduled Thread: -1
-  82500: system.cpu.fetch1: Updating streamSeqNum from: 1 to 2, predictionSeqNum from: 1 to 1
-  82500: system.cpu.fetch1: Changing stream on branch: UnpredictedBranch target: 0x200a4 0/1.1/1/3.3 pc: 0x100a0 (b) 2(stream).1(pred)
-  82500: system.cpu.fetch1: MinorTrace: state=FetchRunning icacheState=IcacheRunning in_tlb_mem=0/1 streamSeqNum=2 lines=-
+  82500: system.cpu.fetch1: MinorTrace: state=FetchRunning icacheState=IcacheRunning in_tlb_mem=0/1 streamSeqNum=1 lines=-
   82500: system.cpu.fetch1.requests: MinorTrace: lines=
   82500: system.cpu.fetch1.transfers: MinorTrace: lines=0/1.1/2
   82500: system.cpu.f1ToF2: MinorTrace: lines=-,-
   82500: system.cpu.f2ToF1: MinorTrace: prediction=-,-
-  82500: system.cpu.fetch2: MinorTrace: inputIndex=0 havePC=0 predictionSeqNum=1 insts=-
+  82500: system.cpu.fetch2: MinorTrace: inputIndex=0 havePC=1 predictionSeqNum=1 insts=-
   82500: system.cpu.fetch2.inputBuffer0: MinorTrace: lines=R,
   82500: system.cpu.f2ToD: MinorTrace: insts=-,-
   82500: system.cpu.decode: MinorTrace: insts=-
@@ -6325,9 +6547,9 @@ no valid tags
   82500: system.cpu.execute.lsq.transfers: MinorTrace: addr=,
   82500: system.cpu.execute.lsq.storeBuffer: MinorTrace: addr=-,-,-,-,- num_unissued_stores=0
   82500: system.cpu.execute.inputBuffer0: MinorTrace: insts=,,,,,,
-  82500: system.cpu.execute.scoreboard0: MinorTrace: busy=(0,1/0/166/6)
-  82500: system.cpu.execute: MinorTrace: insts=(0/1.1/1/3.3,0/1.1/1/2.2) inputIndex=0 streamSeqNum=2 stalled=1,E,E,E,E,E,E,E drainState=NotDraining isInbetweenInsts=1
-  82500: system.cpu.execute.fu.0: MinorTrace: insts=-,-,0/1.1/1/6.6
+  82500: system.cpu.execute.scoreboard0: MinorTrace: busy=(0,2/0/167/8)
+  82500: system.cpu.execute: MinorTrace: insts=(0/1.1/1/5.5,0/1.1/1/6.6) inputIndex=0 streamSeqNum=2 stalled=1,E,E,E,E,E,E,E drainState=NotDraining isInbetweenInsts=1
+  82500: system.cpu.execute.fu.0: MinorTrace: insts=-,0/1.1/1/8.8,0/1.1/1/7.7
   82500: system.cpu.execute.fu.1: MinorTrace: insts=-,-,-
   82500: system.cpu.execute.fu.2: MinorTrace: insts=-,-,-
   82500: system.cpu.execute.fu.3: MinorTrace: insts=-,-,-,-,-,-,-,-,-
@@ -6335,446 +6557,16 @@ no valid tags
   82500: system.cpu.execute.fu.5: MinorTrace: insts=-,-,-
   82500: system.cpu.execute.fu.6: MinorTrace: insts=-
   82500: system.cpu.execute.fu.7: MinorTrace: insts=-
-  82500: system.cpu.execute.inFlightInsts0: MinorTrace: insts=0/1.1/1/6.6,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+  82500: system.cpu.execute.inFlightInsts0: MinorTrace: insts=0/1.1/1/7.7,0/1.1/1/8.8,,,,,,,,,,,,,,,,,,,,,,,,,,,
   82500: system.cpu.execute.inFUMemInsts0: MinorTrace: insts=,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-  82500: system.cpu.eToF1: MinorTrace: branch=-,UnpredictedBranch;2.1;0x200a4;0/1.1/1/3.3
-  82500: system.cpu.activity: MinorTrace: activity=2 stages=E,E,E,E,1
-  82500: system.cpu.activity: Activity: 1
+  82500: system.cpu.eToF1: MinorTrace: branch=UnpredictedBranch;2.1;0x100b0;0/1.1/1/6.6,-
+  82500: system.cpu.activity: MinorTrace: activity=3 stages=E,E,E,E,1
+  82500: system.cpu.activity: Activity: 2
   82500: system.cpu.activity: Stage 0 already inactive.
   82500: system.cpu.activity: Stage 1 already inactive.
   82500: system.cpu.activity: Stage 2 already inactive.
   82500: system.cpu.activity: Stage 3 already inactive.
-  82500: system.cpu.activity: Activity: 0
+  82500: system.cpu.activity: Activity: 1
   82500: global.wrapped_function_event: EventFunctionWrapped event scheduled @ 83000
-  83000: system.cpu.execute.lsq.storeBuffer: StoreBuffer step numUnissuedAccesses: 0
-  83000: system.cpu.execute: No interrupt controller
-  83000: system.cpu.execute: [tid:0] thread_interrupted?=0 isInbetweenInsts?=1
-  83000: system.cpu.execute: Attempting to commit [tid:0]
-  83000: system.cpu.execute: Committing micro-ops for interrupt[tid:0]
-  83000: system.cpu.execute: Trying to commit canCommitInsts: 1
-  83000: system.cpu.execute: Trying to commit from FUs
-  83000: system.cpu.execute: Unstalling 0 for inst 0/1.1/1/6.6
-  83000: system.cpu.execute: Discarding inst: 0/1.1/1/6.6 pc: 0x100ac (and) as its stream state was unexpected, expected: 2
-  83000: system.cpu.execute: Completed inst: 0/1.1/1/6.6 pc: 0x100ac (and)
-  83000: system.cpu.execute.scoreboard0: Clearing inst: 0/1.1/1/6.6 pc: 0x100ac (and) regIndex: 0 final numResults: 0
-  83000: system.cpu.execute: Need to tick num issued insts: (becoming stalled)
-  83000: system.cpu.execute: The next cycle might be skippable as there are no advanceable FUs
-  83000: system.cpu.fetch2: Scheduled Thread: -1
-  83000: system.cpu.fetch1: MinorTrace: state=FetchRunning icacheState=IcacheRunning in_tlb_mem=0/1 streamSeqNum=2 lines=-
-  83000: system.cpu.fetch1.requests: MinorTrace: lines=
-  83000: system.cpu.fetch1.transfers: MinorTrace: lines=0/1.1/2
-  83000: system.cpu.f1ToF2: MinorTrace: lines=-,-
-  83000: system.cpu.f2ToF1: MinorTrace: prediction=-,-
-  83000: system.cpu.fetch2: MinorTrace: inputIndex=0 havePC=0 predictionSeqNum=1 insts=-
-  83000: system.cpu.fetch2.inputBuffer0: MinorTrace: lines=R,
-  83000: system.cpu.f2ToD: MinorTrace: insts=-,-
-  83000: system.cpu.decode: MinorTrace: insts=-
-  83000: system.cpu.decode.inputBuffer0: MinorTrace: insts=,,
-  83000: system.cpu.dToE: MinorTrace: insts=-,-
-  83000: system.cpu.execute.lsq: MinorTrace: state=MemoryRunning in_tlb_mem=0/0 stores_in_transfers=0 lastMemBarrier=0
-  83000: system.cpu.execute.lsq.requests: MinorTrace: addr=
-  83000: system.cpu.execute.lsq.transfers: MinorTrace: addr=,
-  83000: system.cpu.execute.lsq.storeBuffer: MinorTrace: addr=-,-,-,-,- num_unissued_stores=0
-  83000: system.cpu.execute.inputBuffer0: MinorTrace: insts=,,,,,,
-  83000: system.cpu.execute.scoreboard0: MinorTrace: busy=
-  83000: system.cpu.execute: MinorTrace: insts=(0/1.1/1/3.3,0/1.1/1/2.2) inputIndex=0 streamSeqNum=2 stalled=E,E,E,E,E,E,E,E drainState=NotDraining isInbetweenInsts=1
-  83000: system.cpu.execute.fu.0: MinorTrace: insts=-,-,-
-  83000: system.cpu.execute.fu.1: MinorTrace: insts=-,-,-
-  83000: system.cpu.execute.fu.2: MinorTrace: insts=-,-,-
-  83000: system.cpu.execute.fu.3: MinorTrace: insts=-,-,-,-,-,-,-,-,-
-  83000: system.cpu.execute.fu.4: MinorTrace: insts=-,-,-,-,-,-
-  83000: system.cpu.execute.fu.5: MinorTrace: insts=-,-,-
-  83000: system.cpu.execute.fu.6: MinorTrace: insts=-
-  83000: system.cpu.execute.fu.7: MinorTrace: insts=-
-  83000: system.cpu.execute.inFlightInsts0: MinorTrace: insts=,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-  83000: system.cpu.execute.inFUMemInsts0: MinorTrace: insts=,,,,,,,,,,,,,,,,,,,,,,,,,,,,
-  83000: system.cpu.eToF1: MinorTrace: branch=-,-
-  83000: system.cpu.activity: MinorTrace: activity=0 stages=E,E,E,E,E
-  83000: global: Suspending as the processor is idle
-  83000: system.cpu.activity: Stage 0 already inactive.
-  83000: system.cpu.activity: Stage 1 already inactive.
-  83000: system.cpu.activity: Stage 2 already inactive.
-  83000: system.cpu.activity: Stage 3 already inactive.
-  83000: system.cpu.activity: Stage 4 already inactive.
-  98750: system.mem_ctrls: processRespondEvent(): Some req has reached its readyTime
-  98750: system.mem_ctrls: number of read entries for rank 0 is 0
-  98750: system.mem_ctrls: Responding to Address 192..   98750: global: IFetch from .cpu.inst of size 64 on address 0xc0 C
-  98750: global: 00000000  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00                   
-  98750: global: 00000010  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00                   
-  98750: global: 00000020  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00                   
-  98750: global: 00000030  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00                   
-  98750: system.mem_ctrls.port-RespPacketQueue: schedSendTiming for ReadResp address c0 size 64 when 126750 ord: 1
-  98750: system.mem_ctrls.port-RespPacketQueue.wrapped_function_event: EventFunctionWrapped event scheduled @ 126750
-  98750: system.mem_ctrls: Done
- 126750: system.membus: recvTimingResp: src system.membus.master[0] packet ReadResp [c0:ff] IF
- 126750: system.membus.snoop_filter: updateResponse: src system.membus.slave[1] packet ReadResp [c0:ff] IF
- 126750: system.membus.snoop_filter: updateResponse:   old SF value 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
- 126750: system.membus.snoop_filter: updateResponse:   new SF value 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001
- 126750: system.membus.slave[1]-RespPacketQueue: schedSendTiming for ReadResp address c0 size 64 when 129000 ord: 0
- 126750: system.membus.slave[1]-RespPacketQueue.wrapped_function_event: EventFunctionWrapped event scheduled @ 129000
- 126750: system.membus.respLayer1.wrapped_function_event: EventFunctionWrapped event scheduled @ 132000
- 126750: system.membus.respLayer1: The crossbar layer is now busy from tick 126750 to 132000
- 129000: system.cpu.icache: recvTimingResp: Handling response ReadResp [c0:ff] IF
- 129000: system.cpu.icache: Block for addr 0xc0 being updated in Cache
- 129000: system.cpu.icache: Replacement victim: state: 0 (I) valid: 0 writable: 0 readable: 0 dirty: 0 | tag: 0xffffffffffffffff set: 0x3 way: 0
- 129000: system.cpu.icache: Block addr 0xc0 (ns) moving from state 0 to state: 7 (E) valid: 1 writable: 1 readable: 1 dirty: 0 | tag: 0 set: 0x3 way: 0
- 129000: system.cpu.icache.cpu_side-CpuSidePort: schedSendTiming for ReadResp address c0 size 64 when 130000 ord: 1
- 129000: system.cpu.icache.cpu_side-CpuSidePort.wrapped_function_event: EventFunctionWrapped event scheduled @ 130000
- 129000: system.cpu.icache: recvTimingResp: Leaving with ReadResp [c0:ff] IF
- 130000: system.cpu.fetch1: recvTimingResp 1
- 130000: system.cpu.fetch1: MinorLine: id=0/1.1/2 size=64 vaddr=0x100c0 paddr=0xc0
- 130000: system.cpu: Event wakeup from stage 1
- 130000: system.cpu.activity: Activity: 1
- 130000: global.wrapped_function_event: EventFunctionWrapped event scheduled @ 130500
- 130500: system.cpu.execute.lsq.storeBuffer: StoreBuffer step numUnissuedAccesses: 0
- 130500: system.cpu.execute: No interrupt controller
- 130500: system.cpu.execute: [tid:0] thread_interrupted?=0 isInbetweenInsts?=1
- 130500: system.cpu.execute: Need to tick num issued insts: (becoming stalled)
- 130500: system.cpu.execute: The next cycle might be skippable as there are no advanceable FUs
- 130500: system.cpu.fetch2: Scheduled Thread: -1
- 130500: system.cpu.fetch1: Discarding translated fetch as it's for an old stream
- 130500: system.cpu: Event wakeup from stage 1
- 130500: system.cpu.activity: Stage 1 already active.
- 130500: system.cpu.fetch1: MinorTrace: state=FetchRunning icacheState=IcacheRunning in_tlb_mem=0/0 streamSeqNum=2 lines=-
- 130500: system.cpu.fetch1.requests: MinorTrace: lines=
- 130500: system.cpu.fetch1.transfers: MinorTrace: lines=
- 130500: system.cpu.f1ToF2: MinorTrace: lines=-,-
- 130500: system.cpu.f2ToF1: MinorTrace: prediction=-,-
- 130500: system.cpu.fetch2: MinorTrace: inputIndex=0 havePC=0 predictionSeqNum=1 insts=-
- 130500: system.cpu.fetch2.inputBuffer0: MinorTrace: lines=,
- 130500: system.cpu.f2ToD: MinorTrace: insts=-,-
- 130500: system.cpu.decode: MinorTrace: insts=-
- 130500: system.cpu.decode.inputBuffer0: MinorTrace: insts=,,
- 130500: system.cpu.dToE: MinorTrace: insts=-,-
- 130500: system.cpu.execute.lsq: MinorTrace: state=MemoryRunning in_tlb_mem=0/0 stores_in_transfers=0 lastMemBarrier=0
- 130500: system.cpu.execute.lsq.requests: MinorTrace: addr=
- 130500: system.cpu.execute.lsq.transfers: MinorTrace: addr=,
- 130500: system.cpu.execute.lsq.storeBuffer: MinorTrace: addr=-,-,-,-,- num_unissued_stores=0
- 130500: system.cpu.execute.inputBuffer0: MinorTrace: insts=,,,,,,
- 130500: system.cpu.execute.scoreboard0: MinorTrace: busy=
- 130500: system.cpu.execute: MinorTrace: insts=(0/1.1/1/3.3,0/1.1/1/2.2) inputIndex=0 streamSeqNum=2 stalled=E,E,E,E,E,E,E,E drainState=NotDraining isInbetweenInsts=1
- 130500: system.cpu.execute.fu.0: MinorTrace: insts=-,-,-
- 130500: system.cpu.execute.fu.1: MinorTrace: insts=-,-,-
- 130500: system.cpu.execute.fu.2: MinorTrace: insts=-,-,-
- 130500: system.cpu.execute.fu.3: MinorTrace: insts=-,-,-,-,-,-,-,-,-
- 130500: system.cpu.execute.fu.4: MinorTrace: insts=-,-,-,-,-,-
- 130500: system.cpu.execute.fu.5: MinorTrace: insts=-,-,-
- 130500: system.cpu.execute.fu.6: MinorTrace: insts=-
- 130500: system.cpu.execute.fu.7: MinorTrace: insts=-
- 130500: system.cpu.execute.inFlightInsts0: MinorTrace: insts=,,,,,,,,,,,,,,,,,,,,,,,,,,,,
- 130500: system.cpu.execute.inFUMemInsts0: MinorTrace: insts=,,,,,,,,,,,,,,,,,,,,,,,,,,,,
- 130500: system.cpu.eToF1: MinorTrace: branch=-,-
- 130500: system.cpu.activity: MinorTrace: activity=1 stages=E,1,E,E,E
- 130500: system.cpu.activity: Stage 0 already inactive.
- 130500: system.cpu.activity: Activity: 0
- 130500: system.cpu.activity: Stage 2 already inactive.
- 130500: system.cpu.activity: Stage 3 already inactive.
- 130500: system.cpu.activity: Stage 4 already inactive.
- 130500: global.wrapped_function_event: EventFunctionWrapped event scheduled @ 131000
- 131000: system.cpu.execute.lsq.storeBuffer: StoreBuffer step numUnissuedAccesses: 0
- 131000: system.cpu.execute: No interrupt controller
- 131000: system.cpu.execute: [tid:0] thread_interrupted?=0 isInbetweenInsts?=1
- 131000: system.cpu.execute: Need to tick num issued insts: (becoming stalled)
- 131000: system.cpu.execute: The next cycle might be skippable as there are no advanceable FUs
- 131000: system.cpu.fetch2: Scheduled Thread: -1
- 131000: system.cpu.fetch1: Fetching from thread 0
- 131000: system.cpu.fetch1: Inserting fetch into the fetch queue 0/2.1/3 addr: 0x20080 pc: (0x200a4=>0x200a8).(0=>1) line_offset: 0 request_size: 64
- 131000: system.cpu.fetch1: Submitting ITLB request
- 131000: system.cpu.workload: Couldn't Translate: 0x20080
- 131000: system.cpu.itb: Translation returning delay=0 fault=1
- 131000: system.cpu.fetch1: Fault in address ITLB translation: Generic page table fault, paddr: 0x0, vaddr: 0x20080
- 131000: system.cpu.fetch1: MinorLine: id=F;0/2.1/3 vaddr=0x20080 fault="Generic page table fault"
- 131000: system.cpu: Event wakeup from stage 1
- 131000: system.cpu.activity: Activity: 1
- 131000: system.cpu: Event wakeup from stage 1
- 131000: system.cpu.activity: Stage 1 already active.
- 131000: system.cpu.fetch1: Processing fetched line: 0/2.1/3
- 131000: system.cpu.fetch1: Stopping line fetch because of fault: Generic page table fault
- 131000: system.cpu.activity: Activity: 2
- 131000: system.cpu.fetch1: MinorTrace: state=FetchWaitingForPC icacheState=IcacheRunning in_tlb_mem=0/0 streamSeqNum=2 lines=F;0/2.1/3
- 131000: system.cpu.fetch1.requests: MinorTrace: lines=
- 131000: system.cpu.fetch1.transfers: MinorTrace: lines=
- 131000: system.cpu.f1ToF2: MinorTrace: lines=F;0/2.1/3,-
- 131000: system.cpu.f2ToF1: MinorTrace: prediction=-,-
- 131000: system.cpu.fetch2: MinorTrace: inputIndex=0 havePC=0 predictionSeqNum=1 insts=-
- 131000: system.cpu.fetch2.inputBuffer0: MinorTrace: lines=R,
- 131000: system.cpu.f2ToD: MinorTrace: insts=-,-
- 131000: system.cpu.decode: MinorTrace: insts=-
- 131000: system.cpu.decode.inputBuffer0: MinorTrace: insts=,,
- 131000: system.cpu.dToE: MinorTrace: insts=-,-
- 131000: system.cpu.execute.lsq: MinorTrace: state=MemoryRunning in_tlb_mem=0/0 stores_in_transfers=0 lastMemBarrier=0
- 131000: system.cpu.execute.lsq.requests: MinorTrace: addr=
- 131000: system.cpu.execute.lsq.transfers: MinorTrace: addr=,
- 131000: system.cpu.execute.lsq.storeBuffer: MinorTrace: addr=-,-,-,-,- num_unissued_stores=0
- 131000: system.cpu.execute.inputBuffer0: MinorTrace: insts=,,,,,,
- 131000: system.cpu.execute.scoreboard0: MinorTrace: busy=
- 131000: system.cpu.execute: MinorTrace: insts=(0/1.1/1/3.3,0/1.1/1/2.2) inputIndex=0 streamSeqNum=2 stalled=E,E,E,E,E,E,E,E drainState=NotDraining isInbetweenInsts=1
- 131000: system.cpu.execute.fu.0: MinorTrace: insts=-,-,-
- 131000: system.cpu.execute.fu.1: MinorTrace: insts=-,-,-
- 131000: system.cpu.execute.fu.2: MinorTrace: insts=-,-,-
- 131000: system.cpu.execute.fu.3: MinorTrace: insts=-,-,-,-,-,-,-,-,-
- 131000: system.cpu.execute.fu.4: MinorTrace: insts=-,-,-,-,-,-
- 131000: system.cpu.execute.fu.5: MinorTrace: insts=-,-,-
- 131000: system.cpu.execute.fu.6: MinorTrace: insts=-
- 131000: system.cpu.execute.fu.7: MinorTrace: insts=-
- 131000: system.cpu.execute.inFlightInsts0: MinorTrace: insts=,,,,,,,,,,,,,,,,,,,,,,,,,,,,
- 131000: system.cpu.execute.inFUMemInsts0: MinorTrace: insts=,,,,,,,,,,,,,,,,,,,,,,,,,,,,
- 131000: system.cpu.eToF1: MinorTrace: branch=-,-
- 131000: system.cpu.activity: MinorTrace: activity=2 stages=E,1,E,E,E
- 131000: system.cpu.activity: Stage 0 already inactive.
- 131000: system.cpu.activity: Activity: 1
- 131000: system.cpu.activity: Stage 2 already inactive.
- 131000: system.cpu.activity: Stage 3 already inactive.
- 131000: system.cpu.activity: Stage 4 already inactive.
- 131000: global.wrapped_function_event: EventFunctionWrapped event scheduled @ 131500
- 131500: system.cpu.execute.lsq.storeBuffer: StoreBuffer step numUnissuedAccesses: 0
- 131500: system.cpu.execute: No interrupt controller
- 131500: system.cpu.execute: [tid:0] thread_interrupted?=0 isInbetweenInsts?=1
- 131500: system.cpu.execute: Need to tick num issued insts: (becoming stalled)
- 131500: system.cpu.execute: The next cycle might be skippable as there are no advanceable FUs
- 131500: system.cpu.fetch2: Scheduled Thread: 0
- 131500: system.cpu.fetch2: Setting new PC value: (0x200a4=>0x200a8).(0=>1) inputIndex: 0x24 lineBaseAddr: 0x20080 lineWidth: 0x0
- 131500: system.cpu.fetch2: Fault being passed output_index: 0: Generic page table fault
- 131500: system.cpu.fetch2: Discarding all input on branch/fault
- 131500: system.cpu.fetch2: Dumping whole input buffer
- 131500: system.cpu.fetch2: Wrapping
- 131500: system.cpu.activity: Activity: 2
- 131500: system.cpu.fetch1: No active threads available to fetch from
- 131500: system.cpu.fetch1: MinorTrace: state=FetchWaitingForPC icacheState=IcacheRunning in_tlb_mem=0/0 streamSeqNum=2 lines=-
- 131500: system.cpu.fetch1.requests: MinorTrace: lines=
- 131500: system.cpu.fetch1.transfers: MinorTrace: lines=
- 131500: system.cpu.f1ToF2: MinorTrace: lines=-,F;0/2.1/3
- 131500: system.cpu.f2ToF1: MinorTrace: prediction=-,-
- 131500: system.cpu.fetch2: MinorTrace: inputIndex=0 havePC=0 predictionSeqNum=1 insts=(F;0/2.1/3/11,-)
- 131500: system.cpu.fetch2.inputBuffer0: MinorTrace: lines=,
- 131500: system.cpu.f2ToD: MinorTrace: insts=(F;0/2.1/3/11,-),-
- 131500: system.cpu.decode: MinorTrace: insts=-
- 131500: system.cpu.decode.inputBuffer0: MinorTrace: insts=R,,
- 131500: system.cpu.dToE: MinorTrace: insts=-,-
- 131500: system.cpu.execute.lsq: MinorTrace: state=MemoryRunning in_tlb_mem=0/0 stores_in_transfers=0 lastMemBarrier=0
- 131500: system.cpu.execute.lsq.requests: MinorTrace: addr=
- 131500: system.cpu.execute.lsq.transfers: MinorTrace: addr=,
- 131500: system.cpu.execute.lsq.storeBuffer: MinorTrace: addr=-,-,-,-,- num_unissued_stores=0
- 131500: system.cpu.execute.inputBuffer0: MinorTrace: insts=,,,,,,
- 131500: system.cpu.execute.scoreboard0: MinorTrace: busy=
- 131500: system.cpu.execute: MinorTrace: insts=(0/1.1/1/3.3,0/1.1/1/2.2) inputIndex=0 streamSeqNum=2 stalled=E,E,E,E,E,E,E,E drainState=NotDraining isInbetweenInsts=1
- 131500: system.cpu.execute.fu.0: MinorTrace: insts=-,-,-
- 131500: system.cpu.execute.fu.1: MinorTrace: insts=-,-,-
- 131500: system.cpu.execute.fu.2: MinorTrace: insts=-,-,-
- 131500: system.cpu.execute.fu.3: MinorTrace: insts=-,-,-,-,-,-,-,-,-
- 131500: system.cpu.execute.fu.4: MinorTrace: insts=-,-,-,-,-,-
- 131500: system.cpu.execute.fu.5: MinorTrace: insts=-,-,-
- 131500: system.cpu.execute.fu.6: MinorTrace: insts=-
- 131500: system.cpu.execute.fu.7: MinorTrace: insts=-
- 131500: system.cpu.execute.inFlightInsts0: MinorTrace: insts=,,,,,,,,,,,,,,,,,,,,,,,,,,,,
- 131500: system.cpu.execute.inFUMemInsts0: MinorTrace: insts=,,,,,,,,,,,,,,,,,,,,,,,,,,,,
- 131500: system.cpu.eToF1: MinorTrace: branch=-,-
- 131500: system.cpu.activity: MinorTrace: activity=2 stages=E,E,E,E,E
- 131500: system.cpu.activity: Activity: 1
- 131500: system.cpu.activity: Stage 0 already inactive.
- 131500: system.cpu.activity: Stage 1 already inactive.
- 131500: system.cpu.activity: Stage 2 already inactive.
- 131500: system.cpu.activity: Stage 3 already inactive.
- 131500: system.cpu.activity: Stage 4 already inactive.
- 131500: global.wrapped_function_event: EventFunctionWrapped event scheduled @ 132000
- 132000: system.cpu.execute.lsq.storeBuffer: StoreBuffer step numUnissuedAccesses: 0
- 132000: system.cpu.execute: No interrupt controller
- 132000: system.cpu.execute: [tid:0] thread_interrupted?=0 isInbetweenInsts?=1
- 132000: system.cpu.execute: Need to tick num issued insts: (becoming stalled)
- 132000: system.cpu.execute: The next cycle might be skippable as there are no advanceable FUs
- 132000: system.cpu.decode: Fault being passed: Generic page table fault
- 132000: system.cpu.decode: Wrapping
- 132000: system.cpu.activity: Activity: 2
- 132000: system.cpu.fetch2: Scheduled Thread: -1
- 132000: system.cpu.fetch1: No active threads available to fetch from
- 132000: system.cpu.fetch1: MinorTrace: state=FetchWaitingForPC icacheState=IcacheRunning in_tlb_mem=0/0 streamSeqNum=2 lines=-
- 132000: system.cpu.fetch1.requests: MinorTrace: lines=
- 132000: system.cpu.fetch1.transfers: MinorTrace: lines=
- 132000: system.cpu.f1ToF2: MinorTrace: lines=-,-
- 132000: system.cpu.f2ToF1: MinorTrace: prediction=-,-
- 132000: system.cpu.fetch2: MinorTrace: inputIndex=0 havePC=0 predictionSeqNum=1 insts=-
- 132000: system.cpu.fetch2.inputBuffer0: MinorTrace: lines=,
- 132000: system.cpu.f2ToD: MinorTrace: insts=-,(F;0/2.1/3/11.11,-)
- 132000: system.cpu.decode: MinorTrace: insts=(F;0/2.1/3/11.11,-)
- 132000: system.cpu.decode.inputBuffer0: MinorTrace: insts=,,
- 132000: system.cpu.dToE: MinorTrace: insts=(F;0/2.1/3/11.11,-),-
- 132000: system.cpu.execute.lsq: MinorTrace: state=MemoryRunning in_tlb_mem=0/0 stores_in_transfers=0 lastMemBarrier=0
- 132000: system.cpu.execute.lsq.requests: MinorTrace: addr=
- 132000: system.cpu.execute.lsq.transfers: MinorTrace: addr=,
- 132000: system.cpu.execute.lsq.storeBuffer: MinorTrace: addr=-,-,-,-,- num_unissued_stores=0
- 132000: system.cpu.execute.inputBuffer0: MinorTrace: insts=R,,,,,,
- 132000: system.cpu.execute.scoreboard0: MinorTrace: busy=
- 132000: system.cpu.execute: MinorTrace: insts=(0/1.1/1/3.3,0/1.1/1/2.2) inputIndex=0 streamSeqNum=2 stalled=E,E,E,E,E,E,E,E drainState=NotDraining isInbetweenInsts=1
- 132000: system.cpu.execute.fu.0: MinorTrace: insts=-,-,-
- 132000: system.cpu.execute.fu.1: MinorTrace: insts=-,-,-
- 132000: system.cpu.execute.fu.2: MinorTrace: insts=-,-,-
- 132000: system.cpu.execute.fu.3: MinorTrace: insts=-,-,-,-,-,-,-,-,-
- 132000: system.cpu.execute.fu.4: MinorTrace: insts=-,-,-,-,-,-
- 132000: system.cpu.execute.fu.5: MinorTrace: insts=-,-,-
- 132000: system.cpu.execute.fu.6: MinorTrace: insts=-
- 132000: system.cpu.execute.fu.7: MinorTrace: insts=-
- 132000: system.cpu.execute.inFlightInsts0: MinorTrace: insts=,,,,,,,,,,,,,,,,,,,,,,,,,,,,
- 132000: system.cpu.execute.inFUMemInsts0: MinorTrace: insts=,,,,,,,,,,,,,,,,,,,,,,,,,,,,
- 132000: system.cpu.eToF1: MinorTrace: branch=-,-
- 132000: system.cpu.activity: MinorTrace: activity=2 stages=E,E,E,E,E
- 132000: system.cpu.activity: Activity: 1
- 132000: system.cpu.activity: Stage 0 already inactive.
- 132000: system.cpu.activity: Stage 1 already inactive.
- 132000: system.cpu.activity: Stage 2 already inactive.
- 132000: system.cpu.activity: Stage 3 already inactive.
- 132000: system.cpu.activity: Stage 4 already inactive.
- 132000: global.wrapped_function_event: EventFunctionWrapped event scheduled @ 132500
- 132500: system.cpu.execute.lsq.storeBuffer: StoreBuffer step numUnissuedAccesses: 0
- 132500: system.cpu.execute: No interrupt controller
- 132500: system.cpu.execute: [tid:0] thread_interrupted?=0 isInbetweenInsts?=1
- 132500: system.cpu.execute: Attempting to issue [tid:0]
- 132500: system.cpu.execute: Trying to issue inst: 0/2.1/3/11.11 pc: 0x200a4 (fault: "Generic page table fault") to FU: 0
- 132500: system.cpu.execute: Issuing inst: 0/2.1/3/11.11 pc: 0x200a4 (fault: "Generic page table fault") into FU 0
- 132500: system.cpu.activity: Activity: 2
- 132500: system.cpu.execute: MinorInst: id=F;0/2.1/3/11.11 addr=0x200a4 fault="Generic page table fault"
- 132500: system.cpu.execute: Stepping to next inst inputIndex: 1
- 132500: system.cpu.execute: Stepping to next inst inputIndex: 2
- 132500: system.cpu.execute: Wrapping
- 132500: system.cpu.execute.lsq: No matching memory response for inst: 0/2.1/3/11.11 pc: 0x200a4 (fault: "Generic page table fault")
- 132500: system.cpu.execute: Need to tick num issued insts:  (issued some insts)(not becoming stalled)
- 132500: system.cpu: Event wakeup from stage 4
- 132500: system.cpu.activity: Activity: 3
- 132500: system.cpu.fetch2: Scheduled Thread: -1
- 132500: system.cpu.fetch1: No active threads available to fetch from
- 132500: system.cpu.fetch1: MinorTrace: state=FetchWaitingForPC icacheState=IcacheRunning in_tlb_mem=0/0 streamSeqNum=2 lines=-
- 132500: system.cpu.fetch1.requests: MinorTrace: lines=
- 132500: system.cpu.fetch1.transfers: MinorTrace: lines=
- 132500: system.cpu.f1ToF2: MinorTrace: lines=-,-
- 132500: system.cpu.f2ToF1: MinorTrace: prediction=-,-
- 132500: system.cpu.fetch2: MinorTrace: inputIndex=0 havePC=0 predictionSeqNum=1 insts=-
- 132500: system.cpu.fetch2.inputBuffer0: MinorTrace: lines=,
- 132500: system.cpu.f2ToD: MinorTrace: insts=-,-
- 132500: system.cpu.decode: MinorTrace: insts=-
- 132500: system.cpu.decode.inputBuffer0: MinorTrace: insts=,,
- 132500: system.cpu.dToE: MinorTrace: insts=-,(F;0/2.1/3/11.11,-)
- 132500: system.cpu.execute.lsq: MinorTrace: state=MemoryRunning in_tlb_mem=0/0 stores_in_transfers=0 lastMemBarrier=0
- 132500: system.cpu.execute.lsq.requests: MinorTrace: addr=
- 132500: system.cpu.execute.lsq.transfers: MinorTrace: addr=,
- 132500: system.cpu.execute.lsq.storeBuffer: MinorTrace: addr=-,-,-,-,- num_unissued_stores=0
- 132500: system.cpu.execute.inputBuffer0: MinorTrace: insts=,,,,,,
- 132500: system.cpu.execute.scoreboard0: MinorTrace: busy=
- 132500: system.cpu.execute: MinorTrace: insts=(0/1.1/1/3.3,0/1.1/1/2.2) inputIndex=0 streamSeqNum=2 stalled=E,E,E,E,E,E,E,E drainState=NotDraining isInbetweenInsts=1
- 132500: system.cpu.execute.fu.0: MinorTrace: insts=F;0/2.1/3/11.11,-,-
- 132500: system.cpu.execute.fu.1: MinorTrace: insts=-,-,-
- 132500: system.cpu.execute.fu.2: MinorTrace: insts=-,-,-
- 132500: system.cpu.execute.fu.3: MinorTrace: insts=-,-,-,-,-,-,-,-,-
- 132500: system.cpu.execute.fu.4: MinorTrace: insts=-,-,-,-,-,-
- 132500: system.cpu.execute.fu.5: MinorTrace: insts=-,-,-
- 132500: system.cpu.execute.fu.6: MinorTrace: insts=-
- 132500: system.cpu.execute.fu.7: MinorTrace: insts=-
- 132500: system.cpu.execute.inFlightInsts0: MinorTrace: insts=F;0/2.1/3/11.11,,,,,,,,,,,,,,,,,,,,,,,,,,,,
- 132500: system.cpu.execute.inFUMemInsts0: MinorTrace: insts=,,,,,,,,,,,,,,,,,,,,,,,,,,,,
- 132500: system.cpu.eToF1: MinorTrace: branch=-,-
- 132500: system.cpu.activity: MinorTrace: activity=3 stages=E,E,E,E,1
- 132500: system.cpu.activity: Activity: 2
- 132500: system.cpu.activity: Stage 0 already inactive.
- 132500: system.cpu.activity: Stage 1 already inactive.
- 132500: system.cpu.activity: Stage 2 already inactive.
- 132500: system.cpu.activity: Stage 3 already inactive.
- 132500: system.cpu.activity: Activity: 1
- 132500: global.wrapped_function_event: EventFunctionWrapped event scheduled @ 133000
- 133000: system.cpu.execute.lsq.storeBuffer: StoreBuffer step numUnissuedAccesses: 0
- 133000: system.cpu.execute: No interrupt controller
- 133000: system.cpu.execute: [tid:0] thread_interrupted?=0 isInbetweenInsts?=1
- 133000: system.cpu.execute.lsq: No matching memory response for inst: 0/2.1/3/11.11 pc: 0x200a4 (fault: "Generic page table fault")
- 133000: system.cpu.execute: Need to tick num issued insts: (not becoming stalled)
- 133000: system.cpu: Event wakeup from stage 4
- 133000: system.cpu.activity: Activity: 2
- 133000: system.cpu.fetch2: Scheduled Thread: -1
- 133000: system.cpu.fetch1: No active threads available to fetch from
- 133000: system.cpu.fetch1: MinorTrace: state=FetchWaitingForPC icacheState=IcacheRunning in_tlb_mem=0/0 streamSeqNum=2 lines=-
- 133000: system.cpu.fetch1.requests: MinorTrace: lines=
- 133000: system.cpu.fetch1.transfers: MinorTrace: lines=
- 133000: system.cpu.f1ToF2: MinorTrace: lines=-,-
- 133000: system.cpu.f2ToF1: MinorTrace: prediction=-,-
- 133000: system.cpu.fetch2: MinorTrace: inputIndex=0 havePC=0 predictionSeqNum=1 insts=-
- 133000: system.cpu.fetch2.inputBuffer0: MinorTrace: lines=,
- 133000: system.cpu.f2ToD: MinorTrace: insts=-,-
- 133000: system.cpu.decode: MinorTrace: insts=-
- 133000: system.cpu.decode.inputBuffer0: MinorTrace: insts=,,
- 133000: system.cpu.dToE: MinorTrace: insts=-,-
- 133000: system.cpu.execute.lsq: MinorTrace: state=MemoryRunning in_tlb_mem=0/0 stores_in_transfers=0 lastMemBarrier=0
- 133000: system.cpu.execute.lsq.requests: MinorTrace: addr=
- 133000: system.cpu.execute.lsq.transfers: MinorTrace: addr=,
- 133000: system.cpu.execute.lsq.storeBuffer: MinorTrace: addr=-,-,-,-,- num_unissued_stores=0
- 133000: system.cpu.execute.inputBuffer0: MinorTrace: insts=,,,,,,
- 133000: system.cpu.execute.scoreboard0: MinorTrace: busy=
- 133000: system.cpu.execute: MinorTrace: insts=(0/1.1/1/3.3,0/1.1/1/2.2) inputIndex=0 streamSeqNum=2 stalled=E,E,E,E,E,E,E,E drainState=NotDraining isInbetweenInsts=1
- 133000: system.cpu.execute.fu.0: MinorTrace: insts=-,F;0/2.1/3/11.11,-
- 133000: system.cpu.execute.fu.1: MinorTrace: insts=-,-,-
- 133000: system.cpu.execute.fu.2: MinorTrace: insts=-,-,-
- 133000: system.cpu.execute.fu.3: MinorTrace: insts=-,-,-,-,-,-,-,-,-
- 133000: system.cpu.execute.fu.4: MinorTrace: insts=-,-,-,-,-,-
- 133000: system.cpu.execute.fu.5: MinorTrace: insts=-,-,-
- 133000: system.cpu.execute.fu.6: MinorTrace: insts=-
- 133000: system.cpu.execute.fu.7: MinorTrace: insts=-
- 133000: system.cpu.execute.inFlightInsts0: MinorTrace: insts=F;0/2.1/3/11.11,,,,,,,,,,,,,,,,,,,,,,,,,,,,
- 133000: system.cpu.execute.inFUMemInsts0: MinorTrace: insts=,,,,,,,,,,,,,,,,,,,,,,,,,,,,
- 133000: system.cpu.eToF1: MinorTrace: branch=-,-
- 133000: system.cpu.activity: MinorTrace: activity=2 stages=E,E,E,E,1
- 133000: system.cpu.activity: Activity: 1
- 133000: system.cpu.activity: Stage 0 already inactive.
- 133000: system.cpu.activity: Stage 1 already inactive.
- 133000: system.cpu.activity: Stage 2 already inactive.
- 133000: system.cpu.activity: Stage 3 already inactive.
- 133000: system.cpu.activity: Activity: 0
- 133000: global.wrapped_function_event: EventFunctionWrapped event scheduled @ 133500
- 133500: system.cpu.execute.lsq.storeBuffer: StoreBuffer step numUnissuedAccesses: 0
- 133500: system.cpu.execute: No interrupt controller
- 133500: system.cpu.execute: [tid:0] thread_interrupted?=0 isInbetweenInsts?=1
- 133500: system.cpu.execute: Need to tick num issued insts: (becoming stalled)(head inst might commit)
- 133500: system.cpu: Event wakeup from stage 4
- 133500: system.cpu.activity: Activity: 1
- 133500: system.cpu.fetch2: Scheduled Thread: -1
- 133500: system.cpu.fetch1: No active threads available to fetch from
- 133500: system.cpu.fetch1: MinorTrace: state=FetchWaitingForPC icacheState=IcacheRunning in_tlb_mem=0/0 streamSeqNum=2 lines=-
- 133500: system.cpu.fetch1.requests: MinorTrace: lines=
- 133500: system.cpu.fetch1.transfers: MinorTrace: lines=
- 133500: system.cpu.f1ToF2: MinorTrace: lines=-,-
- 133500: system.cpu.f2ToF1: MinorTrace: prediction=-,-
- 133500: system.cpu.fetch2: MinorTrace: inputIndex=0 havePC=0 predictionSeqNum=1 insts=-
- 133500: system.cpu.fetch2.inputBuffer0: MinorTrace: lines=,
- 133500: system.cpu.f2ToD: MinorTrace: insts=-,-
- 133500: system.cpu.decode: MinorTrace: insts=-
- 133500: system.cpu.decode.inputBuffer0: MinorTrace: insts=,,
- 133500: system.cpu.dToE: MinorTrace: insts=-,-
- 133500: system.cpu.execute.lsq: MinorTrace: state=MemoryRunning in_tlb_mem=0/0 stores_in_transfers=0 lastMemBarrier=0
- 133500: system.cpu.execute.lsq.requests: MinorTrace: addr=
- 133500: system.cpu.execute.lsq.transfers: MinorTrace: addr=,
- 133500: system.cpu.execute.lsq.storeBuffer: MinorTrace: addr=-,-,-,-,- num_unissued_stores=0
- 133500: system.cpu.execute.inputBuffer0: MinorTrace: insts=,,,,,,
- 133500: system.cpu.execute.scoreboard0: MinorTrace: busy=
- 133500: system.cpu.execute: MinorTrace: insts=(0/1.1/1/3.3,0/1.1/1/2.2) inputIndex=0 streamSeqNum=2 stalled=1,E,E,E,E,E,E,E drainState=NotDraining isInbetweenInsts=1
- 133500: system.cpu.execute.fu.0: MinorTrace: insts=-,-,F;0/2.1/3/11.11
- 133500: system.cpu.execute.fu.1: MinorTrace: insts=-,-,-
- 133500: system.cpu.execute.fu.2: MinorTrace: insts=-,-,-
- 133500: system.cpu.execute.fu.3: MinorTrace: insts=-,-,-,-,-,-,-,-,-
- 133500: system.cpu.execute.fu.4: MinorTrace: insts=-,-,-,-,-,-
- 133500: system.cpu.execute.fu.5: MinorTrace: insts=-,-,-
- 133500: system.cpu.execute.fu.6: MinorTrace: insts=-
- 133500: system.cpu.execute.fu.7: MinorTrace: insts=-
- 133500: system.cpu.execute.inFlightInsts0: MinorTrace: insts=F;0/2.1/3/11.11,,,,,,,,,,,,,,,,,,,,,,,,,,,,
- 133500: system.cpu.execute.inFUMemInsts0: MinorTrace: insts=,,,,,,,,,,,,,,,,,,,,,,,,,,,,
- 133500: system.cpu.eToF1: MinorTrace: branch=-,-
- 133500: system.cpu.activity: MinorTrace: activity=1 stages=E,E,E,E,1
- 133500: system.cpu.activity: Stage 0 already inactive.
- 133500: system.cpu.activity: Stage 1 already inactive.
- 133500: system.cpu.activity: Stage 2 already inactive.
- 133500: system.cpu.activity: Stage 3 already inactive.
- 133500: system.cpu.activity: Activity: 0
- 133500: global.wrapped_function_event: EventFunctionWrapped event scheduled @ 134000
- 134000: system.cpu.execute.lsq.storeBuffer: StoreBuffer step numUnissuedAccesses: 0
- 134000: system.cpu.execute: No interrupt controller
- 134000: system.cpu.execute: [tid:0] thread_interrupted?=0 isInbetweenInsts?=1
- 134000: system.cpu.execute: Attempting to commit [tid:0]
- 134000: system.cpu.execute: Committing micro-ops for interrupt[tid:0]
- 134000: system.cpu.execute: Trying to commit canCommitInsts: 1
- 134000: system.cpu.execute: Trying to commit from FUs
- 134000: global: ExecContext setting PC: (0x200a4=>0x200a8).(0=>1)
- 134000: system.cpu.[tid:0]: Setting int reg 34 (34) to 0.
- 134000: system.cpu.execute: Fault inst reached Execute: Generic page table fault
+  82500: system.mem_ctrls_0: Computing stats due to a dump callback
+  82500: system.mem_ctrls_1: Computing stats due to a dump callback

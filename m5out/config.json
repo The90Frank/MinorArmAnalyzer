@@ -185,7 +185,7 @@
         "load_addr_mask": 18446744073709551615, 
         "cpu": [
             {
-                "max_insts_any_thread": 100, 
+                "max_insts_any_thread": 1000, 
                 "do_statistics_insts": true, 
                 "numThreads": 1, 
                 "fetch1LineSnapWidth": 0, 
@@ -1233,7 +1233,7 @@
                         "pid": 100, 
                         "kvmInSE": false, 
                         "cxx_class": "Process", 
-                        "executable": "Programmi/littletest.o", 
+                        "executable": "/hdd/Documenti/Tirocinio/Tirocinio/Programmi/littletest.s.o", 
                         "drivers": [], 
                         "system": "system", 
                         "gid": 100, 
@@ -1250,7 +1250,7 @@
                         "path": "system.cpu.workload", 
                         "name": "workload", 
                         "cmd": [
-                            "Programmi/littletest.o"
+                            "/hdd/Documenti/Tirocinio/Tirocinio/Programmi/littletest.s.o"
                         ], 
                         "errout": "cerr", 
                         "useArchPT": false, 
