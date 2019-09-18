@@ -33,7 +33,7 @@ def main():
         subprocess.run(["sudo", "apt-get", "install", "mercurial", "scons", "swig", "gcc", "m4", "python", "python-dev", "libgoogle-perftools-dev", "g++", "python3", "python3-pip", "libc6-armel-cross", "libc6-dev-armel-cross", "binutils-arm-linux-gnueabi", "libncurses5-dev", "gcc-arm-linux-gnueabihf", "g++-arm-linux-gnueabihf", "git-core", "scons"])
         subprocess.run(["pip3", "install", "argparse"])
         subprocess.run(["git", "clone", "https://github.com/gem5/gem5.git"])
-        subprocess.run(["scons", "gem5/build/ARM/gem5.debug", "-j1"])
+        subprocess.run(["scons", "build/ARM/gem5.debug", "-j1"],cwd='gem5')
         subprocess.run([sys.argv[0], "-f", "Programmi/test.s", "-mi", "100", "-fs", "_start"])
         print("Fine Installazione")
 
@@ -67,7 +67,7 @@ def main():
         time.sleep(1)
         
         print('Inizio Simulazione')
-        subprocess.run(["../gem5/build/ARM/gem5.debug", "--debug-flags=All", "--debug-file="+traceoutfile, "--debug-start=0", "../gem5/configs/example/se.py", "--maxinst="+maxinst, "--cpu-type=MinorCPU", "--caches", "-c", pathobject], stderr=nullfile)
+        subprocess.run(["gem5/build/ARM/gem5.debug", "--debug-flags=All", "--debug-file="+traceoutfile, "--debug-start=0", "gem5/configs/example/se.py", "--maxinst="+maxinst, "--cpu-type=MinorCPU", "--caches", "-c", pathobject], stderr=nullfile)
         subprocess.run(visualarray, stdout=visualtracefile)
         print('dumped on '+visualtrace)
         print('Fine Simulazione')
