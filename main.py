@@ -27,9 +27,15 @@ def main():
     argms = parser.parse_args()
     
     if (argms.install):
-        print("Requires: python3, pip3")
-        subprocess.run(["pip", "install", "argparse"])
-        #TO DO
+        print("Inizio Installazione")
+        subprocess.run(["sudo", "apt-get", "update"])
+        subprocess.run(["sudo", "apt-get", "upgrade"])
+        subprocess.run(["sudo", "apt-get", "install", "mercurial", "scons", "swig", "gcc", "m4", "python", "python-dev", "libgoogle-perftools-dev", "g++", "python3", "python3-pip", "libc6-armel-cross", "libc6-dev-armel-cross", "binutils-arm-linux-gnueabi", "libncurses5-dev", "gcc-arm-linux-gnueabihf", "g++-arm-linux-gnueabihf", "git-core", "scons"])
+        subprocess.run(["pip3", "install", "argparse"])
+        subprocess.run(["git", "clone", "https://github.com/gem5/gem5.git"])
+        subprocess.run(["scons", "gem5/build/ARM/gem5.debug", "-j1"])
+        subprocess.run([sys.argv[0], "-f", "Programmi/test.s", "-mi", "100", "-fs", "_start"])
+        print("Fine Installazione")
 
     elif not(argms.file is None):
 
@@ -38,10 +44,10 @@ def main():
             path=path.replace('\\', '/')
         filename = ntpath.basename(argms.file)
         pathobject = path+".o"
-        traceoutfile = 'm5out/'+filename+".trace"
+        traceoutfile = filename+".trace"
         visualtrace = filename+".out"
         maxinst = str(argms.maxinst)
-        visualarray = ["./visualizer.py", "-f", traceoutfile, "-cs", str(argms.ciclestart)]
+        visualarray = ["./visualizer.py", "-f", 'm5out/'+traceoutfile, "-cs", str(argms.ciclestart)]
         if argms.functionstart != '':
             visualarray.insert(3, argms.functionstart)
             visualarray.insert(3, "-fs")
