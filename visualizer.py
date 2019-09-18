@@ -21,8 +21,10 @@ def main():
    parser.add_argument("-fs", "--functionstart", help="funzione da cui iniziare", type=str, default="", required=False)
    parser.add_argument("-cs", "--ciclestart", help="ciclo da cui iniziare", type=int, default=0, required=False)
    parser.add_argument("-ce", "--cicleend", help="ciclo con cui terminare", type=int, default=None, required=False)
-   parser.add_argument("-i", "--int", help="valore dei registri intero", action='store_true', required=False)
+   parser.add_argument("-i", "--int", help="valore dei registri intero", action='store_true', default=False, required=False)
    argms = parser.parse_args()
+
+   print(str(type(argms.int)) + " " + str(argms.int))
 
    if not (os.path.isfile(argms.file)):
       parser.print_help()
@@ -119,6 +121,20 @@ def main():
          return cc
       return cc
 
+   def codeToPc(s):
+      cc = '??'
+      if s.count('.') == 1:
+         try: cc = code_pc[s]
+         except: cc = '??'
+      elif s.count('.') == 2:
+         ss = s[:s.rfind('.')]
+         try: cc = code_pc[ss]
+         except: cc = '??'
+      else: 
+         try: cc = code_pc[s]
+         except: cc = '??'
+      return cc
+
    def appendtupinlist(tup,lista):
       for t in tup:
          lista.append(t)
@@ -185,16 +201,13 @@ def main():
 
       if (line.find("system.cpu.icache: access for ReadReq") != -1):
          mess = line[line.find('ReadReq')+7:]
-
          stagedump[time]['icache'].append(mess)
 
       if (line.find("system.cpu.icache: Block") != -1):
          mess = line[line.find('Block')+5:]
-
          stagedump[time]['icache'].append(mess)
 
       if (line.find("system.cpu.fetch1.transfers: MinorTrace:") != -1):
-         #tup = ( line[line.find("lines=")+6:] ).split(',')
          tup = codetupler(line[line.find("lines=")+6:])
          appendtupinlist(tup,stagedump[time]['fetch1.transfers'])
 
@@ -203,57 +216,50 @@ def main():
          fsize = line[line.rfind("size=")+5:line.rfind("vaddr")].replace(" ","")
          fvaddr = line[line.rfind("vaddr=")+6:line.rfind("paddr")].replace(" ","")
          fpaddr = line[line.rfind("paddr=")+6:].replace(" ","")
-
          code_inst[code]=(fsize,fvaddr,fpaddr)
 
       if (line.find("system.cpu.fetch1: Processing fetched line:") != -1):
          code = line[line.rfind(":")+1:].replace(" ","")
-
          stagedump[time]['fetch1'].append(code)
 
       if (line.find("system.cpu.f1ToF2: MinorTrace:") != -1):
-         #tup = ( line[line.find("lines=")+6:] ).split(',')
          tup = codetupler(line[line.find("lines=")+6:])
          appendtupinlist(tup,stagedump[time]['f1ToF2'])
 
       if (line.find("system.cpu.f2ToF1: MinorTrace:") != -1):
-         #tup = ( line[line.find("prediction=")+11:] ).split(',')
          tup = codetupler(line[line.find("prediction=")+11:])
          appendtupinlist(tup,stagedump[time]['f2ToF1'])
+
+      if (line.find("system.cpu.fetch2: MinorTrace:") != -1):
+         tup = line[line.find("insts=")+6:].replace('(', '').replace(')', '').split(',')
+         appendtupinlist(tup,stagedump[time]['fetch2'])
 
       if (line.find("system.cpu.fetch2: decoder inst") != -1):
          code = line[line.find("inst")+4:line.find("pc")].replace(" ","")
          pc = line[line.find("pc:")+3:line.rfind("(")].replace(" ","")
          inst=line[line.find("(")+1:line.find(")")].strip()
          code_inst[code]=inst
+         if argms.int: pc=str( int(pc,16) )
          code_pc[code] = pc
 
-         stagedump[time]['fetch2'].append(code)
-
       if (line.find("system.cpu.f2ToD: MinorTrace:") != -1):
-         #tup = ( line[line.find("insts=")+6:] ).split('),(') 
          tup = codetupler(line[line.find("insts=")+6:])
          appendtupinlist(tup,stagedump[time]['f2ToD'])
 
       if (line.find("system.cpu.decode: Passing on inst:") != -1):
          code = line[line.find("inst:")+5:line.find("pc")].replace(" ","")
-         pc = line[line.find("pc:")+3:line.rfind("(")].replace(" ","")
-
          stagedump[time]['decode'].append(code)
 
       if (line.find("system.cpu.dToE: MinorTrace: insts") != -1):
-         #tup = ( line[line.find("insts=")+6:].replace("(","").replace(")","") ).split(',') 
          tup = codetupler(line[line.find("insts=")+6:])
          appendtupinlist(tup,stagedump[time]['dToE'])
 
       if (line.find("system.cpu.execute.inputBuffer0: MinorTrace: insts=") != -1):
          tup = ( line[line.find("insts=")+6:].replace("(","").replace(")","") ).split(',')
-         
          appendtupinlist(tup,stagedump[time]['execute.inputBuffer0'])
 
       if (line.find('system.cpu.execute.lsq.transfers: MinorTrace:') != -1):
          tup = ( line[line.find("addr=")+5:] ).split(',')
-         
          for t in tup:
             tt = t.split(';')
             try: stagedump[time]['execute.lsq.transfers'].append(tt[1])
@@ -261,7 +267,6 @@ def main():
 
       if (line.find("system.cpu.execute.lsq.storeBuffer: MinorTrace:") != -1):
          tup = ( line[line.find("addr=")+5:line.find("num_")-1] ).split(',')
-         
          for t in tup:
             tt = t.split(';')
             try: stagedump[time]['execute.lsq.storeBuffer'].append(tt[1])
@@ -269,16 +274,22 @@ def main():
 
       if (line.find("system.cpu.execute: MinorInst:") != -1):
          code=line[line.find("id=")+3:line.find("addr=")].replace(" ","")
-         pc=line[line.find("addr=")+5:line.find("inst=")].replace(" ","")
-         inst=line[line.find("inst=")+5:line.find("class=")].replace('"',"").strip()
          codecut = code[:code.rfind('.')]
+         inst=line
+         if (line.find("inst=") != -1):
+            inst=line[line.find("inst=")+5:line.find("class=")].replace('"',"").strip()
+         elif (line.find("fault=") != -1):
+            inst=line[line.find("fault=")+6:].replace('"', '')
+            ##################################################
+            pc=line[line.find("addr=")+5:line.find("fault=")]
+            if argms.int: pc=str( int(pc,16) )
+            code_pc[codecut]=pc
+            ##################################################
          code_inst[codecut]=inst
-
          stagedump[time]['execute'].append(code)
       
       if (line.find("system.cpu.execute: Didn't issue inst:") != -1):
          code = line[line.find('inst:')+6:line.find(' pc')]
-
          stagedump[time]['stall'].append(code)
 
       if (line.find("system.cpu.execute.fu.") != -1):
@@ -287,39 +298,32 @@ def main():
          except: continue
          for j in range(0,len(tup)):
             code = tup[j]
-
             stagedump[time]['execute.fu.'+str(core)].insert(0,code)
 
       if (line.find("system.cpu.eToF1: MinorTrace:") != -1):
-         #tup = ( line[line.find("branch=")+7:] ).split(',')
          tup = codetupler(line[line.find("branch=")+7:])
          appendtupinlist(tup,stagedump[time]['eToF1'])
 
       if (line.find("system.cpu.execute: Completed inst:") != -1):
          code = line[line.find("inst:")+5:line.find("pc")].replace(" ","")
          pc = line[line.find("pc:")+3:line.rfind("(")].replace(" ","")
-
          stagedump[time]['completed'].append(code)
 
       if (line.find("system.cpu.execute.inFlightInsts0: MinorTrace:") != -1):
          tup = ( line[line.find("insts=")+6:] ).split(',')
-         
          for t in tup:
             stagedump[time]['execute.inFlightInsts0'].append(t)
 
       if (line.find("system.cpu.dcache: access for ReadReq") != -1):
          mess = line[line.find('ReadReq')+7:]
-
          stagedump[time]['dcache'].append(mess)
 
       if (line.find("system.cpu.dcache: Block") != -1):
          mess = line[line.find('Block')+5:]
-
          stagedump[time]['dcache'].append(mess)
 
       if (line.find("system.cpu.execute.inFUMemInsts0: MinorTrace:") != -1):
          tup = ( line[line.find("insts=")+6:] ).split(',')
-         
          appendtupinlist(tup,stagedump[time]['execute.inFUMemInsts0'])
 
       if (line.find(": Setting int reg ") != -1):
@@ -366,7 +370,7 @@ def main():
          if i in stagedump.keys():
             try:
                if codeselected in stagedump[i]['fetch2']:
-                  argms.ciclestart = i - 2
+                  argms.ciclestart = i
             except:
                pass
 
@@ -406,7 +410,7 @@ def main():
                   else:
                      for r in reversed(stagedump[i][k]):
                         if len(codeToInst(r)) > 0:
-                           array.append( codeToInst(r) )
+                           array.append( (codeToPc(r) , codeToInst(r)) )
                      
                   condprint(lable + str(array))
          except Exception as e: 
