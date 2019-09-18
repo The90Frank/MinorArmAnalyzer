@@ -21,10 +21,8 @@ def main():
    parser.add_argument("-fs", "--functionstart", help="funzione da cui iniziare", type=str, default="", required=False)
    parser.add_argument("-cs", "--ciclestart", help="ciclo da cui iniziare", type=int, default=0, required=False)
    parser.add_argument("-ce", "--cicleend", help="ciclo con cui terminare", type=int, default=None, required=False)
-   parser.add_argument("-i", "--int", help="valore dei registri intero", action='store_true', default=False, required=False)
+   parser.add_argument("-i", "--int", help="valore dei registri e del program counter intero", action='store_true', default=False, required=False)
    argms = parser.parse_args()
-
-   print(str(type(argms.int)) + " " + str(argms.int))
 
    if not (os.path.isfile(argms.file)):
       parser.print_help()
