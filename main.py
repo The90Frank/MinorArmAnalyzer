@@ -44,10 +44,11 @@ def main():
         path=path.replace('\\', '/')
         filename = ntpath.basename(argms.file)
         pathobject = path+".o"
+        pathobjdis = path+".ds"
         traceoutfile = filename+".trace"
         visualtrace = filename+".out"
         maxinst = str(argms.maxinst)
-        visualarray = ["./visualizer.py", "-f", 'm5out/'+traceoutfile, "-cs", str(argms.ciclestart)]
+        visualarray = ["./visualizer.py", "-f", 'm5out/'+traceoutfile, "-cs", str(argms.ciclestart), "-mf", pathobjdis]
         if argms.functionstart != '':
             visualarray.insert(3, argms.functionstart)
             visualarray.insert(3, "-fs")
@@ -58,12 +59,14 @@ def main():
             visualarray.insert(3, "-i")
         
         visualtracefile = open(visualtrace, "w")
+        objdisfile = open(pathobjdis, "w")
         nullfile = open("/dev/null","w")
 
         print('Inizio compilazione')
         subprocess.run(["arm-linux-gnueabihf-gcc", "-nostdlib", "--static", "-o", pathobject, path])
+        subprocess.run(["arm-linux-gnueabihf-objdump", "-D", pathobject],stdout=objdisfile)
         print('Fine compilazione')
-
+        objdisfile.close()
         time.sleep(1)
         
         print('Inizio Simulazione')

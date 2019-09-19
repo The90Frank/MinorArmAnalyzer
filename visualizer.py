@@ -8,13 +8,6 @@ import copy
 import json
 import argparse
 
-def find_nth(haystack, needle, n):
-    start = haystack.find(needle)
-    while start >= 0 and n > 1:
-        start = haystack.find(needle, start+len(needle))
-        n -= 1
-    return start
-
 def main():
    parser = argparse.ArgumentParser(description="descrizione da mettere")
    parser.add_argument("-f", "--file", help="file da parsare", type=str, required=True)
@@ -22,6 +15,7 @@ def main():
    parser.add_argument("-cs", "--ciclestart", help="ciclo da cui iniziare", type=int, default=0, required=False)
    parser.add_argument("-ce", "--cicleend", help="ciclo con cui terminare", type=int, default=None, required=False)
    parser.add_argument("-i", "--int", help="valore dei registri e del program counter intero", action='store_true', default=False, required=False)
+   parser.add_argument("-mf", "--mapfile", help="assembly disassemblato da usare come mappa hex -> arm", type=str, default=None, required=False)
    argms = parser.parse_args()
 
    if not (os.path.isfile(argms.file)):
@@ -100,6 +94,21 @@ def main():
       'completed' : []
    }
 
+   armhex_arminst = {"00000000":"andeq	r0, r0, r0"}
+   if os.path.isfile(argms.mapfile):
+      mf = open(argms.mapfile, "r")
+      mapfile = mf.read()
+      maplist = mapfile.split("\n")
+      for mapline in maplist:
+         if mapline.find(":") != -1:
+            mapline=mapline.replace("\t"," ")
+            cleanline = mapline[mapline.find(":")+1:].strip()
+            armhex = cleanline[:8]
+            memonicinst = cleanline[8:].strip()
+            if memonicinst.find(';') != -1:
+               memonicinst = memonicinst[:memonicinst.find(';')]
+            armhex_arminst[armhex]=memonicinst.strip()
+
    lasttime = -1
    stagedump={}
    functionstartcicle = None
@@ -107,19 +116,13 @@ def main():
    functionstartdelta = None
    code_inst = {"-":"-", "":"", "R":"-"}
    code_pc = {"-":"-", "":""}
+   code_arminst = {}
+   precedentarminst = ''
    code_trace = {}
 
    def codeToInst(s):
-      cc = s
-      if s.count('.') == 1:
-         try: cc = code_inst[s]
-         except: cc = s
-      elif s.count('.') == 2:
-         ss = s[:s.rfind('.')]
-         try: cc = code_inst[ss]
-         except: cc = s
-      else: 
-         return cc
+      try: cc = code_inst[s]
+      except: cc = s
       return cc
 
    def codeToPc(s):
@@ -234,6 +237,14 @@ def main():
          tup = line[line.find("insts=")+6:].replace('(', '').replace(')', '').split(',')
          appendtupinlist(tup,stagedump[time]['fetch2'])
 
+      if (line.find("global: Arm inst:") != -1):
+         armcode = line[line.find("inst: ")+6:line.rfind(".")]
+         armcode = armcode[armcode.find('0x')+2:]
+         if len(armcode) > 8:
+            armcode=armcode[-8:]
+         armcode=armcode.zfill(8)
+         precedentarminst = armhex_arminst[armcode]
+
       if (line.find("system.cpu.fetch2: decoder inst") != -1):
          code = line[line.find("inst")+4:line.find("pc")].replace(" ","")
          pc = line[line.find("pc:")+3:line.rfind("(")].replace(" ","")
@@ -243,7 +254,9 @@ def main():
                functionstartcicle = time
                functionstartdelta = dd
          inst=line[line.find("(")+1:line.find(")")].strip()
-         code_inst[code]=inst
+         #code_arminst[code]=precedentarminst
+         #code_inst[code]=inst
+         code_inst[code]=precedentarminst
          if argms.int: pc=str( int(pc,16) )
          code_pc[code] = pc
 
@@ -288,9 +301,9 @@ def main():
             ##################################################
             pc=line[line.find("addr=")+5:line.find("fault=")]
             if argms.int: pc=str( int(pc,16) )
-            code_pc[codecut]=pc
+            code_pc[code]=pc
             ##################################################
-         code_inst[codecut]=inst
+         code_inst[code]=' '.join(inst.split())
          stagedump[time]['execute'].append(code)
       
       if (line.find("system.cpu.execute: Didn't issue inst:") != -1):
