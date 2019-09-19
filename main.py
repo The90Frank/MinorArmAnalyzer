@@ -41,8 +41,7 @@ def main():
     elif not(argms.file is None):
 
         path = ntpath.realpath(argms.file)
-        if not os.name == 'nt':
-            path=path.replace('\\', '/')
+        path=path.replace('\\', '/')
         filename = ntpath.basename(argms.file)
         pathobject = path+".o"
         traceoutfile = filename+".trace"
