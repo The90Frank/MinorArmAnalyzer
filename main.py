@@ -16,7 +16,8 @@ def main():
     parser.add_argument("--install", help="installa il necessario", action='store_true', default=False, required=False)
 
     parser.add_argument("-f", "--file", help="file assembly", type=str, default=None, required=False)
-    
+    parser.add_argument("-nostdlib", help="compila senza stdlib", action='store_true', default=False, required=False)
+
     parser.add_argument("-mi", "--maxinst", help="numero massimo di istruzioni da simulare (default: 1000)", type=int, default=1000, required=False)
     
     parser.add_argument("-fs", "--functionstart", help="funzione da cui iniziare", type=str, default="", required=False)
@@ -35,7 +36,7 @@ def main():
         subprocess.run(["pip", "install", "six"])
         subprocess.run(["git", "clone", "https://github.com/gem5/gem5.git"])
         subprocess.run(["scons", "build/ARM/gem5.debug", "-j1"],cwd='gem5')
-        subprocess.run([sys.argv[0], "-f", "Programmi/test.s", "-mi", "100", "-fs", "_start"])
+        subprocess.run([sys.argv[0], "-f", "Programmi/test.s", "-nostdlib", "-mi", "100", "-fs", "_start"])
         print("Fine Installazione")
 
     elif not(argms.file is None):
@@ -63,7 +64,8 @@ def main():
         nullfile = open("/dev/null","w")
 
         print('Inizio compilazione')
-        subprocess.run(["arm-linux-gnueabihf-gcc", "-nostdlib", "--static", "-o", pathobject, path])
+        if argms.nostdlib : subprocess.run(["arm-linux-gnueabihf-gcc", "-nostdlib", "--static", "-o", pathobject, path])
+        else: subprocess.run(["arm-linux-gnueabihf-gcc", "--static", "-o", pathobject, path])
         subprocess.run(["arm-linux-gnueabihf-objdump", "-D", pathobject],stdout=objdisfile)
         print('Fine compilazione')
         objdisfile.close()

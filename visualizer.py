@@ -38,8 +38,10 @@ def main():
       'fetch1',
       'f1ToF2',
       'f2ToF1',
+      "fetch2.inputBuffer0",
       'fetch2',
       'f2ToD',
+      "decode.inputBuffer0",
       'decode',
       'dToE',
       'execute.inputBuffer0',
@@ -69,8 +71,10 @@ def main():
       'fetch1'  : [],
       'f1ToF2'  : [],
       'f2ToF1'  : [],
+      "fetch2.inputBuffer0" : [],
       'fetch2'  : [],
       'f2ToD'   : [],
+      "decode.inputBuffer0" : [],
       'decode'  : [],
       'dToE'    : [],
       'execute.inputBuffer0' : [],
@@ -204,6 +208,13 @@ def main():
 
       if (line.find("system.cpu.icache: access for ReadReq") != -1):
          mess = line[line.find('ReadReq')+7:]
+         if (line.find("IF miss") != -1):
+            cacheindexbase = "0x"+mess[mess.find("[")+1:mess.find(":")]
+            cacheindexend = "0x"+mess[mess.find(":")+1:mess.find("]")]
+            if argms.int:
+               cacheindexbase = str(int(cacheindexbase,16))
+               cacheindexend = str(int(cacheindexend,16))
+            mess = "Cache Line Misses ["+cacheindexbase+":"+cacheindexend+"]"
          stagedump[time]['icache'].append(mess)
 
       if (line.find("system.cpu.icache: Block") != -1):
@@ -219,19 +230,30 @@ def main():
          fsize = line[line.rfind("size=")+5:line.rfind("vaddr")].replace(" ","")
          fvaddr = line[line.rfind("vaddr=")+6:line.rfind("paddr")].replace(" ","")
          fpaddr = line[line.rfind("paddr=")+6:].replace(" ","")
-         code_inst[code]=(fsize,fvaddr,fpaddr)
+         fsize = int(fsize)
+         fpaddr = int(fpaddr,16)
+         cacheindexbase = hex(fsize)
+         cacheindexend = hex(fsize+fpaddr-1)
+         if argms.int:
+            cacheindexbase = str(int(cacheindexbase,16))
+            cacheindexend = str(int(cacheindexend,16))
+         code_inst[code]="Line ["+cacheindexbase+":"+cacheindexend+"]"
 
       if (line.find("system.cpu.fetch1: Processing fetched line:") != -1):
          code = line[line.rfind(":")+1:].replace(" ","")
          stagedump[time]['fetch1'].append(code)
 
       if (line.find("system.cpu.f1ToF2: MinorTrace:") != -1):
-         tup = codetupler(line[line.find("lines=")+6:])
-         appendtupinlist(tup,stagedump[time]['f1ToF2'])
+         tup = line[line.find("lines=")+6:].replace("(", "").replace(")","").split(",")
+         appendtupinlist(reversed(tup),stagedump[time]['f1ToF2'])
 
       if (line.find("system.cpu.f2ToF1: MinorTrace:") != -1):
          tup = codetupler(line[line.find("prediction=")+11:])
          appendtupinlist(tup,stagedump[time]['f2ToF1'])
+
+      if (line.find("system.cpu.fetch2.inputBuffer0: MinorTrace:") != -1):
+         tup = ( line[line.find("lines=")+6:].replace("(","").replace(")","") ).split(',')
+         appendtupinlist(tup,stagedump[time]['fetch2.inputBuffer0'])
 
       if (line.find("system.cpu.fetch2: MinorTrace:") != -1):
          tup = line[line.find("insts=")+6:].replace('(', '').replace(')', '').split(',')
@@ -264,9 +286,13 @@ def main():
          tup = codetupler(line[line.find("insts=")+6:])
          appendtupinlist(tup,stagedump[time]['f2ToD'])
 
-      if (line.find("system.cpu.decode: Passing on inst:") != -1):
-         code = line[line.find("inst:")+5:line.find("pc")].replace(" ","")
-         stagedump[time]['decode'].append(code)
+      if (line.find("system.cpu.decode.inputBuffer0: MinorTrace:") != -1):
+         tup = ( line[line.find("insts=")+6:].replace("(","").replace(")","") ).split(',')
+         appendtupinlist(tup,stagedump[time]['decode.inputBuffer0'])
+
+      if (line.find("system.cpu.decode: MinorTrace:") != -1):
+         tup = line[line.find("insts=")+6:].replace("(","").replace(")","").split(',')
+         appendtupinlist(tup,stagedump[time]['decode'])
 
       if (line.find("system.cpu.dToE: MinorTrace: insts") != -1):
          tup = codetupler(line[line.find("insts=")+6:])
@@ -413,7 +439,7 @@ def main():
                         except Exception as e:
                            #condprint(e)
                            pass
-                  elif k == "icache" or k == "fetch1":
+                  elif k == "icache" or k == "fetch1" or k == "fetch2.inputBuffer0" or k == "f1ToF2" or k == "dcache":
                      for r in reversed(stagedump[i][k]):
                         if len(codeToInst(r)) > 0:
                            array.append( codeToInst(r) )
