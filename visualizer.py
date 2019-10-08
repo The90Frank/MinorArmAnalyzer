@@ -7,16 +7,7 @@ import sys
 import copy
 import json
 import argparse
-
-class bcolors:
-   HEADER = '\033[95m'
-   OKBLUE = '\033[94m'
-   OKGREEN = '\033[92m'
-   WARNING = '\033[93m'
-   FAIL = '\033[91m'
-   ENDC = '\033[0m'
-   BOLD = '\033[1m'
-   UNDERLINE = '\033[4m'
+from capstone import *
 
 def main():
    parser = argparse.ArgumentParser(description="descrizione da mettere")
@@ -25,7 +16,6 @@ def main():
    parser.add_argument("-cs", "--ciclestart", help="ciclo da cui iniziare", type=int, default=0, required=False)
    parser.add_argument("-ce", "--cicleend", help="ciclo con cui terminare", type=int, default=None, required=False)
    parser.add_argument("-i", "--int", help="valore dei registri e del program counter intero", action='store_true', default=False, required=False)
-   parser.add_argument("-mf", "--mapfile", help="assembly disassemblato da usare come mappa hex -> arm", type=str, default=None, required=False)
    argms = parser.parse_args()
 
    if not (os.path.isfile(argms.file)):
@@ -108,20 +98,26 @@ def main():
       'completed' : []
    }
 
-   armhex_arminst = {"00000000":"andeq r0, r0, r0"}
-   if os.path.isfile(argms.mapfile):
-      mf = open(argms.mapfile, "r")
-      mapfile = mf.read()
-      maplist = mapfile.split("\n")
-      for mapline in maplist:
-         if mapline.find(":") != -1:
-            mapline=mapline.replace("\t"," ")
-            cleanline = mapline[mapline.find(":")+1:].strip()
-            armhex = cleanline[:8]
-            memonicinst = cleanline[8:].strip()
-            if memonicinst.find(';') != -1:
-               memonicinst = memonicinst[:memonicinst.find(';')]
-            armhex_arminst[armhex]=memonicinst.strip()
+   def byteToHuman(shellcode):
+
+      mdarm = Cs(CS_ARCH_ARM, CS_MODE_ARM)
+      mdbigendian = Cs(CS_ARCH_ARM, CS_MODE_BIG_ENDIAN) 
+      converted = []
+
+      for j in range (0, len(shellcode), 8):
+         insthex = shellcode[j:j+8]
+         notdecoded = True
+         
+         for i in mdbigendian.disasm(binascii.unhexlify(insthex), 0x0):
+            notdecoded = False
+            converted.append( str(i.mnemonic) + " " + str(i.op_str) )
+
+         if notdecoded:
+            converted.append( insthex )
+      if len(converted) == 1:
+         return converted.pop()
+      else:
+         return converted
 
    lasttime = -1
    stagedump={}
@@ -320,8 +316,7 @@ def main():
             if len(armcode) > 8:
                armcode=armcode[-8:]
             armcode=armcode.zfill(8)
-            try: precedentarminst = armhex_arminst[armcode]
-            except: precedentarminst = '[!] ' + armcode + ' [!]'
+            precedentarminst = byteToHuman(armcode)
 
          if (line.find("system.cpu.fetch2: decoder inst") != -1):
             code = line[line.find("inst")+4:line.find("pc")].replace(" ","")
@@ -332,8 +327,6 @@ def main():
                   functionstartcicle = time
                   functionstartdelta = dd
             inst=line[line.find("(")+1:line.find(")")].strip()
-            #code_arminst[code]=precedentarminst
-            #code_inst[code]=inst
             code_inst[code]=precedentarminst
             if argms.int: pc=str( int(pc,16) )
             code_pc[code] = pc
@@ -414,8 +407,13 @@ def main():
             for t in tup:
                stagedump[time]['execute.inFlightInsts0'].append(t)
 
-         if (line.find("system.cpu.dcache: recvTimingResp: Handling response ReadExResp") != -1):
-            mess = line[line.find('ReadExResp')+10:]
+         if (line.find("system.cpu.dcache: recvTimingResp: Handling") != -1):
+            if line.find('ReadExResp') != -1:
+               mess = line[line.find('ReadExResp')+10:]
+            elif line.find('ReadResp') != -1:
+               mess = line[line.find('ReadResp')+8:]
+            else:
+               mess = 'non gestito _ ' + line
             cacheindexbase = "0x"+mess[mess.find("[")+1:mess.find(":")]
             cacheindexend = "0x"+mess[mess.find(":")+1:mess.find("]")]
             if argms.int:
@@ -482,7 +480,6 @@ def main():
          pass
          #print(line)
 
-
    timelist = list(stagedump.keys())
    timelist.sort()
 
@@ -529,7 +526,6 @@ def main():
                      for r in reversed(stagedump[i][k]):
                         if len(codeToInst(r)) > 0:
                            array.append( (codeToPc(r) , codeToInst(r)) )
-                           #array.append( codeToInst(r) )
                      
                   condprint(lable + str(array))
          except Exception as e: 

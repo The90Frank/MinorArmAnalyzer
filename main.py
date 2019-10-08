@@ -7,9 +7,9 @@ import sys
 import copy
 import json
 import time
+import ntpath
 import argparse
 import subprocess
-import ntpath
 
 def main():
     parser = argparse.ArgumentParser(description="descrizione da mettere")
@@ -31,11 +31,11 @@ def main():
         print("Inizio Installazione")
         subprocess.run(["sudo", "apt-get", "update"])
         subprocess.run(["sudo", "apt-get", "upgrade"])
-        subprocess.run(["sudo", "apt-get", "install", "mercurial", "scons", "swig", "gcc", "m4", "python", "python-dev", "libgoogle-perftools-dev", "g++", "python3", "python3-pip", "libc6-armel-cross", "libc6-dev-armel-cross", "binutils-arm-linux-gnueabi", "libncurses5-dev", "gcc-arm-linux-gnueabihf", "g++-arm-linux-gnueabihf", "git-core", "libboost-dev", "zlib1g-dev"])
-        subprocess.run(["pip3", "install", "argparse", "six"])
-        subprocess.run(["pip", "install", "six"])
+        subprocess.run(["sudo", "apt-get", "install", "mercurial", "scons", "swig", "gcc", "m4", "python", "python-dev", "libgoogle-perftools-dev", "g++", "python3", "python3-pip", "python-pip", "libc6-armel-cross", "libc6-dev-armel-cross", "binutils-arm-linux-gnueabi", "libncurses5-dev", "gcc-arm-linux-gnueabihf", "g++-arm-linux-gnueabihf", "git-core", "libboost-dev", "zlib1g-dev"])
+        subprocess.run(["pip3", "install", "argparse", "six", "capstone"])
+        subprocess.run(["pip", "install", "argparse", "six", "capstone"])
         subprocess.run(["git", "clone", "https://github.com/gem5/gem5.git"])
-        subprocess.run(["scons", "build/ARM/gem5.debug", "-j1"],cwd='gem5')
+        subprocess.run(["scons", "build/ARM/gem5.debug", "-j4"],cwd='gem5')
         subprocess.run([sys.argv[0], "-f", "Programmi/test.s", "-nostdlib", "-mi", "100", "-fs", "_start"])
         print("Fine Installazione")
 
@@ -44,12 +44,22 @@ def main():
         path = ntpath.realpath(argms.file)
         path=path.replace('\\', '/')
         filename = ntpath.basename(argms.file)
+        
         pathobject = path+".o"
-        pathobjdis = path+".ds"
+        if os.path.exists(pathobject):
+            os.remove(pathobject)
+
         traceoutfile = filename+".trace"
+        traceoutfilepath = 'm5out/'+traceoutfile
+        if os.path.exists(traceoutfilepath):
+            os.remove(traceoutfilepath)
+
         visualtrace = filename+".out"
+        if os.path.exists(visualtrace):
+            os.remove(visualtrace)
+        
         maxinst = str(argms.maxinst)
-        visualarray = ["./visualizer.py", "-f", 'm5out/'+traceoutfile, "-cs", str(argms.ciclestart), "-mf", pathobjdis]
+        visualarray = ["./visualizer.py", "-f", traceoutfilepath, "-cs", str(argms.ciclestart)]
         if argms.functionstart != '':
             visualarray.insert(3, argms.functionstart)
             visualarray.insert(3, "-fs")
@@ -60,19 +70,22 @@ def main():
             visualarray.insert(3, "-i")
         
         visualtracefile = open(visualtrace, "w")
-        objdisfile = open(pathobjdis, "w")
         nullfile = open("/dev/null","w")
 
         print('Inizio compilazione')
         if argms.nostdlib : subprocess.run(["arm-linux-gnueabihf-gcc", "-nostdlib", "--static", "-o", pathobject, path])
         else: subprocess.run(["arm-linux-gnueabihf-gcc", "--static", "-o", pathobject, path])
-        subprocess.run(["arm-linux-gnueabihf-objdump", "-D", pathobject],stdout=objdisfile)
+        if not os.path.exists(pathobject):
+            print('Compilazione fallita')
+            sys.exit()
         print('Fine compilazione')
-        objdisfile.close()
         time.sleep(1)
         
         print('Inizio Simulazione')
         subprocess.run(["gem5/build/ARM/gem5.debug", "--debug-flags=All", "--debug-file="+traceoutfile, "--debug-start=0", "gem5/configs/example/se.py", "--maxinst="+maxinst, "--cpu-type=MinorCPU", "--caches", "-c", pathobject], stderr=nullfile)
+        if not os.path.exists(traceoutfilepath):
+            print('Simulazione fallita')
+            sys.exit()
         subprocess.run(visualarray, stdout=visualtracefile)
         print('dumped on '+visualtrace)
         print('Fine Simulazione')
