@@ -1,8 +1,9 @@
 	.section .text
 	.global _start
-    .global fine
 
 _start:
+    mov r0, #55
+
     mov r4, #0xe3a0
     lsl r4, #8
     add r4, r4, #0x00
@@ -22,9 +23,7 @@ _start:
     nop
     nop
     nop
-    nop
     nop 
     nop
-fine:
 	mov r7, #1
 	SVC 0

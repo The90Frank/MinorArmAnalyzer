@@ -69,6 +69,8 @@ def main():
             visualarray.insert(3, "-ce")
         if argms.int:
             visualarray.insert(3, "-i")
+        if argms.td :
+            visualarray.insert(3, "-td")
         
         visualtracefile = open(visualtrace, "w")
         nullfile = open("/dev/null","w")

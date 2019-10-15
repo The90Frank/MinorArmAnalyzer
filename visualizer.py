@@ -7,6 +7,7 @@ import sys
 import copy
 import json
 import argparse
+import binascii
 from capstone import *
 
 def main():
@@ -16,6 +17,7 @@ def main():
    parser.add_argument("-cs", "--ciclestart", help="ciclo da cui iniziare", type=int, default=0, required=False)
    parser.add_argument("-ce", "--cicleend", help="ciclo con cui terminare", type=int, default=None, required=False)
    parser.add_argument("-i", "--int", help="valore dei registri e del program counter intero", action='store_true', default=False, required=False)
+   parser.add_argument("-td", help="se è AArch32", action='store_true', default=False, required=True)
    argms = parser.parse_args()
 
    if not (os.path.isfile(argms.file)):
@@ -56,7 +58,6 @@ def main():
       'execute.fu.4',
       'execute.fu.5',
       'execute.fu.6',
-      'execute.fu.7',
       'execute.inFlightInsts0',
       'execute.lsq.transfers',
       'execute.lsq.storeBuffer',
@@ -89,7 +90,6 @@ def main():
       'execute.fu.4' : [],
       'execute.fu.5' : [],
       'execute.fu.6' : [],
-      'execute.fu.7' : [],
       'execute.inFlightInsts0' : [],
       'execute.lsq.transfers'  : [],
       'execute.lsq.storeBuffer': [],
@@ -105,20 +105,18 @@ def main():
       converted = []
       notdecoded = True
       
-      insthex = copy.deepcopy(shellcode)
-      for i in md64bigendian.disasm(binascii.unhexlify(insthex), 0x00):
-         notdecoded = False
-         converted.append( str(i.mnemonic) + " " + str(i.op_str) )
-
-      insthex = copy.deepcopy(shellcode)
-      for i in mdbigendian.disasm(binascii.unhexlify(insthex), 0x00):
-         notdecoded = False
-         converted.append( str(i.mnemonic) + " " + str(i.op_str) )
-
-      insthex = copy.deepcopy(shellcode)
-      for i in mdarm.disasm(binascii.unhexlify(insthex), 0x00):
-         notdecoded = False
-         converted.append( str(i.mnemonic) + " " + str(i.op_str) )
+      if argms.td:
+         insthex = copy.deepcopy(shellcode)
+         if notdecoded:
+            for i in mdbigendian.disasm(binascii.unhexlify(insthex), 0x00):
+               notdecoded = False
+               converted.append( str(i.mnemonic) + " " + str(i.op_str) )
+      else:
+         insthex = copy.deepcopy(shellcode)
+         if notdecoded:
+            for i in md64bigendian.disasm(binascii.unhexlify(insthex), 0x00):
+               notdecoded = False
+               converted.append( str(i.mnemonic) + " " + str(i.op_str) )
 
       insthex = copy.deepcopy(shellcode)
       if notdecoded:
@@ -143,19 +141,9 @@ def main():
    code_trace = {}
 
    def codeToInst(s):
-      cc = s
-      try: 
-         cc = code_inst[s]
-      except:
-         try:
-            ss=s[:s.rfind('.')]
-            cc = code_inst[ss]
-         except:
-            try:
-               sss=s[:s.rfind('/')]
-               cc = code_inst[sss]
-            except:
-               cc = s
+      cc = code_inst[s]
+      if cc == '':
+         cc = s
       return cc
 
    def codeToPc(s):
@@ -299,9 +287,12 @@ def main():
          if (line.find("system.cpu.f2ToF1: MinorTrace:") != -1):
             tupp = line[line.find("prediction=")+11:].split(',')
             tup = []
-            for t in reversed(tupp):
-               t=t[t.rfind(";")+1:]
-               tup.append(t)
+            for t in tupp:
+               if t.rfind(';') != -1:
+                  code = t[t.rfind(';')+1:]
+                  tup.append(code)
+               else:
+                  tup.append(t)
             appendtupinlist(tup,stagedump[time]['f2ToF1'])
 
          if (line.find("system.cpu.fetch2.inputBuffer0: MinorTrace:") != -1):
@@ -394,7 +385,14 @@ def main():
                stagedump[time]['execute.fu.'+str(core)].insert(0,code)
 
          if (line.find("system.cpu.eToF1: MinorTrace:") != -1):
-            tup = codetupler(line[line.find("branch=")+7:])
+            tupp = line[line.find("branch=")+7:].split(',')
+            tup = []
+            for t in tupp:
+               if t.rfind(';') != -1:
+                  code = t[t.rfind(';')+1:]
+                  tup.append(code)
+               else:
+                  tup.append(t)
             appendtupinlist(tup,stagedump[time]['eToF1'])
 
          if (line.find("system.cpu.execute: Completed inst:") != -1):
@@ -514,7 +512,10 @@ def main():
                         except Exception as e:
                            pass
 
-                  elif k == "icache" or k == "fetch1" or k == "fetch2.inputBuffer0" or k == "f1ToF2" or k == "dcache":
+                  elif k == "icache" or k == "dcache":
+                     for r in reversed(stagedump[i][k]):
+                        array.append(r) 
+                  elif k == "fetch1" or k == "fetch2.inputBuffer0" or k == "f1ToF2":
                      for r in reversed(stagedump[i][k]):
                         if len(codeToInst(r)) > 0:
                            array.append( codeToInst(r) )
