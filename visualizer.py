@@ -99,21 +99,31 @@ def main():
    }
 
    def byteToHuman(shellcode):
-
+      md64bigendian = Cs(CS_ARCH_ARM64, CS_MODE_ARM)
       mdarm = Cs(CS_ARCH_ARM, CS_MODE_ARM)
       mdbigendian = Cs(CS_ARCH_ARM, CS_MODE_BIG_ENDIAN) 
       converted = []
+      notdecoded = True
+      
+      insthex = copy.deepcopy(shellcode)
+      for i in md64bigendian.disasm(binascii.unhexlify(insthex), 0x00):
+         notdecoded = False
+         converted.append( str(i.mnemonic) + " " + str(i.op_str) )
 
-      for j in range (0, len(shellcode), 8):
-         insthex = shellcode[j:j+8]
-         notdecoded = True
-         
-         for i in mdbigendian.disasm(binascii.unhexlify(insthex), 0x0):
-            notdecoded = False
-            converted.append( str(i.mnemonic) + " " + str(i.op_str) )
+      insthex = copy.deepcopy(shellcode)
+      for i in mdbigendian.disasm(binascii.unhexlify(insthex), 0x00):
+         notdecoded = False
+         converted.append( str(i.mnemonic) + " " + str(i.op_str) )
 
-         if notdecoded:
-            converted.append( insthex )
+      insthex = copy.deepcopy(shellcode)
+      for i in mdarm.disasm(binascii.unhexlify(insthex), 0x00):
+         notdecoded = False
+         converted.append( str(i.mnemonic) + " " + str(i.op_str) )
+
+      insthex = copy.deepcopy(shellcode)
+      if notdecoded:
+         converted.append( insthex )
+
       if len(converted) == 1:
          return converted.pop()
       else:
@@ -204,7 +214,7 @@ def main():
    scoreboardtrace = {}
 
    registers = []
-   for i in range(0,16):
+   for i in range(0,32):
       registers.append('0')
    registers_trace = { 0 : registers }
 
@@ -231,16 +241,12 @@ def main():
             if (line.find("IF miss") != -1):
                cacheindexbase = "0x"+mess[mess.find("[")+1:mess.find(":")]
                cacheindexend = "0x"+mess[mess.find(":")+1:mess.find("]")]
-               if argms.int:
-                  cacheindexbase = str(int(cacheindexbase,16))
-                  cacheindexend = str(int(cacheindexend,16))
+
                mess = "Cache Line Misses ["+cacheindexbase+":"+cacheindexend+"]"
             elif (line.find("IF hit") != -1):
                cacheindexbase = "0x"+mess[mess.find("[")+1:mess.find(":")]
                cacheindexend = "0x"+mess[mess.find(":")+1:mess.find("]")]
-               if argms.int:
-                  cacheindexbase = str(int(cacheindexbase,16))
-                  cacheindexend = str(int(cacheindexend,16))
+
                mess = "Cache Line ["+cacheindexbase+":"+cacheindexend+"]" + mess[mess.find(" valid:"):mess.find(" |")]
             else:
                mess = "non lo hai ancora gestito _ "+line
@@ -250,9 +256,7 @@ def main():
             mess = line[line.find('ReadResp')+8:]
             cacheindexbase = "0x"+mess[mess.find("[")+1:mess.find(":")]
             cacheindexend = "0x"+mess[mess.find(":")+1:mess.find("]")]
-            if argms.int:
-               cacheindexbase = str(int(cacheindexbase,16))
-               cacheindexend = str(int(cacheindexend,16))
+
             mess = "Cache Line ["+cacheindexbase+":"+cacheindexend+"]"
             iReadRespmess = mess
 
@@ -275,9 +279,7 @@ def main():
                fpaddr = int(fpaddr,16)
                cacheindexbase = hex(fsize)
                cacheindexend = hex(fsize+fpaddr-1)
-               if argms.int:
-                  cacheindexbase = str(int(cacheindexbase,16))
-                  cacheindexend = str(int(cacheindexend,16))
+
                mess="Line ["+cacheindexbase+":"+cacheindexend+"]"
             else:
                code=line[line.rfind("id=")+3:line.rfind("vaddr")].replace(" ","")
@@ -328,7 +330,6 @@ def main():
                   functionstartdelta = dd
             inst=line[line.find("(")+1:line.find(")")].strip()
             code_inst[code]=precedentarminst
-            if argms.int: pc=str( int(pc,16) )
             code_pc[code] = pc
 
          if (line.find("system.cpu.f2ToD: MinorTrace:") != -1):
@@ -375,7 +376,6 @@ def main():
                inst=line[line.find("fault=")+6:].replace('"', '')
                ##################################################
                pc=line[line.find("addr=")+5:line.find("fault=")]
-               if argms.int: pc=str( int(pc,16) )
                code_pc[code]=pc
                ##################################################
             code_inst[code]=' '.join(inst.split())
@@ -416,9 +416,7 @@ def main():
                mess = 'non gestito _ ' + line
             cacheindexbase = "0x"+mess[mess.find("[")+1:mess.find(":")]
             cacheindexend = "0x"+mess[mess.find(":")+1:mess.find("]")]
-            if argms.int:
-               cacheindexbase = str(int(cacheindexbase,16))
-               cacheindexend = str(int(cacheindexend,16))
+
             mess = "Cache Line ["+cacheindexbase+":"+cacheindexend+"]"
             dReadRespmess = mess
 
@@ -429,9 +427,7 @@ def main():
                mess = line[line.find('WriteReq')+8:]
             cacheindexbase = "0x"+mess[mess.find("[")+1:mess.find(":")]
             cacheindexend = "0x"+mess[mess.find(":")+1:mess.find("]")]
-            if argms.int:
-               cacheindexbase = str(int(cacheindexbase,16))
-               cacheindexend = str(int(cacheindexend,16))
+
             if (line.find("miss") != -1):
                mess = "Cache Line Misses ["+cacheindexbase+":"+cacheindexend+"]"
             else:
@@ -448,7 +444,7 @@ def main():
 
          if (line.find(": Setting int reg ") != -1):
             reg = int ( line[line.find('(')+1:line.find(')')] )
-            if reg < 16:
+            if reg < 32:
                val = line[line.find('to')+2:-1]
                try: 
                   registers_trace[time]
@@ -533,18 +529,33 @@ def main():
 
          #stampa del dump dei registri
          arraryreg = []
+         vallength = 0
          try:
             index = 0
+            
             for r in registers_trace[i]:
-               arraryreg.append( 'R' + str(index) + ': ' + str(r) )
+               vallength = max(len(str(r)),vallength)
+            
+            for r in registers_trace[i]:
+               arraryreg.append( 'W/R' + str(index).ljust(2, " ") + ':' + str(r).rjust(vallength, " ") )
                index = index+1
+               if index % 8 == 0:
+                  condprint(arraryreg)
+                  arraryreg = []
+
             lasttime['reg'] = i
          except:
             index = 0
+            
             for r in registers_trace[lasttime['reg']]:
-               arraryreg.append( 'R' + str(index) + ': ' + str(r) )
+               vallength = max(len(str(r)),vallength)
+
+            for r in registers_trace[lasttime['reg']]:
+               arraryreg.append( 'W/R' + str(index).ljust(2, " ") + ':' + str(r).rjust(vallength, " ") )
                index = index+1
-         condprint(arraryreg)
+               if index % 8 == 0:
+                  condprint(arraryreg)
+                  arraryreg = []
          
          condprint('')
 
