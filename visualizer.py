@@ -205,6 +205,9 @@ def main():
    for i in range(0,32):
       registers.append('0')
    registers_trace = { 0 : registers }
+   
+   flags = {'N' : 0, 'Z' : 0, 'V' : 0, 'C' : 0}
+   flags_trace = {0 : flags}
 
    for line in tracelist:
       try:
@@ -440,6 +443,32 @@ def main():
             tup = ( line[line.find("insts=")+6:] ).split(',')
             appendtupinlist(tup,stagedump[time]['execute.inFUMemInsts0'])
 
+         if (line.find("global: (i") != -1):
+            reg = []
+            if (line.find("global: (in, iz)") != -1):
+               val = ( line[line.rfind(',')+1:line.rfind(')')] )
+               reg.append( ('Z', val) )
+               val = ( line[line.rfind('=')+3:line.rfind(',')] )
+               reg.append( ('N', val) )
+            elif (line.find("global: (iv)") != -1):
+               val = ( line[line.rfind('(')+1:line.rfind(')')] )
+               reg.append( ('V', val) )
+            elif (line.find("global: (ic)") != -1):
+               val = ( line[line.rfind('(')+1:line.rfind(')')] )
+               reg.append( ('C', val) )
+            
+            try: 
+               flags_trace[time]
+            except: 
+               for i in reversed(range(0,time)):
+                  try:
+                     flags_trace[time] = flags_trace[i].copy()
+                     break
+                  except: 
+                     continue
+            for r in reg:
+               flags_trace[time][r[0]] = r[1]
+
          if (line.find(": Setting int reg ") != -1):
             reg = int ( line[line.find('(')+1:line.find(')')] )
             if reg < 32:
@@ -488,7 +517,7 @@ def main():
       if i>= start and i <= end:
          print(str(s))
 
-   lasttime = {'reg':0}
+   lasttime = {'reg':0, 'flag':0}
    lung = max(len(x) for x in stagelist)    
 
    for i in range(min(timelist), end):
@@ -527,6 +556,16 @@ def main():
                   condprint(lable + str(array))
          except Exception as e: 
             pass
+
+
+         #stampa dei flags
+         arraryflag = []
+         try:
+            condprint(flags_trace[i])
+            lasttime['flag'] = i
+         except:
+            condprint(flags_trace[lasttime['flag']])
+         
 
          #stampa del dump dei registri
          arraryreg = []
