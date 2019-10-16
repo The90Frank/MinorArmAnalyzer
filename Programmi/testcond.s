@@ -3,7 +3,7 @@
 
 _start:
 	mov r0, #42
-	mov r1, #42
+	mov r1, #41
 	
 	subs r2, r0, r1
 	nop

@@ -561,10 +561,10 @@ def main():
          #stampa dei flags
          arraryflag = []
          try:
-            condprint(flags_trace[i])
+            condprint(sorted(flags_trace[i].items()))
             lasttime['flag'] = i
          except:
-            condprint(flags_trace[lasttime['flag']])
+            condprint(sorted(flags_trace[lasttime['flag']].items()))
          
 
          #stampa del dump dei registri
