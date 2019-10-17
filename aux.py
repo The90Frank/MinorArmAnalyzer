@@ -60,7 +60,7 @@ def main():
             os.remove(visualtrace)
         
         maxinst = str(argms.maxinst)
-        visualarray = ["./visualizer.py", "-f", traceoutfilepath, "-cs", str(argms.ciclestart)]
+        visualarray = ["./dumptohuman.py", "-f", traceoutfilepath, "-cs", str(argms.ciclestart)]
         if argms.functionstart != '':
             visualarray.insert(3, argms.functionstart)
             visualarray.insert(3, "-fs")
