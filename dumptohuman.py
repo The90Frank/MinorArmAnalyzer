@@ -577,7 +577,7 @@ def main():
                vallength = max(len(str(r)),vallength)
             
             for r in registers_trace[i]:
-               arraryreg.append( 'W/R' + str(index).ljust(2, " ") + ':' + str(r).rjust(vallength, " ") )
+               arraryreg.append( 'reg' + str(index).ljust(2, " ") + ':' + str(r).rjust(vallength, " ") )
                index = index+1
                if index % 8 == 0:
                   condprint(arraryreg)
@@ -591,7 +591,7 @@ def main():
                vallength = max(len(str(r)),vallength)
 
             for r in registers_trace[lasttime['reg']]:
-               arraryreg.append( 'W/R' + str(index).ljust(2, " ") + ':' + str(r).rjust(vallength, " ") )
+               arraryreg.append( 'reg' + str(index).ljust(2, " ") + ':' + str(r).rjust(vallength, " ") )
                index = index+1
                if index % 8 == 0:
                   condprint(arraryreg)
