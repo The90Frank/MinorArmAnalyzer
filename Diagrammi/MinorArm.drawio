@@ -1,6 +1,6 @@
-<mxfile host="www.draw.io" modified="2019-10-16T12:43:54.931Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.75 Safari/537.36" etag="dj0ybl7pI-Kde7lLrI3h" version="12.1.1" type="github" pages="1">
+<mxfile host="www.draw.io" modified="2019-10-17T15:00:06.113Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.75 Safari/537.36" etag="Ka5jGYj9pyUAaCgoHuX8" version="12.1.3" type="github" pages="1">
   <diagram id="EdAOTdUpAiUYNW-F2-T8" name="Page-1">
-    <mxGraphModel dx="868" dy="467" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="599" dy="357" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0"/>
         <mxCell id="1" parent="0"/>
@@ -261,6 +261,9 @@
         </mxCell>
         <mxCell id="spIA5sVN0bUgtaLf5vBl-1" value="Scoreboard" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=1;fontFamily=Helvetica;" parent="1" vertex="1">
           <mxGeometry x="331" y="650" width="270" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="FZP4qni_KfcS64bf-pvQ-6" value="C&lt;br&gt;N&lt;br&gt;V&lt;br&gt;Z" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="650" y="270.12068965517244" width="20" height="60" as="geometry"/>
         </mxCell>
       </root>
     </mxGraphModel>
