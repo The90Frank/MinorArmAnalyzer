@@ -518,7 +518,7 @@ def main():
          print(str(s))
 
    lasttime = {'reg':0, 'flag':0}
-   lung = max(len(x) for x in stagelist)    
+   lung = max(len(x) for x in lablemap.values())    
 
    for i in range(min(timelist), end):
       if i in stagedump.keys():
