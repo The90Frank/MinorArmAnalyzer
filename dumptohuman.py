@@ -17,7 +17,7 @@ def main():
    parser.add_argument("-cs", "--ciclestart", help="ciclo da cui iniziare", type=int, default=0, required=False)
    parser.add_argument("-ce", "--cicleend", help="ciclo con cui terminare", type=int, default=None, required=False)
    parser.add_argument("-i", "--int", help="valore dei registri e del program counter intero", action='store_true', default=False, required=False)
-   parser.add_argument("-td", help="se è AArch32", action='store_true', default=False, required=True)
+   parser.add_argument("-td", help="se è AArch32", action='store_true', default=False, required=False)
    argms = parser.parse_args()
 
    if not (os.path.isfile(argms.file)):
