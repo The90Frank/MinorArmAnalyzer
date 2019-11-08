@@ -7,8 +7,10 @@ _start:
     mov r6, #33
     nop
 
-    stm sp,{r4,r5,r6}
-    ldm sp,{r0-r2}
+    stm sp,{r0-r10}
+    ldm sp,{r0-r11}
 
-	mov r7, #1
-	SVC 0
+    mov r7, #1
+	mov r9, #5
+    mov r9, #10
+    SVC 0

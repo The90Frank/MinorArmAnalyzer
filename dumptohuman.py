@@ -524,8 +524,8 @@ def main():
       if i in stagedump.keys():
          condprint(("clockCicle").ljust(lung, " ")+": "+str(i))
          
-         try:
-            for k in stagelist:
+         for k in stagelist:
+            try:
                if (k in lablemap) and (lablemap[k] != ""):
                   lable = lablemap[k].ljust(lung, " ")+": "
                   array = []
@@ -554,8 +554,9 @@ def main():
                            array.append( (codeToPc(r) , codeToInst(r)) )
                      
                   condprint(lable + str(array))
-         except Exception as e: 
-            pass
+            except Exception as e: 
+               condprint(lable + str(e))
+               pass
 
 
          #stampa dei flags
