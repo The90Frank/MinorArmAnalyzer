@@ -1,6 +1,6 @@
-<mxfile host="www.draw.io" modified="2019-11-10T14:17:20.338Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.70 Safari/537.36" etag="B4XBi3uLaAbycojpmc5D" version="12.2.3" type="github" pages="1">
+<mxfile host="www.draw.io" modified="2019-11-10T15:51:17.393Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.70 Safari/537.36" etag="KhoUCDDUP1aBCF--fzaR" version="12.2.3" type="github" pages="1">
   <diagram id="rSV5W949xFeJyHVhMFUO" name="Page-1">
-    <mxGraphModel dx="854" dy="507" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="854" dy="456" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0"/>
         <mxCell id="1" parent="0"/>
@@ -8,16 +8,22 @@
           <mxGeometry x="40" y="40" width="640" height="480" as="geometry"/>
         </mxCell>
         <mxCell id="6ish64LKCQSUKe8W3uwB-2" value="Inst1" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
-          <mxGeometry x="600" y="40" width="40" height="40" as="geometry"/>
+          <mxGeometry x="380" y="40" width="40" height="40" as="geometry"/>
         </mxCell>
         <mxCell id="6ish64LKCQSUKe8W3uwB-3" value="Inst0" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
-          <mxGeometry x="560" y="40" width="40" height="40" as="geometry"/>
+          <mxGeometry x="340" y="40" width="40" height="40" as="geometry"/>
         </mxCell>
-        <mxCell id="6ish64LKCQSUKe8W3uwB-5" value="Inst1" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
-          <mxGeometry x="600" y="480" width="40" height="40" as="geometry"/>
+        <mxCell id="6ish64LKCQSUKe8W3uwB-5" value="Inst j" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="640" y="300" width="40" height="40" as="geometry"/>
         </mxCell>
-        <mxCell id="6ish64LKCQSUKe8W3uwB-6" value="Inst0" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
-          <mxGeometry x="560" y="480" width="40" height="40" as="geometry"/>
+        <mxCell id="6ish64LKCQSUKe8W3uwB-6" value="Inst i" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="640" y="260" width="40" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="6ish64LKCQSUKe8W3uwB-7" value="PC" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="640" y="220" width="40" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="6ish64LKCQSUKe8W3uwB-8" value="PC" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="300" y="40" width="40" height="40" as="geometry"/>
         </mxCell>
       </root>
     </mxGraphModel>
