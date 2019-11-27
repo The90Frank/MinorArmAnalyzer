@@ -7,7 +7,7 @@ _start:
     mov r6, #33
     nop
 
-    stm sp,{r0-r10}
+    stm sp,{r0,r7,r10}
     ldm sp,{r0-r11}
 
     mov r7, #1

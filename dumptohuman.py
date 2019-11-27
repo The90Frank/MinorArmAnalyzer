@@ -132,8 +132,8 @@ def main():
    functionstartcicle = None
    functionstartpc = None
    functionstartdelta = None
-   code_inst = {"-":"-", "":"", "R":"-"}
-   code_pc = {"-":"-", "":""}
+   code_inst = {"-":"-", "":"","U":"Unknown", "E":"Empty", "F":"Fault", "R":"Reserved", "B":"Blocked"}
+   code_pc = {"-":"-", "":"", "U":"-", "E":"-", "F":"-","R":"-", "B":"-"}
    code_arminst = {}
    precedentarminst = ''
    iReadRespmess = ''
@@ -545,6 +545,8 @@ def main():
                      for r in reversed(stagedump[i][k]):
                         array.append(r) 
                   elif k == "fetch1" or k == "fetch2.inputBuffer0" or k == "f1ToF2":
+                     if k== "fetch1" and len(stagedump[i][k]) == 0:
+                        array.append("Blocked")
                      for r in reversed(stagedump[i][k]):
                         if len(codeToInst(r)) > 0:
                            array.append( codeToInst(r) )
