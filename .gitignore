@@ -1,5 +1,27 @@
+# IDE and editor settings
+.vscode/
+.claude/
+.idea/
+*.swp
+*.swo
+*~
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.env
+.venv
+venv/
+
+# gem5 build and output
 gem5/
-*.out
-Programmi/*.o
 m5out/
-Diagrammi/
+*.out
+
+# Compiled ARM binaries
+Programmi/*.o
+
+# OS files
+.DS_Store
+Thumbs.db
