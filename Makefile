@@ -16,5 +16,5 @@ install:
 
 run:
 	@echo "Usage:"
-	@echo "  Compile and simulate: $(PYTHON) aux.py <file.s>"
+	@echo "  Compile and simulate: $(PYTHON) orchestrator.py <file.s>"
 	@echo "  Visualize trace:      $(PYTHON) dumptohuman.py -f <trace_file>"

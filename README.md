@@ -14,7 +14,7 @@ A CPU pipeline analyzer for ARM architecture built on top of the gem5 simulator.
 
 ```
 MinorArmAnalyzer/
-├── aux.py              # Main script: compilation, simulation, orchestration
+├── orchestrator.py     # Main script: compilation, simulation, orchestration
 ├── dumptohuman.py      # Trace parser and human-readable visualizer
 ├── config.json         # Pipeline stage label configuration
 ├── Diagrammi/          # Draw.io diagrams of the MinorCPU pipeline
@@ -43,12 +43,12 @@ MinorArmAnalyzer/
 
 Install dependencies:
 ```bash
-python3 aux.py --install
+python3 orchestrator.py --install
 ```
 
 Compile and simulate an ARM assembly file:
 ```bash
-python3 aux.py <file.s>
+python3 orchestrator.py <file.s>
 ```
 
 Visualize execution traces:
